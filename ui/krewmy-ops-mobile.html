@@ -1,0 +1,959 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KrewMY Ops — Organiser Mobile Companion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;display=swap">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#E7EBF1;font-family:'Nunito',-apple-system,system-ui,sans-serif;color:#0F172A}
+header{padding:48px 48px 8px}
+header h1{margin:0;font-size:40px;font-weight:900;letter-spacing:-0.02em}
+header p{margin:8px 0 0;color:#475569;font-size:16px}
+main{display:flex;flex-wrap:wrap;gap:56px 48px;padding:40px 48px 80px;align-items:flex-start}
+.screen h2{margin:0 0 14px;font-size:15px;font-weight:800;color:#475569;letter-spacing:.02em}
+.frame{border-radius:44px;overflow:hidden;box-shadow:0 30px 60px rgba(15,23,42,.18),0 0 0 10px #0F172A;width:390px}
+.frame button{font-family:inherit}
+a{color:#0E7490}a:hover{color:#155E75}
+[hidden]{display:none!important}
+@keyframes krPulse{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes krRing{0%{box-shadow:0 0 0 0 rgba(16,185,129,.55)}100%{box-shadow:0 0 0 12px rgba(16,185,129,0)}}
+@keyframes krScan{0%{transform:translateY(0)}50%{transform:translateY(176px)}100%{transform:translateY(0)}}
+@keyframes krDrain{0%{width:100%}100%{width:0%}}
+</style>
+</head>
+<body>
+<header><h1>KrewMY Ops — Organiser Mobile Companion</h1><p>8 screens · iPhone 15 Pro (390 × 844) · tap links and controls to try the flow</p></header>
+<main>
+<section class="screen" id="Main"><h2>01 · Auth &amp; Zone Binding</h2><div class="frame"><div style="width: 390px; height: 844px; box-sizing: border-box; background: #F4F6FA; color: #0F172A; font-family: 'Nunito', -apple-system, system-ui, sans-serif; display: flex; flex-direction: column; padding: 56px 20px 34px; gap: 16px; overflow: hidden">
+
+  <div style="display: flex; align-items: center; justify-content: space-between">
+    <div style="display: flex; align-items: center; gap: 10px">
+      <div style="width: 36px; height: 36px; border-radius: 10px; background: #06B6D4; color: #061318; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; letter-spacing: -0.02em">K</div>
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <div style="font-weight: 700; font-size: 17px; letter-spacing: -0.01em">KrewMY Ops</div>
+        <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 10px; letter-spacing: 0.12em; color: #64748B">ORGANISER CONSOLE</div>
+      </div>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(16,185,129,0.45); background: rgba(16,185,129,0.12); font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #047857">
+      <span style="width: 7px; height: 7px; border-radius: 999px; background: #10B981"></span>ONLINE
+    </div>
+  </div>
+
+  <div style="display: inline-flex; align-self: flex-start; align-items: center; gap: 8px; padding: 7px 12px 7px 9px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E2E8F0; font-size: 12px; font-weight: 500; color: #334155">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E7490" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2M9 9v1M15 9v1M12 9v4h-1M9 16c1.5 1 4.5 1 6 0"></path></svg>
+    Biometric quick-unlock enabled
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 4px">
+    <div style="font-size: 26px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15">Confirm your post</div>
+    <div style="font-size: 14px; color: #64748B">Bind this device to a gate before doors open.</div>
+  </div>
+
+  <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 18px; padding: 18px; display: flex; flex-direction: column; gap: 14px">
+    <div style="display: flex; justify-content: space-between; align-items: center">
+      <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 11px; letter-spacing: 0.12em; color: #047857; font-weight: 600">● ACTIVE EVENT</div>
+      <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 11px; color: #64748B">DAY 1</div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 4px">
+      <div style="font-size: 21px; font-weight: 700; letter-spacing: -0.01em">Coldplay Live in KL</div>
+      <div style="font-size: 14px; color: #64748B">Axiata Arena, Bukit Jalil</div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; border-top: 1px solid #E2E8F0; padding-top: 14px">
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <div style="font-size: 11px; color: #64748B; letter-spacing: 0.04em">DATE</div>
+        <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 14px; font-weight: 600">[DATE]</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <div style="font-size: 11px; color: #64748B; letter-spacing: 0.04em">CALL TIME</div>
+        <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 14px; font-weight: 600">07:00</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <div style="font-size: 11px; color: #64748B; letter-spacing: 0.04em">ROSTER</div>
+        <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 14px; font-weight: 600">180 crew</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="flex-grow: 1"></div>
+
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <div style="font-size: 11px; color: #64748B; letter-spacing: 0.08em; font-weight: 600">ASSIGNED ZONE</div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 4px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px">
+      <button type="button" aria-pressed="true" style="min-height: 60px; border: 1px solid #06B6D4; background: rgba(6,182,212,0.14); color: #0F172A; border-radius: 10px; text-align: left; padding: 8px 12px; font-family: inherit; cursor: pointer; display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: 14px; font-weight: 700">Staff Gate C</span>
+        <span style="font-size: 11px; color: #155E75">Ushers &amp; Hospitality</span>
+      </button>
+      <button type="button" aria-pressed="false" style="min-height: 60px; border: 1px solid transparent; background: transparent; color: #334155; border-radius: 10px; text-align: left; padding: 8px 12px; font-family: inherit; cursor: pointer; display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: 14px; font-weight: 600">Roaming Chief</span>
+        <span style="font-size: 11px; color: #64748B">All venue access</span>
+      </button>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 12px; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.35)">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#047857" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 1px"><path d="M5 12l4 4L19 7"></path></svg>
+    <div style="font-size: 13px; line-height: 1.4; color: #065F46"><b style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums">180</b> worker profiles, eKYC photos &amp; cryptographic keys cached locally</div>
+  </div>
+
+  <div style="display: flex; gap: 10px">
+    <button type="button" style="flex: 1; height: 56px; border-radius: 14px; border: 1px solid #E2E8F0; background: #FFFFFF; color: #0F172A; font-family: inherit; font-size: 15px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E7490" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2M9 9v1M15 9v1M12 9v4h-1M9 16c1.5 1 4.5 1 6 0"></path></svg>
+      Unlock with Face ID
+    </button>
+    <button type="button" style="width: 92px; height: 56px; border-radius: 14px; border: 1px solid #E2E8F0; background: transparent; color: #334155; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer">Use PIN</button>
+  </div>
+
+  <a href="#Dashboard" style="height: 60px; border-radius: 16px; background: #06B6D4; color: #04161B; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 17px; font-weight: 800; letter-spacing: -0.01em">
+    Enter Ground Control
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+  </a>
+</div></div></section>
+<section class="screen" id="Dashboard"><h2>02 · Floor Command Center</h2><div class="frame"><div style="width: 390px; height: 844px; box-sizing: border-box; background: #F4F6FA; color: #0F172A; font-family: 'Nunito', -apple-system, system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden; position: relative">
+
+  <div style="padding: 56px 20px 100px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+      <div style="display: flex; align-items: center; gap: 10px; min-width: 0">
+        <div aria-label="Jason profile" role="img" style="width: 40px; height: 40px; border-radius: 999px; background: #E0E7FF; color: #3730A3; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; border: 2px solid #6366F1; flex-shrink: 0">J</div>
+        <div style="display: flex; flex-direction: column; gap: 1px; min-width: 0">
+          <div style="font-weight: 700; font-size: 16px">Jason</div>
+          <div style="font-size: 12px; color: #64748B">Chief Floor Ops</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 6px">
+        <div style="padding: 6px 9px; border-radius: 8px; background: #FFFFFF; border: 1px solid #E2E8F0; font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 11px; font-weight: 700; letter-spacing: 0.06em">GATE C</div>
+        
+        
+          <div style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 9px; border-radius: 999px; border: 1px solid rgba(16,185,129,0.45); background: rgba(16,185,129,0.12); font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; color: #047857">
+            <span style="width: 7px; height: 7px; border-radius: 999px; background: #10B981"></span>ONLINE
+          </div>
+        
+      </div>
+    </div>
+    <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 11px; color: #64748B; letter-spacing: 0.02em">Synced 1m ago · 100% offline ready</div>
+
+    <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline">
+        <div style="font-size: 11px; letter-spacing: 0.1em; color: #64748B; font-weight: 600">FULFILLMENT</div>
+        <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 14px; font-weight: 700; color: #047857">84%</div>
+      </div>
+      <div style="display: flex; align-items: baseline; gap: 8px">
+        <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 44px; font-weight: 700; letter-spacing: -0.04em; line-height: 1">42<span style="color: #7C8799"> / 50</span></div>
+        <div style="font-size: 13px; color: #64748B">checked in</div>
+      </div>
+      <div role="img" aria-label="42 of 50 checked in" style="display: grid; grid-template-columns: repeat(25, minmax(0, 1fr)); gap: 3px">
+        
+          <div style="height: 10px; border-radius: 2px; background: #10B981"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #10B981"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #10B981"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #10B981"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #10B981"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #10B981"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #10B981"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #10B981"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #10B981"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #10B981"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #10B981"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #10B981"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #10B981"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #10B981"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #10B981"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #10B981"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #10B981"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #10B981"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #10B981"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #10B981"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #10B981"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #E2E8F0"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #E2E8F0"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #E2E8F0"></div>
+        
+          <div style="height: 10px; border-radius: 2px; background: #E2E8F0"></div>
+        
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px">
+        <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #334155"><span style="width: 8px; height: 8px; border-radius: 999px; background: #10B981"></span>Checked in</div>
+        <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 28px; font-weight: 700; color: #047857; line-height: 1">42</div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px">
+        <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #334155"><span style="width: 8px; height: 8px; border-radius: 999px; background: #3B82F6"></span>En route (T-2h)</div>
+        <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 28px; font-weight: 700; color: #1D4ED8; line-height: 1">5</div>
+      </div>
+      <div style="background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.55); border-radius: 14px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px">
+        <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #92400E"><span style="width: 8px; height: 8px; border-radius: 999px; background: #F59E0B; animation: krPulse 1.2s infinite"></span>Late (&gt;15m)</div>
+        <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 28px; font-weight: 700; color: #B45309; line-height: 1">3</div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px">
+        <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #334155"><span style="width: 8px; height: 8px; border-radius: 999px; background: #A78BFA"></span>Standby mobilized</div>
+        <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 28px; font-weight: 700; color: #6D28D9; line-height: 1">1</div>
+      </div>
+    </div>
+
+    <div style="flex-grow: 1"></div>
+
+    <a href="#Scanner" style="display: flex; align-items: center; gap: 14px; padding: 16px; border-radius: 18px; background: #ECFDF5; border: 2px solid #10B981; color: #0F172A; text-decoration: none; animation: krRing 1.6s infinite">
+      <div style="width: 56px; height: 56px; border-radius: 14px; background: #10B981; color: #04130D; display: flex; align-items: center; justify-content: center; flex-shrink: 0">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M7 12h10"></path></svg>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 3px; flex-grow: 1">
+        <div style="font-size: 18px; font-weight: 800; letter-spacing: -0.01em">Launch Continuous Scanner</div>
+        <div style="font-size: 12px; color: #047857">Zero-tap check-in · 8 still to arrive</div>
+      </div>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#047857" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
+    </a>
+
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 14px">
+      <a href="#Standby" style="min-height: 98px; box-sizing: border-box; padding: 12px; border-radius: 14px; background: #FFFFFF; border: 1px solid #E2E8F0; color: #0F172A; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; gap: 8px">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6D28D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 19v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1M9.5 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6M21 19v-1a4 4 0 0 0-3-3.9M16 4.1a3 3 0 0 1 0 5.8"></path></svg>
+        <div style="display: flex; flex-direction: column; gap: 2px">
+          <div style="font-size: 13px; font-weight: 700; line-height: 1.2">Standby Bench</div>
+          <div style="font-size: 11px; color: #64748B">3 nearby</div>
+        </div>
+      </a>
+      <a href="#Rotation" style="min-height: 98px; box-sizing: border-box; padding: 12px; border-radius: 14px; background: #FFFFFF; border: 1px solid #E2E8F0; color: #0F172A; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; gap: 8px">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E7490" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path></svg>
+        <div style="display: flex; flex-direction: column; gap: 2px">
+          <div style="font-size: 13px; font-weight: 700; line-height: 1.2">Meal &amp; Solat Jumaat</div>
+          <div style="font-size: 11px; color: #64748B">Rotation</div>
+        </div>
+      </a>
+      <a href="#Overtime" style="min-height: 98px; box-sizing: border-box; padding: 12px; border-radius: 14px; background: #FFFFFF; border: 1px solid #E2E8F0; color: #0F172A; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; gap: 8px">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+        <div style="display: flex; flex-direction: column; gap: 2px">
+          <div style="font-size: 13px; font-weight: 700; line-height: 1.2">Overtime Approval</div>
+          <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 11px; color: #B45309">+1.5x</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <nav aria-label="Primary" style="position: absolute; left: 16px; right: 16px; bottom: 24px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; padding: 8px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 26px; box-shadow: 0 12px 32px rgba(15,23,42,0.16), 0 2px 6px rgba(15,23,42,0.08)">
+    <a href="#Dashboard" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 0; min-height: 52px; text-decoration: none; color: #0E7490; font-size: 11px; font-weight: 700">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"></path></svg>Dashboard
+    </a>
+    <a href="#Scanner" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 0; min-height: 52px; text-decoration: none; color: #64748B; font-size: 11px; font-weight: 600">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M7 12h10"></path></svg>Scanner
+    </a>
+    <a href="#Roster" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 0; min-height: 52px; text-decoration: none; color: #64748B; font-size: 11px; font-weight: 600">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 19v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1M9.5 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6M21 19v-1a4 4 0 0 0-3-3.9M16 4.1a3 3 0 0 1 0 5.8"></path></svg>Crew Roster
+    </a>
+    <a href="#Rotation" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 0; min-height: 52px; text-decoration: none; color: #64748B; font-size: 11px; font-weight: 600">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Shift Ops
+    </a>
+  </nav>
+</div></div></section>
+<section class="screen" id="Scanner"><h2>03 · Continuous QR Scanner</h2><div class="frame"><div style="width: 390px; height: 844px; box-sizing: border-box; background: #111827; color: #0F172A; font-family: 'Nunito', -apple-system, system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden; position: relative">
+
+  <div style="padding: 56px 16px 0; display: flex; flex-direction: column; gap: 12px">
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <a href="#Dashboard" aria-label="Back to dashboard" style="width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: center; color: #0F172A">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+      </a>
+      <div style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(16,185,129,0.45); background: #ECFDF5; font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; color: #047857">
+        <span style="width: 7px; height: 7px; border-radius: 999px; background: #10B981"></span>ONLINE · GATE C
+      </div>
+      <button type="button" aria-label="Toggle torch for low light" style="width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: center; color: #B45309; cursor: pointer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h8v4l-2 3v11h-4V10L8 7zM12 13v2"></path></svg>
+      </button>
+    </div>
+    <div role="group" aria-label="Scanner mode" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 4px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E2E8F0">
+      <button type="button" aria-pressed="true" style="height: 36px; border-radius: 999px; border: none; font-family: inherit; font-size: 12px; font-weight: 700; cursor: pointer; background: #10B981; color: #04130D">Standard · Continuous</button>
+      <button type="button" aria-pressed="false" style="height: 36px; border-radius: 999px; border: none; font-family: inherit; font-size: 12px; font-weight: 700; cursor: pointer; background: transparent; color: #334155">Master QR · Deadzone</button>
+    </div>
+  </div>
+
+  <div style="height: 236px; display: flex; align-items: center; justify-content: center; position: relative">
+    <div aria-hidden="true" style="width: 196px; height: 196px; position: relative">
+      <div style="position: absolute; left: 0; top: 0; width: 36px; height: 36px; border-left: 4px solid #10B981; border-top: 4px solid #10B981; border-top-left-radius: 14px"></div>
+      <div style="position: absolute; right: 0; top: 0; width: 36px; height: 36px; border-right: 4px solid #10B981; border-top: 4px solid #10B981; border-top-right-radius: 14px"></div>
+      <div style="position: absolute; left: 0; bottom: 0; width: 36px; height: 36px; border-left: 4px solid #10B981; border-bottom: 4px solid #10B981; border-bottom-left-radius: 14px"></div>
+      <div style="position: absolute; right: 0; bottom: 0; width: 36px; height: 36px; border-right: 4px solid #10B981; border-bottom: 4px solid #10B981; border-bottom-right-radius: 14px"></div>
+      <div style="position: absolute; left: 14px; right: 14px; top: 10px; height: 2px; background: #34D399; box-shadow: 0 0 12px #10B981; animation: krScan 2.4s ease-in-out infinite"></div>
+    </div>
+  </div>
+
+  <div style="flex-grow: 1; margin: 0 10px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 24px; overflow: hidden; display: flex; flex-direction: column">
+    <div style="background: #10B981; color: #04130D; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between">
+      <div style="display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 15px; letter-spacing: 0.02em">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 7"></path></svg>
+        VERIFIED &amp; CLOCKED IN
+      </div>
+      <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 13px; font-weight: 700">320ms</div>
+    </div>
+    <div style="padding: 16px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+      <div style="display: flex; gap: 14px; align-items: center">
+        <div style="position: relative; flex-shrink: 0">
+          <div role="img" aria-label="eKYC photo placeholder for Amir bin Hassan" style="width: 72px; height: 72px; border-radius: 999px; background: #E2E8F0; border: 3px solid #10B981; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; color: #1E293B">AH</div>
+          <div aria-hidden="true" style="position: absolute; right: -2px; bottom: -2px; width: 24px; height: 24px; border-radius: 999px; background: #10B981; border: 3px solid #FFFFFF; display: flex; align-items: center; justify-content: center; color: #04130D">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 7"></path></svg>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 3px">
+          <div style="font-size: 20px; font-weight: 800; letter-spacing: -0.01em">Amir bin Hassan</div>
+          <div style="font-size: 13px; color: #64748B">VIP Usher — Gate C</div>
+          <div style="font-size: 11px; color: #047857; font-weight: 600">eKYC face match verified</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+        <div style="padding: 10px 12px; border-radius: 12px; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.5); display: flex; align-items: center; gap: 10px">
+          <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 30px; font-weight: 800; color: #B45309; line-height: 1">L</div>
+          <div style="display: flex; flex-direction: column; gap: 1px">
+            <div style="font-size: 10px; letter-spacing: 0.08em; color: #92400E; font-weight: 700">UNIFORM SHIRT</div>
+            <div style="font-size: 12px; color: #0F172A">Black polo</div>
+          </div>
+        </div>
+        <div style="padding: 10px 12px; border-radius: 12px; background: #F4F6FA; border: 1px solid #E2E8F0; display: flex; flex-direction: column; gap: 3px; justify-content: center">
+          <div style="font-size: 10px; letter-spacing: 0.08em; color: #64748B; font-weight: 700">CALL TIME</div>
+          <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 14px; font-weight: 700">07:00–17:00</div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px; margin-top: auto">
+        <div style="height: 4px; border-radius: 999px; background: #E2E8F0; overflow: hidden">
+          <div style="height: 4px; background: #047857; animation: krDrain 0.5s linear infinite"></div>
+        </div>
+        <div style="font-size: 12px; color: #64748B">Auto-resets in <b style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; color: #0F172A">0.5s</b> for next worker · zero taps required</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 12px 10px 30px">
+    <button type="button" style="height: 52px; border-radius: 14px; border: 1px solid #E2E8F0; background: #FFFFFF; color: #0F172A; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer">Manual NRIC / Name</button>
+    <a href="#Roster" style="height: 52px; border-radius: 14px; border: 1px solid #E2E8F0; background: #FFFFFF; color: #0F172A; text-decoration: none; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 6px">Gate queue <span style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; color: #047857; font-weight: 700">42/50</span></a>
+  </div>
+</div></div></section>
+<section class="screen" id="Roster"><h2>04 · Crew Roster</h2><div class="frame"><div style="width: 390px; height: 844px; box-sizing: border-box; background: #F4F6FA; color: #0F172A; font-family: 'Nunito', -apple-system, system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden; position: relative">
+
+  <div style="padding: 56px 16px 12px; display: flex; flex-direction: column; gap: 12px; background: #F4F6FA; border-bottom: 1px solid #E2E8F0">
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <div style="font-size: 24px; font-weight: 800; letter-spacing: -0.02em">Crew Roster</div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(16,185,129,0.45); background: rgba(16,185,129,0.12); font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; color: #047857">
+        <span style="width: 7px; height: 7px; border-radius: 999px; background: #10B981"></span>ONLINE
+      </div>
+    </div>
+    <label style="display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 14px; border-radius: 14px; background: #FFFFFF; border: 1px solid #E2E8F0">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
+      <span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Search crew</span>
+      <input type="search" placeholder="Name, mobile or last 4 of NRIC" style="flex: 1; min-width: 0; background: transparent; border: none; outline: none; color: #0F172A; font-family: inherit; font-size: 14px">
+    </label>
+    <div role="group" aria-label="Filter by status" style="display: flex; gap: 8px; overflow-x: auto; margin: 0 -16px; padding: 0 16px">
+      
+        <button type="button" aria-pressed="true" onClick="" style="flex-shrink: 0; height: 36px; padding: 0 12px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; background: #06B6D4; color: #04161B; border: 1px solid #06B6D4">All <span style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-weight: 700">50</span></button>
+      
+        <button type="button" aria-pressed="false" onClick="" style="flex-shrink: 0; height: 36px; padding: 0 12px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; background: #FFFFFF; color: #334155; border: 1px solid #E2E8F0">Checked in <span style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-weight: 700">42</span></button>
+      
+        <button type="button" aria-pressed="false" onClick="" style="flex-shrink: 0; height: 36px; padding: 0 12px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; background: #FFFFFF; color: #334155; border: 1px solid #E2E8F0">En route <span style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-weight: 700">5</span></button>
+      
+        <button type="button" aria-pressed="false" onClick="" style="flex-shrink: 0; height: 36px; padding: 0 12px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; background: #FFFFFF; color: #334155; border: 1px solid #E2E8F0">Late <span style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-weight: 700">3</span></button>
+      
+        <button type="button" aria-pressed="false" onClick="" style="flex-shrink: 0; height: 36px; padding: 0 12px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; background: #FFFFFF; color: #334155; border: 1px solid #E2E8F0">Standby <span style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-weight: 700">2</span></button>
+      
+    </div>
+  </div>
+
+  <div style="flex-grow: 1; overflow: hidden; padding: 14px 16px; display: flex; flex-direction: column; gap: 12px">
+
+    <div style="background: #FFFFFF; border: 1px solid rgba(245,158,11,0.6); border-radius: 18px; padding: 14px; display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; gap: 12px; align-items: flex-start">
+        <div role="img" aria-label="Photo placeholder for Farah Lee" style="width: 48px; height: 48px; border-radius: 999px; background: #FEF3C7; border: 2px solid #F59E0B; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; color: #92400E; flex-shrink: 0">FL</div>
+        <div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1; min-width: 0">
+          <div style="font-size: 16px; font-weight: 700">Farah Lee</div>
+          <div style="font-size: 12px; color: #64748B">Registration Usher</div>
+        </div>
+        <div style="display: inline-flex; align-items: center; gap: 5px; padding: 5px 8px; border-radius: 8px; background: #F59E0B; color: #1A1002; font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 12px; font-weight: 800">
+          <span style="width: 6px; height: 6px; border-radius: 999px; background: #1A1002; animation: krPulse 1.2s infinite"></span>18M LATE
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 12px; background: #F4F6FA; border: 1px solid #E2E8F0">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4h12v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zM6 11h12M9 20l-1 1M15 20l1 1"></path></svg>
+        <div style="display: flex; flex-direction: column; gap: 1px; flex-grow: 1">
+          <div style="font-size: 11px; color: #64748B">Last ping · transit milestone</div>
+          <div style="font-size: 13px; font-weight: 600">LRT Bukit Jalil</div>
+        </div>
+        <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 13px; font-weight: 700; color: #1D4ED8">ETA 12m</div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+        <button type="button" style="height: 48px; border-radius: 12px; border: 1px solid #E2E8F0; background: #F4F6FA; color: #0F172A; font-family: inherit; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#047857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg>
+          Masked call
+        </button>
+        <a href="#Standby" style="height: 48px; border-radius: 12px; background: #F59E0B; color: #1A1002; text-decoration: none; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; text-align: center; line-height: 1.15">Dispatch replacement</a>
+      </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 18px; padding: 14px; display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; gap: 12px; align-items: flex-start">
+        <div role="img" aria-label="Photo placeholder for Amir bin Hassan" style="width: 48px; height: 48px; border-radius: 999px; background: #E2E8F0; border: 2px solid #10B981; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; color: #1E293B; flex-shrink: 0">AH</div>
+        <div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1; min-width: 0">
+          <div style="font-size: 16px; font-weight: 700">Amir bin Hassan</div>
+          <div style="font-size: 12px; color: #64748B">VIP Usher</div>
+        </div>
+        <div style="padding: 5px 8px; border-radius: 8px; background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.5); color: #047857; font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 12px; font-weight: 700">IN 06:48</div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+        <div style="padding: 8px 10px; border-radius: 10px; background: #F4F6FA; display: flex; flex-direction: column; gap: 2px">
+          <div style="font-size: 10px; color: #64748B; letter-spacing: 0.06em">CLOCKED IN</div>
+          <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 13px; font-weight: 700">06:48 AM</div>
+        </div>
+        <div style="padding: 8px 10px; border-radius: 10px; background: #F4F6FA; display: flex; flex-direction: column; gap: 2px">
+          <div style="font-size: 10px; color: #64748B; letter-spacing: 0.06em">UNIFORM</div>
+          <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 13px; font-weight: 700">L</div>
+        </div>
+        <div style="padding: 8px 10px; border-radius: 10px; background: #F4F6FA; display: flex; flex-direction: column; gap: 2px">
+          <div style="font-size: 10px; color: #64748B; letter-spacing: 0.06em">STATION</div>
+          <div style="font-size: 13px; font-weight: 700">Turnstile 3</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 0 16px 104px">
+    <a href="#Standby" style="height: 56px; border-radius: 16px; background: #B91C1C; color: #FFFFFF; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 16px; font-weight: 800">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18v-6a5 5 0 0 1 10 0v6M5 21h14M12 3v2M4.2 6.2l1.4 1.4M19.8 6.2l-1.4 1.4"></path></svg>
+      Emergency Standby Dispatch
+    </a>
+  </div>
+
+  <nav aria-label="Primary" style="position: absolute; left: 16px; right: 16px; bottom: 24px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; padding: 8px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 26px; box-shadow: 0 12px 32px rgba(15,23,42,0.16), 0 2px 6px rgba(15,23,42,0.08)">
+    <a href="#Dashboard" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 0; min-height: 52px; text-decoration: none; color: #64748B; font-size: 11px; font-weight: 600">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"></path></svg>Dashboard
+    </a>
+    <a href="#Scanner" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 0; min-height: 52px; text-decoration: none; color: #64748B; font-size: 11px; font-weight: 600">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M7 12h10"></path></svg>Scanner
+    </a>
+    <a href="#Roster" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 0; min-height: 52px; text-decoration: none; color: #0E7490; font-size: 11px; font-weight: 700">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 19v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1M9.5 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6M21 19v-1a4 4 0 0 0-3-3.9M16 4.1a3 3 0 0 1 0 5.8"></path></svg>Crew Roster
+    </a>
+    <a href="#Rotation" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 0; min-height: 52px; text-decoration: none; color: #64748B; font-size: 11px; font-weight: 600">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Shift Ops
+    </a>
+  </nav>
+</div></div></section>
+<section class="screen" id="Standby"><h2>05 · Standby Bench</h2><div class="frame"><div style="width: 390px; height: 844px; box-sizing: border-box; background: #F4F6FA; color: #0F172A; font-family: 'Nunito', -apple-system, system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+  <div style="padding: 56px 16px 0; display: flex; flex-direction: column; gap: 12px">
+    <div style="display: flex; align-items: center; gap: 10px">
+      <a href="#Roster" aria-label="Back to roster" style="width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: center; color: #0F172A; flex-shrink: 0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+      </a>
+      <div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1; min-width: 0">
+        <div style="font-size: 18px; font-weight: 800; letter-spacing: -0.01em">Emergency Standby Pool</div>
+        <div style="font-size: 12px; color: #64748B">10 km radius · Axiata Arena</div>
+      </div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 9px; border-radius: 999px; border: 1px solid rgba(16,185,129,0.45); background: rgba(16,185,129,0.12); font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; color: #047857">
+        <span style="width: 7px; height: 7px; border-radius: 999px; background: #10B981"></span>ONLINE
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 10px; padding: 12px 14px; border-radius: 14px; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.55)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 1px"><path d="M12 3l10 18H2zM12 10v4M12 17.5v.5"></path></svg>
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <div style="font-size: 14px; font-weight: 700; color: #92400E">3 primary ushers missed call time</div>
+        <div style="font-size: 12px; color: #0F172A">Recommended: mobilize 2 standby crew.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 12px 16px 0; flex-grow: 1; display: flex; flex-direction: column; gap: 10px">
+    <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 18px; padding: 14px; display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; gap: 12px; align-items: center">
+        <div role="img" aria-label="Photo placeholder for Danial Hakim" style="width: 52px; height: 52px; border-radius: 999px; background: #EDE9FE; border: 2px solid #A78BFA; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; color: #5B21B6; flex-shrink: 0">DH</div>
+        <div style="display: flex; flex-direction: column; gap: 3px; flex-grow: 1; min-width: 0">
+          <div style="font-size: 17px; font-weight: 700">Danial Hakim</div>
+          <div style="font-size: 12px; color: #64748B"><span style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; color: #047857; font-weight: 700">98%</span> reliability · 14 gigs completed</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+        <div style="padding: 8px 10px; border-radius: 10px; background: #F4F6FA; display: flex; flex-direction: column; gap: 2px">
+          <div style="font-size: 10px; color: #64748B; letter-spacing: 0.06em">DISTANCE</div>
+          <div style="font-size: 13px; font-weight: 700"><span style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums">2.4 km</span> · Sri Petaling</div>
+        </div>
+        <div style="padding: 8px 10px; border-radius: 10px; background: #F4F6FA; display: flex; flex-direction: column; gap: 2px">
+          <div style="font-size: 10px; color: #64748B; letter-spacing: 0.06em">TRANSIT</div>
+          <div style="font-size: 13px; font-weight: 700">LRT Kelana Jaya Line</div>
+        </div>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; border-radius: 10px; background: #F4F6FA">
+        <div style="font-size: 12px; color: #64748B">Standby pay</div>
+        <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 13px; font-weight: 700">RM120 <span style="color: #B45309">+ RM15 surge</span></div>
+      </div>
+      <button type="button" style="height: 56px; border-radius: 14px; border: none; background: #06B6D4; color: #04161B; font-family: inherit; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18v-6a5 5 0 0 1 10 0v6M5 21h14M12 3v2M4.2 6.2l1.4 1.4M19.8 6.2l-1.4 1.4"></path></svg>
+        <span style="display: flex; flex-direction: column; align-items: flex-start; line-height: 1.15">
+          <span style="font-size: 16px; font-weight: 800">Mobilize Standby Worker</span>
+          <span style="font-size: 11px; font-weight: 600">High-priority siren dispatch</span>
+        </span>
+      </button>
+    </div>
+    <button type="button" style="height: 44px; border-radius: 12px; border: 1px dashed #E2E8F0; background: transparent; color: #334155; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer">Show 2 more on the bench</button>
+  </div>
+
+  <div style="margin-top: 10px; background: #FFFFFF; border-top: 1px solid #E2E8F0; border-radius: 24px 24px 0 0; padding: 8px 16px 30px; display: flex; flex-direction: column; gap: 10px">
+    <button type="button" aria-expanded="true" aria-label="Collapse or expand commute tracker" style="align-self: center; width: 64px; height: 20px; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center">
+      <span style="width: 40px; height: 5px; border-radius: 999px; background: #CBD5E1"></span>
+    </button>
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <div style="display: flex; align-items: center; gap: 10px">
+        <div role="img" aria-label="Photo placeholder for Siti Sarah" style="width: 40px; height: 40px; border-radius: 999px; background: #EDE9FE; border: 2px solid #A78BFA; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #5B21B6">SS</div>
+        <div style="display: flex; flex-direction: column; gap: 2px">
+          <div style="font-size: 10px; letter-spacing: 0.1em; color: #6D28D9; font-weight: 700; display: flex; align-items: center; gap: 6px"><span style="width: 6px; height: 6px; border-radius: 999px; background: #A78BFA; animation: krPulse 1.2s infinite"></span>MOBILIZED · LIVE</div>
+          <div style="font-size: 15px; font-weight: 700">Siti Sarah</div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: flex-end">
+        <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 24px; font-weight: 800; line-height: 1">14<span style="font-size: 13px; color: #64748B"> min</span></div>
+        <div style="font-size: 11px; color: #64748B">to Gate C</div>
+      </div>
+    </div>
+    <div data-collapsible>
+      <svg viewBox="0 0 358 120" width="358" height="120" role="img" aria-label="Route map: Siti Sarah travelling toward Gate C, 14 minutes away" style="display: block; border-radius: 14px; background: #F4F6FA">
+        <path d="M0 30H358M0 78H358M70 0V120M190 0V120M300 0V120" stroke="#EEF1F6" stroke-width="10" fill="none"></path>
+        <path d="M28 96 C 90 96, 110 52, 170 52 S 260 30, 322 26" stroke="#CBD5E1" stroke-width="6" fill="none" stroke-linecap="round"></path>
+        <path d="M28 96 C 90 96, 110 52, 170 52" stroke="#A78BFA" stroke-width="6" fill="none" stroke-linecap="round"></path>
+        <circle cx="170" cy="52" r="9" fill="#A78BFA" stroke="#F4F6FA" stroke-width="3"></circle>
+        <circle cx="28" cy="96" r="5" fill="#7C8799"></circle>
+        <rect x="308" y="12" width="28" height="28" rx="7" fill="#06B6D4"></rect>
+        <text x="322" y="31" text-anchor="middle" font-family="Nunito, sans-serif" font-size="12" font-weight="700" fill="#04161B">C</text>
+      </svg>
+    </div>
+  </div>
+</div></div></section>
+<section class="screen" id="Rotation"><h2>06 · Solat Jumaat Rotation</h2><div class="frame"><div style="width: 390px; height: 844px; box-sizing: border-box; background: #F4F6FA; color: #0F172A; font-family: 'Nunito', -apple-system, system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden; position: relative">
+
+  <div style="padding: 56px 16px 100px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1">
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <div style="font-size: 24px; font-weight: 800; letter-spacing: -0.02em">Shift Ops</div>
+        <div style="font-size: 12px; color: #64748B">Mid-shift breaks · Gate C</div>
+      </div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(16,185,129,0.45); background: rgba(16,185,129,0.12); font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; color: #047857">
+        <span style="width: 7px; height: 7px; border-radius: 999px; background: #10B981"></span>ONLINE
+      </div>
+    </div>
+
+    <div role="group" aria-label="Break type" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 4px; border-radius: 14px; background: #FFFFFF; border: 1px solid #E2E8F0">
+      <button type="button" aria-pressed="false" style="height: 44px; border-radius: 10px; border: none; background: transparent; color: #334155; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer">Meal Break Manager</button>
+      <button type="button" aria-pressed="true" style="height: 44px; border-radius: 10px; border: none; background: #06B6D4; color: #04161B; font-family: inherit; font-size: 13px; font-weight: 800; cursor: pointer">Solat Jumaat</button>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 14px; background: #FFFFFF; border: 1px solid #E2E8F0">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E7490" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"></path></svg>
+      <div style="font-size: 13px; line-height: 1.35">Holding <b style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; color: #0E7490">65%</b> minimum usher floor coverage across both batches</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid rgba(6,182,212,0.6); border-radius: 18px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+      <div style="display: flex; justify-content: space-between; align-items: center">
+        <div style="display: flex; flex-direction: column; gap: 2px">
+          <div style="font-size: 11px; letter-spacing: 0.1em; color: #0E7490; font-weight: 700">BATCH 1 · ON BREAK</div>
+          <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 17px; font-weight: 700">12:30 – 13:30</div>
+        </div>
+        <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 22px; font-weight: 800">12<span style="font-size: 12px; color: #64748B"> crew</span></div>
+      </div>
+      <div role="img" aria-label="8 at prayer, 4 returning" style="display: flex; height: 10px; border-radius: 999px; overflow: hidden; gap: 2px">
+        <div style="flex: 8; background: #06B6D4"></div>
+        <div style="flex: 4; background: #10B981"></div>
+      </div>
+      <div style="display: flex; gap: 16px; font-size: 12px; color: #334155">
+        <span style="display: flex; align-items: center; gap: 6px"><span style="width: 8px; height: 8px; border-radius: 2px; background: #06B6D4"></span><b style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums">8</b> at prayer</span>
+        <span style="display: flex; align-items: center; gap: 6px"><span style="width: 8px; height: 8px; border-radius: 2px; background: #10B981"></span><b style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums">4</b> returning</span>
+      </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 18px; padding: 14px; display: flex; justify-content: space-between; align-items: center">
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <div style="font-size: 11px; letter-spacing: 0.1em; color: #64748B; font-weight: 700">BATCH 2 · ON DUTY</div>
+        <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 17px; font-weight: 700">13:30 – 14:30</div>
+        <div style="font-size: 12px; color: #64748B">Swaps in at 01:30 PM</div>
+      </div>
+      <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 22px; font-weight: 800">12<span style="font-size: 12px; color: #64748B"> crew</span></div>
+    </div>
+
+    <div style="flex-grow: 1"></div>
+
+    <div style="background: #ECFEFF; border: 2px solid #06B6D4; border-radius: 22px; padding: 16px; display: flex; flex-direction: column; gap: 14px; margin-bottom: 14px">
+      <div style="display: flex; justify-content: space-between; align-items: center">
+        <div style="font-size: 12px; letter-spacing: 0.1em; color: #155E75; font-weight: 700">BATCH 1 BREAK ENDS IN</div>
+        <span style="width: 8px; height: 8px; border-radius: 999px; background: #0E7490; animation: krPulse 1s infinite"></span>
+      </div>
+      <div id="break-clock" role="timer" aria-live="off" style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 64px; font-weight: 700; letter-spacing: -0.04em; line-height: 1; text-align: center">18:42</div>
+      <button type="button" style="height: 56px; border-radius: 14px; border: none; background: #F59E0B; color: #1A1002; font-family: inherit; font-size: 16px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"></path></svg>
+        Recall Batch 1 to Post
+      </button>
+    </div>
+  </div>
+
+  <nav aria-label="Primary" style="position: absolute; left: 16px; right: 16px; bottom: 24px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; padding: 8px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 26px; box-shadow: 0 12px 32px rgba(15,23,42,0.16), 0 2px 6px rgba(15,23,42,0.08)">
+    <a href="#Dashboard" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 0; min-height: 52px; text-decoration: none; color: #64748B; font-size: 11px; font-weight: 600">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"></path></svg>Dashboard
+    </a>
+    <a href="#Scanner" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 0; min-height: 52px; text-decoration: none; color: #64748B; font-size: 11px; font-weight: 600">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M7 12h10"></path></svg>Scanner
+    </a>
+    <a href="#Roster" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 0; min-height: 52px; text-decoration: none; color: #64748B; font-size: 11px; font-weight: 600">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 19v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1M9.5 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6M21 19v-1a4 4 0 0 0-3-3.9M16 4.1a3 3 0 0 1 0 5.8"></path></svg>Crew Roster
+    </a>
+    <a href="#Overtime" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 0; min-height: 52px; text-decoration: none; color: #0E7490; font-size: 11px; font-weight: 700">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Shift Ops
+    </a>
+  </nav>
+</div></div></section>
+<section class="screen" id="Overtime"><h2>07 · Overtime Sign-Off</h2><div class="frame"><div style="width: 390px; height: 844px; box-sizing: border-box; background: #F4F6FA; color: #0F172A; font-family: 'Nunito', -apple-system, system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden; padding: 56px 16px 30px; gap: 12px">
+
+  <div style="display: flex; align-items: center; gap: 10px">
+    <a href="#Dashboard" aria-label="Back to dashboard" style="width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: center; color: #0F172A; flex-shrink: 0">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+    </a>
+    <div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1">
+      <div style="font-size: 18px; font-weight: 800; letter-spacing: -0.01em">Shift Extension &amp; OT</div>
+      <div style="font-size: 12px; color: #64748B">Gate C Operations</div>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 9px; border-radius: 999px; border: 1px solid rgba(16,185,129,0.45); background: rgba(16,185,129,0.12); font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; color: #047857">
+      <span style="width: 7px; height: 7px; border-radius: 999px; background: #10B981"></span>ONLINE
+    </div>
+  </div>
+
+  <label style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 14px; background: #FFFFFF; border: 1px solid #E2E8F0; cursor: pointer">
+    <input type="checkbox" checked style="width: 22px; height: 22px; accent-color: #06B6D4; margin: 0">
+    <span style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1">
+      <span style="font-size: 14px; font-weight: 700">Select all stage hands</span>
+      <span style="font-size: 12px; color: #64748B">14 workers · or pick individually</span>
+    </span>
+    <span style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 14px; font-weight: 700; color: #0E7490">14/14</span>
+  </label>
+
+  <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 18px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+    <div style="display: flex; justify-content: space-between; font-size: 13px">
+      <span style="color: #64748B">Standard base rate</span>
+      <span style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-weight: 600">RM12.00/hr</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; font-size: 13px">
+      <span style="color: #64748B">OT rate (1.5x) per worker</span>
+      <span style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-weight: 600; color: #B45309">RM18.00/hr</span>
+    </div>
+    <div style="border-top: 1px solid #E2E8F0; padding-top: 10px; display: flex; justify-content: space-between; align-items: flex-end">
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: 11px; letter-spacing: 0.1em; color: #64748B; font-weight: 700">TOTAL AUTHORIZED OT</span>
+        <span id="ot-breakdown" style="font-size: 12px; color: #334155">14 workers × 1 hr</span>
+      </div>
+      <span id="ot-total" style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 28px; font-weight: 800; letter-spacing: -0.02em">RM252.00</span>
+    </div>
+  </div>
+
+  <div style="flex-grow: 1"></div>
+
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <div style="font-size: 11px; letter-spacing: 0.1em; color: #64748B; font-weight: 700">REASON</div>
+    <div role="group" aria-label="Reason" style="display: flex; flex-wrap: wrap; gap: 8px">
+      
+        <button type="button" aria-pressed="true" onClick="" style="height: 40px; padding: 0 12px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; background: rgba(6,182,212,0.16); color: #155E75; border: 1px solid #06B6D4">Concert encore delay</button>
+      
+        <button type="button" aria-pressed="false" onClick="" style="height: 40px; padding: 0 12px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; background: transparent; color: #334155; border: 1px solid #E2E8F0">Production overrun</button>
+      
+        <button type="button" aria-pressed="false" onClick="" style="height: 40px; padding: 0 12px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; background: transparent; color: #334155; border: 1px solid #E2E8F0">Teardown extension</button>
+      
+        <button type="button" aria-pressed="false" onClick="" style="height: 40px; padding: 0 12px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; background: transparent; color: #334155; border: 1px solid #E2E8F0">VIP protocol delay</button>
+      
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <div style="font-size: 11px; letter-spacing: 0.1em; color: #64748B; font-weight: 700">EXTEND BY</div>
+    <div role="group" aria-label="Overtime interval" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      
+        <button type="button" aria-pressed="false" onClick="" style="height: 64px; border-radius: 16px; font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 20px; font-weight: 800; cursor: pointer; background: #FFFFFF; color: #0F172A; border: 2px solid #E2E8F0">+30 min</button>
+      
+        <button type="button" aria-pressed="true" onClick="" style="height: 64px; border-radius: 16px; font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 20px; font-weight: 800; cursor: pointer; background: #06B6D4; color: #04161B; border: 2px solid #06B6D4">+1 hr</button>
+      
+        <button type="button" aria-pressed="false" onClick="" style="height: 64px; border-radius: 16px; font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 20px; font-weight: 800; cursor: pointer; background: #FFFFFF; color: #0F172A; border: 2px solid #E2E8F0">+1.5 hr</button>
+      
+        <button type="button" aria-pressed="false" onClick="" style="height: 64px; border-radius: 16px; font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 20px; font-weight: 800; cursor: pointer; background: #FFFFFF; color: #0F172A; border: 2px solid #E2E8F0">+2 hr</button>
+      
+    </div>
+  </div>
+
+  <button type="button" id="ot-confirm" style="height: 64px; border-radius: 999px; border: 2px solid #06B6D4; background: #FFFFFF; color: #0F172A; font-family: inherit; cursor: pointer; display: flex; align-items: center; gap: 12px; padding: 0 6px; margin-top: 4px">
+    <span style="width: 52px; height: 52px; border-radius: 999px; background: #06B6D4; color: #04161B; display: flex; align-items: center; justify-content: center; flex-shrink: 0">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+    </span>
+    <span id="ot-label" style="font-size: 14px; font-weight: 800; text-align: left; line-height: 1.2">Slide to authorize OT &amp; push to worker apps</span>
+  </button>
+</div></div></section>
+<section class="screen" id="WrapUp"><h2>08 · Wrap-Up, Rating &amp; Incidents</h2><div class="frame"><div style="width: 390px; height: 1240px; box-sizing: border-box; background: #F4F6FA; color: #0F172A; font-family: 'Nunito', -apple-system, system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden; padding: 56px 16px 34px; gap: 14px">
+
+  <div style="display: flex; align-items: center; gap: 10px">
+    <a href="#Dashboard" aria-label="Back to dashboard" style="width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: center; color: #0F172A; flex-shrink: 0">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+    </a>
+    <div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1">
+      <div style="font-size: 18px; font-weight: 800; letter-spacing: -0.01em">Shift Wrap-Up</div>
+      <div style="font-size: 12px; color: #64748B">Gate C · Coldplay Live in KL</div>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 9px; border-radius: 999px; border: 1px solid rgba(16,185,129,0.45); background: rgba(16,185,129,0.12); font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; color: #047857">
+      <span style="width: 7px; height: 7px; border-radius: 999px; background: #10B981"></span>ONLINE
+    </div>
+  </div>
+
+  <div style="font-size: 11px; letter-spacing: 0.12em; color: #64748B; font-weight: 700; margin-top: 4px">A · BATCH CLOCK-OUT</div>
+  <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 18px; padding: 14px; display: flex; flex-direction: column; gap: 12px">
+    <div style="display: flex; justify-content: space-between; align-items: center">
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <div style="font-size: 15px; font-weight: 700">Ushers · Gate C</div>
+        <div style="font-size: 12px; color: #64748B">All scans verified against roster</div>
+      </div>
+      <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 26px; font-weight: 800; color: #047857">42</div>
+    </div>
+    <button type="button" style="height: 56px; border-radius: 14px; border: none; background: #10B981; color: #04130D; font-family: inherit; font-size: 15px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"></path></svg>
+      Batch Clock-Out 42 Ushers
+    </button>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 4px">
+    <div style="font-size: 11px; letter-spacing: 0.12em; color: #64748B; font-weight: 700">B · RAPID CREW RATING</div>
+    <div style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 12px; color: #64748B">1 / 42</div>
+  </div>
+  <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 14px">
+    <div style="display: flex; gap: 12px; align-items: center">
+      <div role="img" aria-label="Photo placeholder for Amir bin Hassan" style="width: 60px; height: 60px; border-radius: 999px; background: #E2E8F0; border: 2px solid #10B981; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; color: #1E293B; flex-shrink: 0">AH</div>
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <div style="font-size: 18px; font-weight: 800">Amir bin Hassan</div>
+        <div style="font-size: 12px; color: #64748B">VIP Usher · Turnstile 3</div>
+      </div>
+    </div>
+    <div role="group" aria-label="Rating" style="display: flex; justify-content: space-between">
+      
+        <button type="button" aria-label="1 star" aria-pressed="false" onClick="" style="width: 56px; height: 56px; border-radius: 14px; border: 1px solid #E2E8F0; background: #F4F6FA; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #F59E0B">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="#F59E0B" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"></path></svg>
+        </button>
+      
+        <button type="button" aria-label="2 stars" aria-pressed="false" onClick="" style="width: 56px; height: 56px; border-radius: 14px; border: 1px solid #E2E8F0; background: #F4F6FA; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #F59E0B">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="#F59E0B" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"></path></svg>
+        </button>
+      
+        <button type="button" aria-label="3 stars" aria-pressed="false" onClick="" style="width: 56px; height: 56px; border-radius: 14px; border: 1px solid #E2E8F0; background: #F4F6FA; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #F59E0B">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="#F59E0B" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"></path></svg>
+        </button>
+      
+        <button type="button" aria-label="4 stars" aria-pressed="false" onClick="" style="width: 56px; height: 56px; border-radius: 14px; border: 1px solid #E2E8F0; background: #F4F6FA; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #F59E0B">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="#F59E0B" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"></path></svg>
+        </button>
+      
+        <button type="button" aria-label="5 stars" aria-pressed="true" onClick="" style="width: 56px; height: 56px; border-radius: 14px; border: 1px solid #E2E8F0; background: #F4F6FA; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #F59E0B">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="#F59E0B" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"></path></svg>
+        </button>
+      
+    </div>
+    <div role="group" aria-label="Endorsements" style="display: flex; flex-wrap: wrap; gap: 8px">
+      
+        <button type="button" aria-pressed="true" onClick="" style="height: 40px; padding: 0 12px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; background: rgba(16,185,129,0.15); color: #047857; border: 1px solid #10B981">★ Punctual</button>
+      
+        <button type="button" aria-pressed="false" onClick="" style="height: 40px; padding: 0 12px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; background: transparent; color: #334155; border: 1px solid #E2E8F0">★ Hard worker</button>
+      
+        <button type="button" aria-pressed="true" onClick="" style="height: 40px; padding: 0 12px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; background: rgba(16,185,129,0.15); color: #047857; border: 1px solid #10B981">★ Great with VIPs</button>
+      
+        <button type="button" aria-pressed="false" onClick="" style="height: 40px; padding: 0 12px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; background: transparent; color: #334155; border: 1px solid #E2E8F0">★ Costume flawless</button>
+      
+    </div>
+    <label style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border-radius: 12px; background: #F4F6FA; border: 1px solid #E2E8F0; cursor: pointer">
+      <span style="display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: 14px; font-weight: 700">Add to preferred agency roster</span>
+        <span style="font-size: 12px; color: #64748B">Priority invite for future events</span>
+      </span>
+      <input type="checkbox" checked style="width: 22px; height: 22px; accent-color: #10B981; margin: 0">
+    </label>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      <button type="button" style="height: 52px; border-radius: 14px; border: 1px solid #E2E8F0; background: transparent; color: #334155; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer">Skip</button>
+      <button type="button" style="height: 52px; border-radius: 14px; border: none; background: #06B6D4; color: #04161B; font-family: inherit; font-size: 14px; font-weight: 800; cursor: pointer">Save &amp; next</button>
+    </div>
+  </div>
+
+  <div style="flex-grow: 1"></div>
+
+  <div style="background: #FFFFFF; border: 1px solid rgba(239,68,68,0.55); border-radius: 22px; padding: 8px 16px 16px; display: flex; flex-direction: column; gap: 14px">
+    <button type="button" aria-expanded="true" style="display: flex; align-items: center; justify-content: space-between; min-height: 48px; padding: 0; border: none; background: transparent; color: #0F172A; font-family: inherit; cursor: pointer; text-align: left">
+      <span style="display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: 11px; letter-spacing: 0.12em; color: #B91C1C; font-weight: 700">C · INCIDENT / DISCIPLINARY</span>
+        <span style="font-size: 16px; font-weight: 800">Log on-site incident</span>
+      </span>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: rotate(180deg)"><path d="M6 9l6 6 6-6"></path></svg>
+    </button>
+    <div data-collapsible>
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <div role="group" aria-label="Incident type" style="display: flex; flex-wrap: wrap; gap: 8px">
+          
+            <button type="button" aria-pressed="true" onClick="" style="height: 40px; padding: 0 12px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; background: rgba(239,68,68,0.16); color: #B91C1C; border: 1px solid #EF4444">Dress code violation</button>
+          
+            <button type="button" aria-pressed="false" onClick="" style="height: 40px; padding: 0 12px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; background: transparent; color: #334155; border: 1px solid #E2E8F0">Deserted post early</button>
+          
+            <button type="button" aria-pressed="false" onClick="" style="height: 40px; padding: 0 12px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; background: transparent; color: #334155; border: 1px solid #E2E8F0">Intoxication</button>
+          
+        </div>
+        <button type="button" style="height: 72px; border-radius: 14px; border: 1px dashed #CBD5E1; background: #F4F6FA; color: #0F172A; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>
+          Snap camera evidence
+        </button>
+        <div style="display: flex; gap: 10px; padding: 12px 14px; border-radius: 12px; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.5)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 1px"><path d="M12 3l10 18H2zM12 10v4M12 17.5v.5"></path></svg>
+          <div style="font-size: 13px; line-height: 1.35; color: #92400E">Places a <b style="font-family: 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums">24-hr</b> administrative hold on this worker’s shift payout.</div>
+        </div>
+        <button type="button" style="height: 56px; border-radius: 14px; border: none; background: #B91C1C; color: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 800; cursor: pointer">Submit to KrewMY Trust &amp; Safety</button>
+      </div>
+    </div>
+  </div>
+</div></div></section>
+</main>
+<script>
+document.querySelectorAll('[role=group]').forEach(g=>{
+  const btns=[...g.querySelectorAll(':scope > button[aria-pressed]')];
+  if(!btns.length)return;
+  const label=g.getAttribute('aria-label');
+  if(label==='Rating'){
+    btns.forEach((b,i)=>b.addEventListener('click',()=>btns.forEach((x,j)=>{const on=j<=i;x.style.color=on?'#F59E0B':'#CBD5E1';x.querySelector('svg').setAttribute('fill',on?'#F59E0B':'none');x.setAttribute('aria-pressed',j===i?'true':'false');})));
+    return;
+  }
+  const on=btns.find(b=>b.getAttribute('aria-pressed')==='true'),off=btns.find(b=>b.getAttribute('aria-pressed')==='false');
+  if(!on||!off)return;
+  const onS=on.getAttribute('style'),offS=off.getAttribute('style');
+  const multi=label==='Endorsements'||label==='Incident type';
+  const set=(b,v)=>{b.setAttribute('aria-pressed',v?'true':'false');b.setAttribute('style',v?onS:offS);};
+  btns.forEach((b,i)=>b.addEventListener('click',()=>{
+    if(multi)set(b,b.getAttribute('aria-pressed')!=='true');else btns.forEach(x=>set(x,x===b));
+    if(label==='Overtime interval'){const h=[0.5,1,1.5,2][i],t=['30 min','1 hr','1.5 hr','2 hr'][i];
+      document.getElementById('ot-total').textContent='RM'+(14*h*18).toFixed(2);
+      document.getElementById('ot-breakdown').textContent='14 workers \u00d7 '+t;resetOT();}
+  }));
+});
+// filter/roster pills keep inline colours per state; segment highlight already handled
+const okBtn=document.getElementById('ot-confirm'),okLbl=document.getElementById('ot-label');
+const okInit={s:okBtn.getAttribute('style'),k:okBtn.querySelector('span').getAttribute('style'),l:okLbl.textContent};
+function resetOT(){okBtn.setAttribute('style',okInit.s);okBtn.querySelector('span').setAttribute('style',okInit.k);okLbl.textContent=okInit.l;}
+okBtn.addEventListener('click',()=>{okBtn.style.background='#ECFDF5';okBtn.style.borderColor='#10B981';okBtn.style.color='#047857';okBtn.querySelector('span').style.background='#10B981';okLbl.textContent='Authorized \u00b7 pushed to 14 worker apps';});
+document.querySelectorAll('button[aria-expanded]').forEach(b=>{
+  const box=b.parentElement.querySelector('[data-collapsible]');if(!box)return;
+  b.addEventListener('click',()=>{const open=box.hidden;box.hidden=!open;b.setAttribute('aria-expanded',open?'true':'false');const svg=b.querySelector('svg[style*=transform]');if(svg)svg.style.transform=open?'rotate(180deg)':'none';});
+});
+let left=18*60+42;const clk=document.getElementById('break-clock');
+setInterval(()=>{left=left>0?left-1:18*60+42;clk.textContent=String(Math.floor(left/60)).padStart(2,'0')+':'+String(left%60).padStart(2,'0');},1000);
+</script>
+
+<!-- KrewMY Universal Navigation Widget -->
+<style>
+  #krewmy-role-nav a:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #FFFFFF !important;
+  }
+  #krewmy-nav-toggle:hover {
+    background: rgba(30, 41, 59, 0.96) !important;
+    border-color: rgba(255, 255, 255, 0.28) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.45) !important;
+  }
+</style>
+<div id="krewmy-role-nav" style="position: fixed; bottom: 20px; right: 20px; z-index: 999999; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.4;">
+  <div id="krewmy-nav-menu" style="display: none; position: absolute; bottom: calc(100% + 10px); right: 0; min-width: 250px; background: rgba(15, 23, 42, 0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 14px; box-shadow: 0 20px 40px -4px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05); padding: 8px; color: #F8FAFC;">
+    <div style="padding: 6px 10px 8px; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #94A3B8; display: flex; justify-content: space-between; align-items: center;">
+      <span>KrewMY Prototypes</span>
+      <a href="index.html" style="color: #818CF8; text-decoration: none; font-size: 11px; font-weight: 600;">Hub ↗</a>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 3px; margin-top: 6px;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #CBD5E1; font-size: 13px; font-weight: 500; transition: all 0.15s ease;">
+        <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: rgba(255,255,255,0.08); font-size: 12px;">🏠</span>
+        <span>Role Selection Hub</span>
+      </a>
+      <a href="krewmy-admin-web.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #CBD5E1; font-size: 13px; font-weight: 500; transition: all 0.15s ease; ">
+        <span style="display: flex; align-items: center; gap: 10px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: rgba(129, 140, 248, 0.2); color: #818CF8; font-size: 11px; font-weight: 700;">A</span>
+          <span>Admin Console</span>
+        </span>
+        <span style="font-size: 11px; color: #64748B;">Web</span>
+      </a>
+      <a href="krewmy-organiser-web.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #CBD5E1; font-size: 13px; font-weight: 500; transition: all 0.15s ease; ">
+        <span style="display: flex; align-items: center; gap: 10px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: rgba(56, 189, 248, 0.2); color: #38BDF8; font-size: 11px; font-weight: 700;">O</span>
+          <span>Organiser Web</span>
+        </span>
+        <span style="font-size: 11px; color: #64748B;">Web</span>
+      </a>
+      <a href="krewmy-ops-mobile.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #CBD5E1; font-size: 13px; font-weight: 500; transition: all 0.15s ease; background: rgba(45, 212, 191, 0.15); color: #99F6E4; font-weight: 600;">
+        <span style="display: flex; align-items: center; gap: 10px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: rgba(45, 212, 191, 0.2); color: #2DD4BF; font-size: 11px; font-weight: 700;">P</span>
+          <span>Ops Companion</span>
+        </span>
+        <span style="font-size: 10px; padding: 2px 7px; border-radius: 999px; background: rgba(45, 212, 191, 0.25); color: #99F6E4; font-weight: 600;">Current</span>
+      </a>
+      <a href="krewmy-gigworker-mobile.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #CBD5E1; font-size: 13px; font-weight: 500; transition: all 0.15s ease; ">
+        <span style="display: flex; align-items: center; gap: 10px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: rgba(52, 211, 153, 0.2); color: #34D399; font-size: 11px; font-weight: 700;">W</span>
+          <span>Gig Worker App</span>
+        </span>
+        <span style="font-size: 11px; color: #64748B;">7 Screens</span>
+      </a>
+    </div>
+  </div>
+  <button id="krewmy-nav-toggle" aria-expanded="false" aria-label="Toggle KrewMY role navigation" style="display: flex; align-items: center; gap: 8px; height: 42px; padding: 0 16px; border-radius: 999px; background: rgba(15, 23, 42, 0.92); border: 1px solid rgba(255, 255, 255, 0.16); box-shadow: 0 8px 24px rgba(0,0,0,0.35); color: #F8FAFC; font-size: 13px; font-weight: 600; cursor: pointer; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: all 0.2s ease;">
+    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #6366F1; box-shadow: 0 0 8px #6366F1;"></span>
+    <span>Switch Role</span>
+    <svg id="krewmy-nav-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.2s ease;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+  </button>
+</div>
+<script id="krewmy-nav-script">
+(function() {
+  const toggle = document.getElementById('krewmy-nav-toggle');
+  const menu = document.getElementById('krewmy-nav-menu');
+  const chevron = document.getElementById('krewmy-nav-chevron');
+  if (!toggle || !menu) return;
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = menu.style.display === 'block';
+    menu.style.display = open ? 'none' : 'block';
+    toggle.setAttribute('aria-expanded', !open);
+    if (chevron) chevron.style.transform = open ? 'none' : 'rotate(180deg)';
+  });
+  document.addEventListener('click', (e) => {
+    const nav = document.getElementById('krewmy-role-nav');
+    if (nav && !nav.contains(e.target)) {
+      menu.style.display = 'none';
+      toggle.setAttribute('aria-expanded', 'false');
+      if (chevron) chevron.style.transform = 'none';
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.style.display === 'block') {
+      menu.style.display = 'none';
+      toggle.setAttribute('aria-expanded', 'false');
+      if (chevron) chevron.style.transform = 'none';
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KrewMY — Live Event Workforce Orchestration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#F8FAFC}
+.dc-if{display:contents}
+.dc-if[hidden],.page[hidden]{display:none}
+:focus-visible{outline:2px solid #4F46E5;outline-offset:2px}
+button:disabled{opacity:.5;cursor:not-allowed}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+/* Main.dc.html */
+#p-events a{color:#4338CA}
+#p-events a:hover{color:#312E81}
+#p-events .k{font-family:'Geist',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:13px;line-height:1.45;color:#0F172A;-webkit-font-smoothing:antialiased}
+#p-events .mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+#p-events .lbl{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B}
+#p-events .badge{display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 7px;border-radius:4px;border:1px solid;font-size:11px;font-weight:600;letter-spacing:.03em;white-space:nowrap;box-sizing:border-box}
+#p-events .dot{width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block}
+#p-events .t-g{background:#ECFDF5;color:#047857;border-color:#A7F3D0}
+#p-events .t-a{background:#FFFBEB;color:#B45309;border-color:#FDE68A}
+#p-events .t-s{background:#F0F9FF;color:#0369A1;border-color:#BAE6FD}
+#p-events .t-r{background:#FFF1F2;color:#BE123C;border-color:#FECDD3}
+#p-events .t-n{background:#F1F5F9;color:#334155;border-color:#E2E8F0}
+#p-events .t-i{background:#EEF2FF;color:#4338CA;border-color:#C7D2FE}
+#p-events .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid #E2E8F0;background:#fff;color:#0F172A;font:500 13px/1 'Geist',ui-sans-serif,system-ui,sans-serif;cursor:pointer;white-space:nowrap;text-decoration:none;box-sizing:border-box}
+#p-events .btn:hover{background:#F8FAFC;color:#0F172A}
+#p-events .btn-p{background:#4F46E5;border-color:#4F46E5;color:#fff}
+#p-events .btn-p:hover{background:#4338CA;color:#fff}
+#p-events .ib{width:32px;padding:0}
+#p-events .card{background:#fff;border:1px solid #E2E8F0;border-radius:8px;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
+#p-events .ni{display:flex;align-items:center;gap:10px;height:30px;padding:0 10px;border-radius:6px;color:#334155;text-decoration:none;font-size:13px}
+#p-events .ni:hover{background:#F1F5F9;color:#0F172A}
+#p-events .ni.on{background:#F1F5F9;color:#0F172A;font-weight:600}
+#p-events .ni.on svg{color:#4F46E5}
+#p-events .tbl{width:100%;border-collapse:collapse}
+#p-events .tbl th{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#64748B;text-align:left;padding:9px 14px;border-bottom:1px solid #E2E8F0;background:#F8FAFC;white-space:nowrap}
+#p-events .tbl td{padding:12px 14px;border-bottom:1px solid #F1F5F9;vertical-align:middle}
+#p-events .tbl tr:hover td{background:#FAFBFF}
+#p-events .av{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:#fff;border:2px solid #fff;margin-left:-6px}
+#p-events .kbd{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;padding:1px 5px;border:1px solid #E2E8F0;border-radius:4px;background:#fff;color:#475569}
+#p-events .chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border:1px dashed #CBD5E1;border-radius:6px;font:500 12px/1 'Geist',ui-sans-serif,system-ui,sans-serif;color:#475569;background:#fff;cursor:pointer}
+#p-events .chip.set{border-style:solid;border-color:#C7D2FE;background:#EEF2FF;color:#3730A3}
+#p-events .tab{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 2px;border:0;border-bottom:2px solid transparent;background:none;color:#64748B;font:500 13px/1 'Geist',ui-sans-serif,system-ui,sans-serif;cursor:pointer}
+#p-events .tab.on{color:#0F172A;border-bottom-color:#0F172A}
+#p-events .cnt{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;padding:1px 6px;border-radius:4px;background:#F1F5F9;color:#475569}
+#p-events .seg{display:inline-flex;padding:2px;border:1px solid #E2E8F0;border-radius:7px;background:#F8FAFC;gap:2px}
+#p-events .seg button{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border:0;border-radius:5px;background:transparent;color:#475569;font:500 12px/1 'Geist',ui-sans-serif,system-ui,sans-serif;cursor:pointer}
+#p-events .seg button.on{background:#fff;color:#0F172A;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+#p-events .bar{height:6px;border-radius:3px;background:#F1F5F9;overflow:hidden;display:flex}
+#p-events .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@keyframes pulse_p_events{0%{box-shadow:0 0 0 0 rgba(4,120,87,.45)}100%{box-shadow:0 0 0 6px rgba(4,120,87,0)}}
+#p-events .live{animation:pulse_p_events 1.6s infinite}
+/* Builder.dc.html */
+#p-new a{color:#4338CA}
+#p-new a:hover{color:#312E81}
+#p-new .k{font-family:'Geist',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:13px;line-height:1.45;color:#0F172A;-webkit-font-smoothing:antialiased}
+#p-new .mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+#p-new .lbl{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B}
+#p-new .badge{display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 7px;border-radius:4px;border:1px solid;font-size:11px;font-weight:600;letter-spacing:.03em;white-space:nowrap;box-sizing:border-box}
+#p-new .t-g{background:#ECFDF5;color:#047857;border-color:#A7F3D0}
+#p-new .t-a{background:#FFFBEB;color:#B45309;border-color:#FDE68A}
+#p-new .t-s{background:#F0F9FF;color:#0369A1;border-color:#BAE6FD}
+#p-new .t-r{background:#FFF1F2;color:#BE123C;border-color:#FECDD3}
+#p-new .t-n{background:#F1F5F9;color:#334155;border-color:#E2E8F0}
+#p-new .t-i{background:#EEF2FF;color:#4338CA;border-color:#C7D2FE}
+#p-new .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid #E2E8F0;background:#fff;color:#0F172A;font:500 13px/1 'Geist',ui-sans-serif,system-ui,sans-serif;cursor:pointer;white-space:nowrap;text-decoration:none;box-sizing:border-box}
+#p-new .btn:hover{background:#F8FAFC;color:#0F172A}
+#p-new .btn-p{background:#4F46E5;border-color:#4F46E5;color:#fff}
+#p-new .btn-p:hover{background:#4338CA;color:#fff}
+#p-new .ib{width:32px;padding:0}
+#p-new .card{background:#fff;border:1px solid #E2E8F0;border-radius:8px;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
+#p-new .ch{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid #F1F5F9}
+#p-new .ch h2{margin:0;font-size:14px;font-weight:600;letter-spacing:-0.015em;flex:1}
+#p-new .ni{display:flex;align-items:center;gap:10px;height:30px;padding:0 10px;border-radius:6px;color:#334155;text-decoration:none;font-size:13px}
+#p-new .ni:hover{background:#F1F5F9;color:#0F172A}
+#p-new .ni.on{background:#F1F5F9;color:#0F172A;font-weight:600}
+#p-new .ni.on svg{color:#4F46E5}
+#p-new .tbl{width:100%;border-collapse:collapse}
+#p-new .tbl th{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#64748B;text-align:left;padding:9px 12px;border-bottom:1px solid #E2E8F0;background:#F8FAFC;white-space:nowrap}
+#p-new .tbl td{padding:12px;border-bottom:1px solid #F1F5F9;vertical-align:top}
+#p-new .kbd{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;padding:1px 5px;border:1px solid #E2E8F0;border-radius:4px;background:#fff;color:#475569}
+#p-new .pill{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:11px;background:#F1F5F9;border:1px solid #E2E8F0;font-size:11px;font-weight:500;color:#334155;white-space:nowrap}
+#p-new .sz{display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 6px;border-radius:4px;border:1px solid #E2E8F0;font-size:11px;background:#fff}
+#p-new .sz b{font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:600;color:#4338CA}
+#p-new .fld{display:flex;flex-direction:column;gap:6px}
+#p-new .inp{display:flex;align-items:center;gap:8px;min-height:36px;padding:0 10px;border:1px solid #E2E8F0;border-radius:6px;background:#fff;box-sizing:border-box}
+#p-new .inp:focus-within{border-color:#4F46E5;box-shadow:0 0 0 3px rgba(79,70,229,.12)}
+#p-new .cell{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;padding:4px 6px;margin:-4px -6px;border-radius:4px;border:1px solid transparent}
+#p-new .cell:hover{border-color:#C7D2FE;background:#F8FAFF}
+#p-new .opt{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1px solid #E2E8F0;border-radius:6px;background:#fff;text-align:left;font:inherit;color:inherit;cursor:pointer;width:100%;box-sizing:border-box}
+#p-new .opt.on{border-color:#4F46E5;background:#F5F7FF;box-shadow:0 0 0 1px #4F46E5}
+#p-new .rad{width:14px;height:14px;border-radius:50%;border:1.5px solid #94A3B8;flex:none;margin-top:2px;box-sizing:border-box}
+#p-new .opt.on .rad{border:4px solid #4F46E5}
+#p-new .sw{width:34px;height:20px;border-radius:10px;border:0;padding:2px;cursor:pointer;display:inline-flex;flex:none;box-sizing:border-box}
+#p-new .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#p-new .row{display:flex;justify-content:space-between;gap:12px;padding:7px 0;font-size:13px}
+#p-new .row .mono{font-size:12.5px}
+#p-new input[type=range]{accent-color:#4F46E5;width:100%}
+/* Applicants.dc.html */
+#p-applicants a{color:#4338CA}
+#p-applicants a:hover{color:#312E81}
+#p-applicants .k{font-family:'Geist',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:13px;line-height:1.45;color:#0F172A;-webkit-font-smoothing:antialiased}
+#p-applicants .mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+#p-applicants .lbl{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B}
+#p-applicants .badge{display:inline-flex;align-items:center;gap:4px;height:20px;padding:0 6px;border-radius:4px;border:1px solid;font-size:11px;font-weight:600;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box}
+#p-applicants .t-g{background:#ECFDF5;color:#047857;border-color:#A7F3D0}
+#p-applicants .t-a{background:#FFFBEB;color:#B45309;border-color:#FDE68A}
+#p-applicants .t-s{background:#F0F9FF;color:#0369A1;border-color:#BAE6FD}
+#p-applicants .t-r{background:#FFF1F2;color:#BE123C;border-color:#FECDD3}
+#p-applicants .t-n{background:#F1F5F9;color:#334155;border-color:#E2E8F0}
+#p-applicants .t-i{background:#EEF2FF;color:#4338CA;border-color:#C7D2FE}
+#p-applicants .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid #E2E8F0;background:#fff;color:#0F172A;font:500 13px/1 'Geist',ui-sans-serif,system-ui,sans-serif;cursor:pointer;white-space:nowrap;text-decoration:none;box-sizing:border-box}
+#p-applicants .btn:hover{background:#F8FAFC;color:#0F172A}
+#p-applicants .btn-p{background:#4F46E5;border-color:#4F46E5;color:#fff}
+#p-applicants .btn-p:hover{background:#4338CA;color:#fff}
+#p-applicants .ib{width:32px;padding:0}
+#p-applicants .ni{display:flex;align-items:center;gap:10px;height:30px;padding:0 10px;border-radius:6px;color:#334155;text-decoration:none;font-size:13px}
+#p-applicants .ni:hover{background:#F1F5F9;color:#0F172A}
+#p-applicants .ni.on{background:#F1F5F9;color:#0F172A;font-weight:600}
+#p-applicants .ni.on svg{color:#4F46E5}
+#p-applicants .kbd{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;padding:1px 5px;border:1px solid #E2E8F0;border-radius:4px;background:#fff;color:#475569}
+#p-applicants .seg{display:inline-flex;padding:2px;border:1px solid #E2E8F0;border-radius:7px;background:#F8FAFC;gap:2px}
+#p-applicants .seg button{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border:0;border-radius:5px;background:transparent;color:#475569;font:500 12px/1 'Geist',ui-sans-serif,system-ui,sans-serif;cursor:pointer}
+#p-applicants .seg button.on{background:#fff;color:#0F172A;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+#p-applicants .col{flex:0 0 272px;display:flex;flex-direction:column;gap:8px;background:#F1F5F9;border-radius:8px;padding:8px}
+#p-applicants .colh{display:flex;align-items:center;gap:8px;padding:4px 4px 6px;font-weight:600;font-size:12px}
+#p-applicants .cnt{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;padding:1px 6px;border-radius:4px;background:#fff;color:#475569;border:1px solid #E2E8F0}
+#p-applicants .kc{display:flex;flex-direction:column;gap:8px;padding:10px;background:#fff;border:1px solid #E2E8F0;border-radius:6px;box-shadow:0 1px 2px 0 rgba(0,0,0,.05);text-align:left;font:inherit;color:inherit;cursor:pointer;width:100%;box-sizing:border-box}
+#p-applicants .kc:hover{border-color:#CBD5E1}
+#p-applicants .kc.sel{border-color:#4F46E5;box-shadow:0 0 0 1px #4F46E5}
+#p-applicants .av{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:#fff;flex:none}
+#p-applicants .meta{font-size:12px;color:#475569;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+#p-applicants .dtab{height:38px;padding:0 2px;border:0;border-bottom:2px solid transparent;background:none;color:#64748B;font:500 13px/1 'Geist',ui-sans-serif,system-ui,sans-serif;cursor:pointer}
+#p-applicants .dtab.on{color:#0F172A;border-bottom-color:#0F172A}
+#p-applicants .dsec{border:1px solid #E2E8F0;border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:10px}
+#p-applicants .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* LiveOps.dc.html */
+#p-live-ops a{color:#4338CA}
+#p-live-ops a:hover{color:#312E81}
+#p-live-ops .k{font-family:'Geist',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:13px;line-height:1.45;color:#0F172A;-webkit-font-smoothing:antialiased}
+#p-live-ops .mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+#p-live-ops .lbl{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B}
+#p-live-ops .badge{display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 7px;border-radius:4px;border:1px solid;font-size:11px;font-weight:600;letter-spacing:.03em;white-space:nowrap;box-sizing:border-box}
+#p-live-ops .dot{width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block}
+#p-live-ops .t-g{background:#ECFDF5;color:#047857;border-color:#A7F3D0}
+#p-live-ops .t-a{background:#FFFBEB;color:#B45309;border-color:#FDE68A}
+#p-live-ops .t-s{background:#F0F9FF;color:#0369A1;border-color:#BAE6FD}
+#p-live-ops .t-r{background:#FFF1F2;color:#BE123C;border-color:#FECDD3}
+#p-live-ops .t-n{background:#F1F5F9;color:#334155;border-color:#E2E8F0}
+#p-live-ops .t-i{background:#EEF2FF;color:#4338CA;border-color:#C7D2FE}
+#p-live-ops .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid #E2E8F0;background:#fff;color:#0F172A;font:500 13px/1 'Geist',ui-sans-serif,system-ui,sans-serif;cursor:pointer;white-space:nowrap;text-decoration:none;box-sizing:border-box}
+#p-live-ops .btn:hover{background:#F8FAFC;color:#0F172A}
+#p-live-ops .btn-p{background:#4F46E5;border-color:#4F46E5;color:#fff}
+#p-live-ops .btn-p:hover{background:#4338CA;color:#fff}
+#p-live-ops .btn-r{background:#BE123C;border-color:#BE123C;color:#fff}
+#p-live-ops .btn-r:hover{background:#9F1239;color:#fff}
+#p-live-ops .ib{width:32px;padding:0}
+#p-live-ops .card{background:#fff;border:1px solid #E2E8F0;border-radius:8px;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
+#p-live-ops .ni{display:flex;align-items:center;gap:10px;height:30px;padding:0 10px;border-radius:6px;color:#334155;text-decoration:none;font-size:13px}
+#p-live-ops .ni:hover{background:#F1F5F9;color:#0F172A}
+#p-live-ops .ni.on{background:#F1F5F9;color:#0F172A;font-weight:600}
+#p-live-ops .ni.on svg{color:#4F46E5}
+#p-live-ops .tbl{width:100%;border-collapse:collapse}
+#p-live-ops .tbl th{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#64748B;text-align:left;padding:9px 12px;border-bottom:1px solid #E2E8F0;background:#F8FAFC;white-space:nowrap}
+#p-live-ops .tbl td{padding:11px 12px;border-bottom:1px solid #F1F5F9;vertical-align:middle;white-space:nowrap}
+#p-live-ops .tbl tr:hover td{background:#FAFBFF}
+#p-live-ops .tbl tr.risk td{background:#FFF8F9}
+#p-live-ops .kbd{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;padding:1px 5px;border:1px solid #E2E8F0;border-radius:4px;background:#fff;color:#475569}
+#p-live-ops .cnt{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;padding:1px 6px;border-radius:4px;background:#F1F5F9;color:#475569}
+#p-live-ops .av{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:#fff;flex:none}
+#p-live-ops .chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border:1px solid #E2E8F0;border-radius:6px;font:500 12px/1 'Geist',ui-sans-serif,system-ui,sans-serif;color:#475569;background:#fff;cursor:pointer}
+#p-live-ops .chip.on{border-color:#0F172A;color:#0F172A;background:#F8FAFC}
+#p-live-ops .tk{display:flex;flex-direction:column;gap:2px;padding:0 18px;border-left:1px solid #1E293B}
+#p-live-ops .tk .n{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:20px;font-weight:600;letter-spacing:-0.02em}
+#p-live-ops .tk .l{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#94A3B8}
+#p-live-ops .sw{width:34px;height:20px;border-radius:10px;border:0;padding:2px;cursor:pointer;display:inline-flex;flex:none;box-sizing:border-box}
+#p-live-ops .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@keyframes scan_p_live_ops{0%{top:14%}50%{top:84%}100%{top:14%}}
+#p-live-ops .scan_p_live_ops{animation:scan_p_live_ops 2.4s ease-in-out infinite}
+@keyframes pulse_p_live_ops{0%{box-shadow:0 0 0 0 rgba(52,211,153,.5)}100%{box-shadow:0 0 0 6px rgba(52,211,153,0)}}
+#p-live-ops .live{animation:pulse_p_live_ops 1.6s infinite}
+/* Payouts.dc.html */
+#p-payouts a{color:#4338CA}
+#p-payouts a:hover{color:#312E81}
+#p-payouts .k{font-family:'Geist',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:13px;line-height:1.45;color:#0F172A;-webkit-font-smoothing:antialiased}
+#p-payouts .mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+#p-payouts .lbl{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B}
+#p-payouts .badge{display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 7px;border-radius:4px;border:1px solid;font-size:11px;font-weight:600;letter-spacing:.03em;white-space:nowrap;box-sizing:border-box}
+#p-payouts .t-g{background:#ECFDF5;color:#047857;border-color:#A7F3D0}
+#p-payouts .t-a{background:#FFFBEB;color:#B45309;border-color:#FDE68A}
+#p-payouts .t-s{background:#F0F9FF;color:#0369A1;border-color:#BAE6FD}
+#p-payouts .t-r{background:#FFF1F2;color:#BE123C;border-color:#FECDD3}
+#p-payouts .t-n{background:#F1F5F9;color:#334155;border-color:#E2E8F0}
+#p-payouts .t-i{background:#EEF2FF;color:#4338CA;border-color:#C7D2FE}
+#p-payouts .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid #E2E8F0;background:#fff;color:#0F172A;font:500 13px/1 'Geist',ui-sans-serif,system-ui,sans-serif;cursor:pointer;white-space:nowrap;text-decoration:none;box-sizing:border-box}
+#p-payouts .btn:hover{background:#F8FAFC;color:#0F172A}
+#p-payouts .btn-e{background:#047857;border-color:#047857;color:#fff}
+#p-payouts .btn-e:hover{background:#065F46;color:#fff}
+#p-payouts .ib{width:32px;padding:0}
+#p-payouts .card{background:#fff;border:1px solid #E2E8F0;border-radius:8px;box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
+#p-payouts .ni{display:flex;align-items:center;gap:10px;height:30px;padding:0 10px;border-radius:6px;color:#334155;text-decoration:none;font-size:13px}
+#p-payouts .ni:hover{background:#F1F5F9;color:#0F172A}
+#p-payouts .ni.on{background:#F1F5F9;color:#0F172A;font-weight:600}
+#p-payouts .ni.on svg{color:#4F46E5}
+#p-payouts .tbl{width:100%;border-collapse:collapse}
+#p-payouts .tbl th{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#64748B;text-align:left;padding:9px 12px;border-bottom:1px solid #E2E8F0;background:#F8FAFC;white-space:nowrap}
+#p-payouts .tbl td{padding:10px 12px;border-bottom:1px solid #F1F5F9;vertical-align:middle;white-space:nowrap}
+#p-payouts .tbl tr:hover td{background:#FAFBFF}
+#p-payouts .kbd{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;padding:1px 5px;border:1px solid #E2E8F0;border-radius:4px;background:#fff;color:#475569}
+#p-payouts .cnt{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;padding:1px 6px;border-radius:4px;background:#F1F5F9;color:#475569}
+#p-payouts .av{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:#fff;flex:none}
+#p-payouts .ot{display:inline-flex;border:1px solid #E2E8F0;border-radius:6px;overflow:hidden}
+#p-payouts .ot button{height:24px;padding:0 7px;border:0;border-right:1px solid #E2E8F0;background:#fff;font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;color:#475569;cursor:pointer}
+#p-payouts .ot button:last-child{border-right:0}
+#p-payouts .star{border:0;background:none;padding:0 1px;cursor:pointer;font-size:15px;line-height:1}
+#p-payouts .tag{display:inline-flex;align-items:center;height:20px;padding:0 7px;border-radius:10px;border:1px solid #E2E8F0;font:500 11px/1 'Geist',ui-sans-serif,system-ui,sans-serif;cursor:pointer;background:#fff;color:#475569}
+#p-payouts .cb{width:18px;height:18px;border-radius:4px;border:1.5px solid #94A3B8;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0;box-sizing:border-box}
+#p-payouts .sum{display:flex;flex-direction:column;gap:2px;padding:0 20px;border-left:1px solid #E2E8F0}
+#p-payouts .sum .n{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:20px;font-weight:600;letter-spacing:-0.02em}
+#p-payouts .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* Mobilize.dc.html */
+#p-mobilize a{color:#4338CA}
+#p-mobilize a:hover{color:#312E81}
+#p-mobilize .mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+#p-mobilize .lbl{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B}
+#p-mobilize .badge{display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 7px;border-radius:4px;border:1px solid;font-size:11px;font-weight:600;letter-spacing:.03em;white-space:nowrap;box-sizing:border-box}
+#p-mobilize .t-g{background:#ECFDF5;color:#047857;border-color:#A7F3D0}
+#p-mobilize .t-a{background:#FFFBEB;color:#B45309;border-color:#FDE68A}
+#p-mobilize .t-s{background:#F0F9FF;color:#0369A1;border-color:#BAE6FD}
+#p-mobilize .t-r{background:#FFF1F2;color:#BE123C;border-color:#FECDD3}
+#p-mobilize .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:36px;padding:0 14px;border-radius:6px;border:1px solid #E2E8F0;background:#fff;color:#0F172A;font:500 13px/1 'Geist',ui-sans-serif,system-ui,sans-serif;cursor:pointer;white-space:nowrap;text-decoration:none;box-sizing:border-box}
+#p-mobilize .btn:hover{background:#F8FAFC;color:#0F172A}
+#p-mobilize .btn-p{background:#4F46E5;border-color:#4F46E5;color:#fff}
+#p-mobilize .btn-p:hover{background:#4338CA;color:#fff}
+/* Invoice.dc.html */
+#p-invoice a{color:#4338CA}
+#p-invoice a:hover{color:#312E81}
+#p-invoice .mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+#p-invoice .lbl{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B}
+#p-invoice .badge{display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 7px;border-radius:4px;border:1px solid;font-size:11px;font-weight:600;letter-spacing:.03em;white-space:nowrap;box-sizing:border-box}
+#p-invoice .t-g{background:#ECFDF5;color:#047857;border-color:#A7F3D0}
+#p-invoice .t-n{background:#F1F5F9;color:#334155;border-color:#E2E8F0}
+#p-invoice .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:36px;padding:0 14px;border-radius:6px;border:1px solid #E2E8F0;background:#fff;color:#0F172A;font:500 13px/1 'Geist',ui-sans-serif,system-ui,sans-serif;cursor:pointer;white-space:nowrap;text-decoration:none;box-sizing:border-box}
+#p-invoice .btn:hover{background:#F8FAFC;color:#0F172A}
+#p-invoice .btn-p{background:#4F46E5;border-color:#4F46E5;color:#fff}
+#p-invoice .btn-p:hover{background:#4338CA;color:#fff}
+#p-invoice .it{width:100%;border-collapse:collapse;font-size:12.5px}
+#p-invoice .it th{font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#64748B;text-align:left;padding:8px 10px;border-bottom:1px solid #CBD5E1;background:#F8FAFC}
+#p-invoice .it td{padding:10px;border-bottom:1px solid #F1F5F9;vertical-align:top}
+#p-invoice .r{text-align:right}
+#p-invoice .kv{display:grid;grid-template-columns:96px 1fr;gap:3px 10px;font-size:12px}
+#p-invoice .kv dt{color:#64748B}
+#p-invoice .kv dd{margin:0}
+</style>
+</head>
+<body>
+<section id="p-events" class="page" hidden>
+<div class="k" style="display: flex; flex-wrap: wrap; min-height: 100vh; background: #F8FAFC">
+
+<aside style="flex: 0 0 240px; box-sizing: border-box; background: #FFFFFF; border-right: 1px solid #E2E8F0; display: flex; flex-direction: column; gap: 14px; padding: 10px 8px">
+<button type="button" class="btn" aria-label="Switch workspace" style="height: 44px; justify-content: flex-start; border-color: transparent; padding: 0 8px; gap: 10px; text-align: left">
+<span style="width: 26px; height: 26px; border-radius: 6px; background: #0F172A; color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex: none">SA</span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600; overflow: hidden; text-overflow: ellipsis">SoundStage Asia</span><span style="font-size: 11px; color: #64748B; font-weight: 400">KrewMY · Agency</span></span>
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 15 5 5 5-5M7 9l5-5 5 5"/></svg>
+</button>
+<button type="button" class="btn" style="justify-content: flex-start; color: #64748B; background: #F8FAFC; gap: 8px; font-weight: 400">
+<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+<span style="flex: 1; text-align: left">Search</span><span class="kbd">⌘K</span>
+</button>
+<nav aria-label="Primary" style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 1px">
+<div class="lbl" style="padding: 0 10px 6px">Operations</div>
+<a class="ni on" href="#events" aria-current="page"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Events</a>
+<a class="ni" href="#new"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg>Event Builder</a>
+<a class="ni" href="#applicants"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Applicants</a>
+<a class="ni" href="#live-ops"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19 5a10 10 0 0 1 0 14M5 19A10 10 0 0 1 5 5"/></svg><span style="flex: 1">Live Ops</span><span class="badge t-g" style="height: 18px">3 LIVE</span></a>
+<a class="ni" href="#payouts"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7H5a2 2 0 0 1 0-4h13v4"/><path d="M3 5v14a2 2 0 0 0 2 2h15V7"/><path d="M16 14h.01"/></svg><span style="flex: 1">Timesheets &amp; Payouts</span><span class="cnt">2</span></a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 1px">
+<div class="lbl" style="padding: 0 10px 6px">Workforce</div>
+<a class="ni" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="12" r="2.5"/><path d="M14 10h4M14 14h4"/></svg>Crew Directory</a>
+<a class="ni" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Standby Benches</a>
+<a class="ni" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg>Compliance</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 1px">
+<div class="lbl" style="padding: 0 10px 6px">Favorites</div>
+<a class="ni" href="#applicants"><span style="width: 16px; height: 16px; border-radius: 4px; background: #EEF2FF; color: #4338CA; font-size: 9px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">K</span>K-Pop World Tour KL</a>
+<a class="ni" href="#payouts"><span style="width: 16px; height: 16px; border-radius: 4px; background: #ECFDF5; color: #047857; font-size: 9px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">A</span>Anime Fest 2026</a>
+<a class="ni" href="#"><span style="width: 16px; height: 16px; border-radius: 4px; background: #F0F9FF; color: #0369A1; font-size: 9px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">P</span>Petronas Annual AGM</a>
+</div>
+</nav>
+<div style="margin-top: auto; border-top: 1px solid #F1F5F9; padding: 10px 4px 2px; display: flex; align-items: center; gap: 10px">
+<span style="width: 28px; height: 28px; border-radius: 50%; background: #334155; color: #fff; font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center">NA</span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column"><span style="font-weight: 600">Nurul Aina</span><span style="font-size: 11px; color: #64748B">Ops Lead · Admin</span></span>
+<button type="button" class="btn ib" aria-label="Collapse sidebar" style="border-color: transparent"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/></svg></button>
+</div>
+</aside>
+
+<main style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
+<header style="min-height: 52px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 8px 24px; background: #FFFFFF; border-bottom: 1px solid #E2E8F0; box-sizing: border-box">
+<nav aria-label="Breadcrumb" style="display: flex; align-items: center; gap: 8px; color: #64748B; flex: 1; min-width: 240px">
+<a href="#" style="color: #64748B; text-decoration: none">SoundStage Asia Productions</a><span aria-hidden="true">/</span><span style="color: #0F172A; font-weight: 600">Events</span>
+</nav>
+<label style="display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 10px; border: 1px solid #E2E8F0; border-radius: 6px; background: #F8FAFC; width: 340px; max-width: 100%; box-sizing: border-box; color: #64748B">
+<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+<span class="sr">Search</span><input type="search" placeholder="Search crew, events, venues..." style="border: 0; background: transparent; outline: none; flex: 1; min-width: 0; font: inherit; color: #0F172A"><span class="kbd">⌘K</span>
+</label>
+<button type="button" class="btn ib" aria-label="Notifications"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg></button>
+</header>
+
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 20px; max-width: 1400px; width: 100%; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px">
+<div style="flex: 1; min-width: 260px">
+<h1 style="margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.015em">Event Command Center</h1>
+<p style="margin: 4px 0 0; color: #475569">Wed, 14 Oct 2026 · <span class="mono">10:42</span> MYT · 3 venues operating today</p>
+</div>
+<button type="button" class="btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Export</button>
+<a class="btn btn-p" href="#new"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Create Event</a>
+</div>
+
+<section aria-label="Key metrics" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px">
+<div class="card" style="padding: 16px; display: flex; flex-direction: column; gap: 10px">
+<div class="lbl">Active crew deployed today</div>
+<div style="display: flex; align-items: baseline; gap: 8px"><span class="mono" style="font-size: 28px; font-weight: 600; letter-spacing: -0.02em">184</span><span style="color: #475569">crew · 3 venues</span></div>
+<div class="bar" aria-hidden="true"><span style="width: 46%; background: #4F46E5"></span><span style="width: 31%; background: #818CF8"></span><span style="width: 23%; background: #C7D2FE"></span></div>
+<div style="display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12px; color: #475569"><span><span class="mono" style="color: #0F172A">85</span> MITEC</span><span><span class="mono" style="color: #0F172A">57</span> Axiata Arena</span><span><span class="mono" style="color: #0F172A">42</span> KLCC</span></div>
+</div>
+<div class="card" style="padding: 16px; display: flex; flex-direction: column; gap: 10px">
+<div class="lbl">Historical ghosting rate</div>
+<div style="display: flex; align-items: center; gap: 10px"><span class="mono" style="font-size: 28px; font-weight: 600; letter-spacing: -0.02em">0.8%</span><span class="badge t-g"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Target &lt; 2.0%</span></div>
+<div style="position: relative; height: 6px; border-radius: 3px; background: #F1F5F9" aria-hidden="true"><span style="position: absolute; left: 0; top: 0; bottom: 0; width: 8%; border-radius: 3px; background: #047857"></span><span style="position: absolute; left: 20%; top: -3px; width: 2px; height: 12px; background: #0F172A"></span></div>
+<div style="font-size: 12px; color: #475569">Industry baseline 20–35% no-show · last 48 events</div>
+</div>
+<div class="card" style="padding: 16px; display: flex; flex-direction: column; gap: 10px">
+<div class="lbl">Escrow protected balance</div>
+<div style="display: flex; align-items: baseline; gap: 6px"><span class="mono" style="font-size: 13px; color: #475569">RM</span><span class="mono" style="font-size: 28px; font-weight: 600; letter-spacing: -0.02em">84,250.00</span></div>
+<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap"><button type="button" class="btn" style="height: 28px; font-size: 12px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Top Up FPX</button><span style="font-size: 12px; color: #475569">Held in trust · DuitNow ready</span></div>
+</div>
+<div class="card" style="padding: 16px; display: flex; flex-direction: column; gap: 10px">
+<div class="lbl">Pending timesheet sign-offs</div>
+<div style="display: flex; align-items: baseline; gap: 8px"><span class="mono" style="font-size: 28px; font-weight: 600; letter-spacing: -0.02em">2</span><span style="color: #475569">events awaiting payout release</span></div>
+<a href="#payouts" style="font-size: 12px; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 4px">Review timesheets<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+</div>
+</section>
+
+<section class="card" aria-label="Events" style="overflow: hidden">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px; padding: 0 16px; border-bottom: 1px solid #E2E8F0">
+<button type="button" class="tab on">Active &amp; Upcoming <span class="cnt">6</span></button>
+<button type="button" class="tab">Drafts <span class="cnt">2</span></button>
+<button type="button" class="tab">Completed <span class="cnt">48</span></button>
+<button type="button" class="tab">Archived</button>
+<span style="flex: 1"></span>
+<div class="seg" role="group" aria-label="View">
+<button type="button" class="on"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>Table</button>
+<button type="button"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="5" height="18" rx="1"/><rect x="10" y="3" width="5" height="12" rx="1"/><rect x="17" y="3" width="4" height="8" rx="1"/></svg>Board</button>
+<button type="button"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h10M7 12h12M5 18h8"/></svg>Timeline</button>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 10px 16px; border-bottom: 1px solid #E2E8F0; background: #FFFFFF">
+<button type="button" class="chip set">Venue: All venues<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+<button type="button" class="chip set"><span class="mono" style="font-size: 11px">14 Oct – 14 Nov</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+<button type="button" class="chip">Status<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+<button type="button" class="chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Filter</button>
+<span style="flex: 1"></span>
+<label style="display: flex; align-items: center; gap: 6px; height: 28px; padding: 0 8px; border: 1px solid #E2E8F0; border-radius: 6px; width: 220px; max-width: 100%; box-sizing: border-box; color: #64748B">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="sr">Search events</span><input type="search" placeholder="Search events…" style="border: 0; outline: none; flex: 1; min-width: 0; font: inherit; font-size: 12px; background: transparent">
+</label>
+<button type="button" class="btn ib" aria-label="View settings" style="height: 28px; width: 28px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></button>
+</div>
+<div style="overflow-x: auto">
+<table class="tbl" style="min-width: 1080px">
+<thead><tr><th scope="col" style="width: 26%">Event &amp; Client</th><th scope="col">Venue &amp; Gate</th><th scope="col">Date &amp; Shifts</th><th scope="col" style="width: 17%">Headcount Filled</th><th scope="col">Escrow</th><th scope="col">Live Ops</th><th scope="col"><span class="sr">Actions</span></th></tr></thead>
+<tbody>
+<tr>
+<td><div style="display: flex; align-items: center; gap: 10px"><span style="width: 28px; height: 28px; border-radius: 6px; background: #ECFDF5; color: #047857; font-weight: 700; font-size: 11px; display: inline-flex; align-items: center; justify-content: center; flex: none">AF</span><div><a href="#payouts" style="color: #0F172A; font-weight: 600; text-decoration: none">Anime Fest 2026</a><div style="font-size: 12px; color: #64748B">Live Nation Malaysia Sdn Bhd</div></div></div></td>
+<td><div style="font-weight: 500">MITEC · Hall 1–3</div><div style="font-size: 12px; color: #64748B">Gate 3 · Crew Turnstiles B1</div></td>
+<td><div class="mono" style="font-size: 12px">Wed 14 Oct</div><div style="font-size: 12px; color: #64748B">2 shifts · <span class="mono">07:00–22:00</span></div></td>
+<td><div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 5px"><span class="mono" style="font-weight: 600">85/85</span><span style="color: #047857; font-weight: 500">100% attended</span></div><div class="bar"><span style="width: 100%; background: #047857"></span></div><div style="font-size: 11px; color: #64748B; margin-top: 4px"><span class="mono">+9</span> standby · <span class="mono">0</span> activated</div></td>
+<td><span class="badge t-g">Funded</span></td>
+<td><span class="badge t-g"><span class="dot live"></span>LIVE</span></td>
+<td><button type="button" class="btn ib" aria-label="More actions for Anime Fest 2026" style="border-color: transparent; height: 28px; width: 28px"><svg width="16" height="16" viewBox="0 0 24 24" fill="#475569" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></button></td>
+</tr>
+<tr>
+<td><div style="display: flex; align-items: center; gap: 10px"><span style="width: 28px; height: 28px; border-radius: 6px; background: #EEF2FF; color: #4338CA; font-weight: 700; font-size: 11px; display: inline-flex; align-items: center; justify-content: center; flex: none">HI</span><div><span style="font-weight: 600">Halcyon Bank Investor Day</span><div style="font-size: 12px; color: #64748B">Halcyon Capital Bhd</div></div></div></td>
+<td><div style="font-weight: 500">KLCC · Hall 3</div><div style="font-size: 12px; color: #64748B">Gate B · Loading Dock P2</div></td>
+<td><div class="mono" style="font-size: 12px">Wed 14 Oct</div><div style="font-size: 12px; color: #64748B">1 shift · <span class="mono">07:30–18:00</span></div></td>
+<td><div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 5px"><span class="mono" style="font-weight: 600">42/42</span><span style="color: #475569">98% attended</span></div><div class="bar"><span style="width: 98%; background: #047857"></span></div><div style="font-size: 11px; color: #64748B; margin-top: 4px"><span class="mono">+4</span> standby · <span class="mono">1</span> activated</div></td>
+<td><span class="badge t-g">Funded</span></td>
+<td><span class="badge t-g"><span class="dot live"></span>LIVE</span></td>
+<td><button type="button" class="btn ib" aria-label="More actions" style="border-color: transparent; height: 28px; width: 28px"><svg width="16" height="16" viewBox="0 0 24 24" fill="#475569" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></button></td>
+</tr>
+<tr>
+<td><div style="display: flex; align-items: center; gap: 10px"><span style="width: 28px; height: 28px; border-radius: 6px; background: #F0F9FF; color: #0369A1; font-weight: 700; font-size: 11px; display: inline-flex; align-items: center; justify-content: center; flex: none">FD</span><div><span style="font-weight: 600">Formula Drift Fan Zone</span><div style="font-size: 12px; color: #64748B">Apex Motorsport Events Sdn Bhd</div></div></div></td>
+<td><div style="font-weight: 500">Axiata Arena · Car Park A</div><div style="font-size: 12px; color: #64748B">Gate 5 · Service Road</div></td>
+<td><div class="mono" style="font-size: 12px">Wed 14 Oct</div><div style="font-size: 12px; color: #64748B">1 shift · <span class="mono">13:00–23:00</span></div></td>
+<td><div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 5px"><span class="mono" style="font-weight: 600">57/57</span><span style="color: #475569">49 acked T-24h</span></div><div class="bar"><span style="width: 100%; background: #4F46E5"></span></div><div style="font-size: 11px; color: #64748B; margin-top: 4px"><span class="mono">+6</span> standby on hot-alert</div></td>
+<td><span class="badge t-g">Funded</span></td>
+<td><span class="badge t-s"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Call Time T-2h</span></td>
+<td><button type="button" class="btn ib" aria-label="More actions" style="border-color: transparent; height: 28px; width: 28px"><svg width="16" height="16" viewBox="0 0 24 24" fill="#475569" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></button></td>
+</tr>
+<tr>
+<td><div style="display: flex; align-items: center; gap: 10px"><span style="width: 28px; height: 28px; border-radius: 6px; background: #FFF1F2; color: #BE123C; font-weight: 700; font-size: 11px; display: inline-flex; align-items: center; justify-content: center; flex: none">KP</span><div><a href="#applicants" style="color: #0F172A; font-weight: 600; text-decoration: none">K-Pop World Tour KL</a><div style="font-size: 12px; color: #64748B">Live Nation Malaysia Sdn Bhd</div></div></div></td>
+<td><div style="font-weight: 500">Axiata Arena · Main Bowl</div><div style="font-size: 12px; color: #64748B">Gate 2 · Staff Entry</div></td>
+<td><div class="mono" style="font-size: 12px">Thu 15 Oct · 07:00</div><div style="font-size: 12px; color: #64748B">Tomorrow · 3 shifts</div></td>
+<td><div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 5px"><span class="mono" style="font-weight: 600">120/120</span><span style="color: #475569">locked</span></div><div class="bar"><span style="width: 100%; background: #4F46E5"></span></div><div style="font-size: 11px; color: #64748B; margin-top: 4px"><span class="mono">+12</span> standby reserved</div></td>
+<td><span class="badge t-i"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>In Escrow</span></td>
+<td><span class="badge t-n"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Roster Locked</span></td>
+<td><button type="button" class="btn ib" aria-label="More actions" style="border-color: transparent; height: 28px; width: 28px"><svg width="16" height="16" viewBox="0 0 24 24" fill="#475569" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></button></td>
+</tr>
+<tr>
+<td><div style="display: flex; align-items: center; gap: 10px"><span style="width: 28px; height: 28px; border-radius: 6px; background: #F1F5F9; color: #334155; font-weight: 700; font-size: 11px; display: inline-flex; align-items: center; justify-content: center; flex: none">PA</span><div><span style="font-weight: 600">Petronas Annual AGM</span><div style="font-size: 12px; color: #64748B">Petroliam Nasional Berhad</div></div></div></td>
+<td><div style="font-weight: 500">KLCC · Plenary Hall</div><div style="font-size: 12px; color: #64748B">Gate A · Level 3 Foyer</div></td>
+<td><div class="mono" style="font-size: 12px">Sun 18 Oct · 08:00</div><div style="font-size: 12px; color: #64748B">In 4 days · 1 shift</div></td>
+<td><div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 5px"><span class="mono" style="font-weight: 600">21/35</span><span style="color: #475569">60%</span></div><div class="bar"><span style="width: 60%; background: #B45309"></span></div><div style="font-size: 11px; color: #64748B; margin-top: 4px"><span class="mono">0/4</span> standby · 38 in screening</div></td>
+<td><span class="badge t-i"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>In Escrow</span></td>
+<td><span class="badge t-a">Screening</span></td>
+<td><button type="button" class="btn ib" aria-label="More actions" style="border-color: transparent; height: 28px; width: 28px"><svg width="16" height="16" viewBox="0 0 24 24" fill="#475569" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></button></td>
+</tr>
+<tr>
+<td><div style="display: flex; align-items: center; gap: 10px"><span style="width: 28px; height: 28px; border-radius: 6px; background: #FFFBEB; color: #B45309; font-weight: 700; font-size: 11px; display: inline-flex; align-items: center; justify-content: center; flex: none">AB</span><div><span style="font-weight: 600">ASEAN Beauty Expo</span><div style="font-size: 12px; color: #64748B">Lumiere Trade Fairs Sdn Bhd</div></div></div></td>
+<td><div style="font-weight: 500">MITEC · Hall 4</div><div style="font-size: 12px; color: #64748B">Gate 3 · Crew Turnstiles B1</div></td>
+<td><div class="mono" style="font-size: 12px">Fri 23 Oct · 08:00</div><div style="font-size: 12px; color: #64748B">In 9 days · 3 days</div></td>
+<td><div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 5px"><span class="mono" style="font-weight: 600">12/60</span><span style="color: #475569">20%</span></div><div class="bar"><span style="width: 20%; background: #B45309"></span></div><div style="font-size: 11px; color: #64748B; margin-top: 4px">Recruiting · 64 applied</div></td>
+<td><span class="badge t-a">Awaiting Top-Up</span></td>
+<td><span class="badge t-n">Recruiting</span></td>
+<td><button type="button" class="btn ib" aria-label="More actions" style="border-color: transparent; height: 28px; width: 28px"><svg width="16" height="16" viewBox="0 0 24 24" fill="#475569" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></button></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 10px 16px; color: #64748B; font-size: 12px; background: #F8FAFC">
+<span><span class="mono" style="color: #0F172A">6</span> events · <span class="mono" style="color: #0F172A">399</span> crew slots</span>
+<span style="flex: 1"></span>
+<span>Updated <span class="mono">10:42:08</span></span>
+</div>
+</section>
+</div>
+</main>
+</div>
+</section>
+<section id="p-new" class="page" hidden>
+<div class="k" style="display: flex; flex-wrap: wrap; min-height: 100vh; background: #F8FAFC">
+
+<aside style="flex: 0 0 240px; box-sizing: border-box; background: #FFFFFF; border-right: 1px solid #E2E8F0; display: flex; flex-direction: column; gap: 14px; padding: 10px 8px">
+<button type="button" class="btn" aria-label="Switch workspace" style="height: 44px; justify-content: flex-start; border-color: transparent; padding: 0 8px; gap: 10px; text-align: left">
+<span style="width: 26px; height: 26px; border-radius: 6px; background: #0F172A; color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex: none">SA</span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">SoundStage Asia</span><span style="font-size: 11px; color: #64748B; font-weight: 400">KrewMY · Agency</span></span>
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 15 5 5 5-5M7 9l5-5 5 5"/></svg>
+</button>
+<button type="button" class="btn" style="justify-content: flex-start; color: #64748B; background: #F8FAFC; gap: 8px; font-weight: 400">
+<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+<span style="flex: 1; text-align: left">Search</span><span class="kbd">⌘K</span>
+</button>
+<nav aria-label="Primary" style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 1px">
+<div class="lbl" style="padding: 0 10px 6px">Operations</div>
+<a class="ni" href="#events"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Events</a>
+<a class="ni on" href="#new" aria-current="page"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg>Event Builder</a>
+<a class="ni" href="#applicants"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Applicants</a>
+<a class="ni" href="#live-ops"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19 5a10 10 0 0 1 0 14M5 19A10 10 0 0 1 5 5"/></svg><span style="flex: 1">Live Ops</span><span class="badge t-g" style="height: 18px">3 LIVE</span></a>
+<a class="ni" href="#payouts"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7H5a2 2 0 0 1 0-4h13v4"/><path d="M3 5v14a2 2 0 0 0 2 2h15V7"/><path d="M16 14h.01"/></svg><span style="flex: 1">Timesheets &amp; Payouts</span><span class="mono" style="font-size: 11px; padding: 1px 6px; border-radius: 4px; background: #F1F5F9; color: #475569">2</span></a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 1px">
+<div class="lbl" style="padding: 0 10px 6px">Workforce</div>
+<a class="ni" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="12" r="2.5"/><path d="M14 10h4M14 14h4"/></svg>Crew Directory</a>
+<a class="ni" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Standby Benches</a>
+<a class="ni" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg>Compliance</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 1px">
+<div class="lbl" style="padding: 0 10px 6px">Favorites</div>
+<a class="ni" href="#applicants"><span style="width: 16px; height: 16px; border-radius: 4px; background: #EEF2FF; color: #4338CA; font-size: 9px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">K</span>K-Pop World Tour KL</a>
+<a class="ni" href="#payouts"><span style="width: 16px; height: 16px; border-radius: 4px; background: #ECFDF5; color: #047857; font-size: 9px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">A</span>Anime Fest 2026</a>
+<a class="ni" href="#"><span style="width: 16px; height: 16px; border-radius: 4px; background: #F0F9FF; color: #0369A1; font-size: 9px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">P</span>Petronas Annual AGM</a>
+</div>
+</nav>
+<div style="margin-top: auto; border-top: 1px solid #F1F5F9; padding: 10px 4px 2px; display: flex; align-items: center; gap: 10px">
+<span style="width: 28px; height: 28px; border-radius: 50%; background: #334155; color: #fff; font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center">NA</span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column"><span style="font-weight: 600">Nurul Aina</span><span style="font-size: 11px; color: #64748B">Ops Lead · Admin</span></span>
+<button type="button" class="btn ib" aria-label="Collapse sidebar" style="border-color: transparent"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/></svg></button>
+</div>
+</aside>
+
+<main style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
+<header style="min-height: 52px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 8px 24px; background: #FFFFFF; border-bottom: 1px solid #E2E8F0; box-sizing: border-box">
+<nav aria-label="Breadcrumb" style="display: flex; align-items: center; gap: 8px; color: #64748B; flex: 1; min-width: 240px">
+<a href="#" style="color: #64748B; text-decoration: none">SoundStage Asia Productions</a><span aria-hidden="true">/</span><a href="#events" style="color: #64748B; text-decoration: none">Events</a><span aria-hidden="true">/</span><span style="color: #0F172A; font-weight: 600">New Event</span><span class="badge t-n" style="margin-left: 4px">Draft · autosaved <span class="mono" style="font-weight: 500">10:41</span></span>
+</nav>
+<label style="display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 10px; border: 1px solid #E2E8F0; border-radius: 6px; background: #F8FAFC; width: 340px; max-width: 100%; box-sizing: border-box; color: #64748B">
+<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+<span class="sr">Search</span><input type="search" placeholder="Search crew, events, venues..." style="border: 0; background: transparent; outline: none; flex: 1; min-width: 0; font: inherit; color: #0F172A"><span class="kbd">⌘K</span>
+</label>
+<a class="btn" href="#events">Exit builder</a>
+</header>
+
+<div style="background: #FFFFFF; border-bottom: 1px solid #E2E8F0; padding: 16px 24px 0">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; margin-bottom: 14px">
+<h1 style="margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -0.015em">MY Tech Week 2026</h1>
+<span style="color: #64748B">Nexus Exhibitions Sdn Bhd · <span class="mono" style="font-size: 12px">Fri 6 Nov – Sat 7 Nov</span></span>
+</div>
+<ol aria-label="Builder steps" style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(120px, 1fr)); gap: 8px; overflow-x: auto">
+<li style="display: flex; flex-direction: column; gap: 8px; padding-bottom: 12px"><span style="height: 3px; border-radius: 2px; background: #047857"></span><span style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #047857; font-weight: 500"><span style="width: 18px; height: 18px; border-radius: 50%; background: #047857; color: #fff; display: inline-flex; align-items: center; justify-content: center"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Venue &amp; Gates</span></li>
+<li aria-current="step" style="display: flex; flex-direction: column; gap: 8px; padding-bottom: 12px"><span style="height: 3px; border-radius: 2px; background: #4F46E5"></span><span style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #0F172A; font-weight: 600"><span class="mono" style="width: 18px; height: 18px; border-radius: 50%; background: #4F46E5; color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 10px">2</span>Role Specs</span></li>
+<li style="display: flex; flex-direction: column; gap: 8px; padding-bottom: 12px"><span style="height: 3px; border-radius: 2px; background: #4F46E5"></span><span style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #0F172A; font-weight: 600"><span class="mono" style="width: 18px; height: 18px; border-radius: 50%; background: #4F46E5; color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 10px">3</span>Cultural &amp; Uniforms</span></li>
+<li style="display: flex; flex-direction: column; gap: 8px; padding-bottom: 12px"><span style="height: 3px; border-radius: 2px; background: #E2E8F0"></span><span style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #475569"><span class="mono" style="width: 18px; height: 18px; border-radius: 50%; border: 1px solid #CBD5E1; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; box-sizing: border-box">4</span>Anti-Ghosting Bench</span></li>
+<li style="display: flex; flex-direction: column; gap: 8px; padding-bottom: 12px"><span style="height: 3px; border-radius: 2px; background: #E2E8F0"></span><span style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #475569"><span class="mono" style="width: 18px; height: 18px; border-radius: 50%; border: 1px solid #CBD5E1; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; box-sizing: border-box">5</span>Briefing &amp; Quiz</span></li>
+<li style="display: flex; flex-direction: column; gap: 8px; padding-bottom: 12px"><span style="height: 3px; border-radius: 2px; background: #E2E8F0"></span><span style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #475569"><span class="mono" style="width: 18px; height: 18px; border-radius: 50%; border: 1px solid #CBD5E1; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; box-sizing: border-box">6</span>Escrow Funding</span></li>
+</ol>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 20px; padding: 24px; max-width: 1400px; box-sizing: border-box; width: 100%">
+
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+
+<section class="card" aria-labelledby="v-h">
+<div class="ch"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg><h2 id="v-h">Venue &amp; Transit</h2><span class="badge t-g">Step 1 complete</span></div>
+<div style="padding: 16px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div class="fld"><label class="lbl" for="venue">Venue (Google Places)</label>
+<div class="inp"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="venue" value="Malaysia International Trade and Exhibition Centre (MITEC)" style="border: 0; outline: none; flex: 1; min-width: 0; font: inherit; font-weight: 500"><span class="badge t-g">Verified</span></div>
+<span style="font-size: 12px; color: #64748B">8, Jalan Dutamas 2, 50480 Kuala Lumpur</span></div>
+<div style="display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 1px solid #BAE6FD; background: #F0F9FF; border-radius: 6px">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0369A1" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" style="flex: none; margin-top: 1px"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M9 21l-2-4M15 21l2-4"/></svg>
+<div><div style="font-weight: 600; color: #0C4A6E">Nearest Transit: MRT Kentonmen (Putrajaya Line)</div><div style="font-size: 12px; color: #075985">Free MITEC shuttle every 15 mins · applicants auto-scored on commute time</div></div>
+</div>
+<div class="fld"><label class="lbl" for="gate">Pinpoint staff gate</label>
+<div class="inp" style="padding-right: 6px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 21V8l9-5 9 5v13M9 21v-6h6v6"/></svg>
+<select id="gate" style="border: 0; outline: none; flex: 1; min-width: 0; font: inherit; background: transparent; color: #0F172A; height: 34px"><option>Staff Entry: Gate 3 - Crew Turnstiles (Basement 1 Loading Bay)</option><option>Gate 1 - Main Lobby (Visitors)</option><option>Gate 5 - Service Road Dock</option></select></div></div>
+</div>
+<div aria-hidden="true" style="position: relative; min-height: 220px; border-radius: 8px; border: 1px solid #E2E8F0; background: #F1F5F9; overflow: hidden">
+<svg width="100%" height="100%" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" style="position: absolute; inset: 0"><rect width="400" height="240" fill="#EEF2F6"/><path d="M-10 170 C80 150 140 190 220 160 S340 120 420 140" stroke="#fff" stroke-width="14" fill="none"/><path d="M60 -10 L120 250" stroke="#fff" stroke-width="10"/><path d="M260 -10 C250 80 300 160 290 250" stroke="#fff" stroke-width="8"/><rect x="150" y="70" width="110" height="60" rx="6" fill="#DDE3EA"/><path d="M40 210 L150 120 L260 90 L360 40" stroke="#0369A1" stroke-width="3" stroke-dasharray="6 5" fill="none"/></svg>
+<span style="position: absolute; left: 47%; top: 34%; width: 14px; height: 14px; border-radius: 50%; background: #4F46E5; border: 3px solid #fff; box-shadow: 0 0 0 6px rgba(79,70,229,.2)"></span>
+<span style="position: absolute; left: 8%; bottom: 12%; display: inline-flex; align-items: center; gap: 4px; padding: 2px 6px; border-radius: 4px; background: #fff; border: 1px solid #BAE6FD; font-size: 10px; font-weight: 600; color: #0369A1">MRT Kentonmen</span>
+<span style="position: absolute; left: 52%; top: 22%; padding: 2px 6px; border-radius: 4px; background: #0F172A; color: #fff; font-size: 10px; font-weight: 600">Gate 3 · B1</span>
+</div>
+</div>
+</section>
+
+<section class="card" aria-labelledby="r-h">
+<div class="ch"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><h2 id="r-h">Role Specs</h2><span style="font-size: 12px; color: #64748B">Click any cell to edit</span><button type="button" class="btn" style="height: 28px; font-size: 12px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add role</button></div>
+<div style="overflow-x: auto">
+<table class="tbl" style="min-width: 860px">
+<thead><tr><th scope="col">Role</th><th scope="col">Headcount</th><th scope="col">Rate</th><th scope="col">Call time</th><th scope="col">Languages</th><th scope="col">Uniform / Attire</th><th scope="col"><span class="sr">Actions</span></th></tr></thead>
+<tbody>
+<tr>
+<td><div style="font-weight: 600">Registration Usher</div><div style="font-size: 12px; color: #64748B">Front-of-house · badge scan</div></td>
+<td><span class="cell">20</span></td>
+<td><span class="cell">RM15.00/hr</span></td>
+<td><span class="cell">07:00 – 17:00</span></td>
+<td><div style="display: flex; flex-wrap: wrap; gap: 4px"><span class="pill">EN</span><span class="pill">BM</span><span class="pill">Mandarin</span></div></td>
+<td><div style="display: flex; flex-wrap: wrap; gap: 4px"><span class="sz">S <b>4</b></span><span class="sz">M <b>8</b></span><span class="sz">L <b>6</b></span><span class="sz">XL <b>2</b></span></div></td>
+<td><button type="button" class="btn ib" aria-label="Role options" style="height: 26px; width: 26px; border-color: transparent"><svg width="15" height="15" viewBox="0 0 24 24" fill="#475569" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></button></td>
+</tr>
+<tr>
+<td><div style="font-weight: 600">Hall Marshal / Crowd Control</div><div style="font-size: 12px; color: #64748B">Aisle flow · queue lines</div></td>
+<td><span class="cell">15</span></td>
+<td><span class="cell">RM12.50/hr</span></td>
+<td><span class="cell">07:00 – 17:00</span></td>
+<td><div style="display: flex; flex-wrap: wrap; gap: 4px"><span class="pill">EN</span><span class="pill">BM</span></div></td>
+<td><div style="display: flex; flex-wrap: wrap; gap: 4px"><span class="sz">L <b>8</b></span><span class="sz">XL <b>7</b></span></div></td>
+<td><button type="button" class="btn ib" aria-label="Role options" style="height: 26px; width: 26px; border-color: transparent"><svg width="15" height="15" viewBox="0 0 24 24" fill="#475569" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></button></td>
+</tr>
+<tr>
+<td><div style="font-weight: 600">Stage &amp; AV Hands</div><div style="font-size: 12px; color: #64748B">Rigging assist · cabling</div></td>
+<td><span class="cell">10</span></td>
+<td><span class="cell">RM18.00/hr</span></td>
+<td><span class="cell">06:00 – 16:00</span></td>
+<td><div style="display: flex; flex-wrap: wrap; gap: 4px"><span class="pill">BM</span><span class="pill">EN</span></div></td>
+<td><span class="pill" style="background: #0F172A; color: #fff; border-color: #0F172A">Production All-Black</span></td>
+<td><button type="button" class="btn ib" aria-label="Role options" style="height: 26px; width: 26px; border-color: transparent"><svg width="15" height="15" viewBox="0 0 24 24" fill="#475569" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></button></td>
+</tr>
+</tbody>
+<tfoot><tr><td style="font-weight: 600; background: #F8FAFC">3 roles</td><td class="mono" style="font-weight: 600; background: #F8FAFC">45</td><td colspan="5" style="background: #F8FAFC; color: #64748B; font-size: 12px">Uniform sizes collected from 45 slots · 100% size coverage target</td></tr></tfoot>
+</table>
+</div>
+</section>
+
+<section class="card" aria-labelledby="c-h">
+<div class="ch"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><h2 id="c-h">Cultural &amp; Operational</h2></div>
+<div style="padding: 16px; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; gap: 14px; align-items: flex-start; padding: 12px; border: 1px solid #E2E8F0; border-radius: 6px">
+<button type="button" class="sw" role="switch" aria-checked="true" aria-label="Solat Jumaat Rotation" data-act="toggleSolat" style="background: #4F46E5; justify-content: flex-end"><span style="width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.2)"></span></button>
+<div style="flex: 1"><div style="font-weight: 600">Solat Jumaat Rotation</div>
+<div class="dc-if" data-if="solat"><div style="font-size: 12px; color: #475569; margin-top: 2px">1.5h rotating prayer break <span class="mono">12:30 PM – 02:00 PM</span> with auto-rebalanced shift coverage</div>
+<div style="display: flex; gap: 4px; margin-top: 8px; flex-wrap: wrap"><span class="badge t-g">Wave A · 12:30</span><span class="badge t-s">Wave B · 13:15</span><span class="badge t-n">Coverage held ≥ 82%</span></div></div>
+<div class="dc-if" data-if="solatOff" hidden><div style="font-size: 12px; color: #64748B; margin-top: 2px">Off — Friday shifts run without rotation.</div></div>
+</div>
+</div>
+<div class="fld"><span class="lbl" id="meal-l">Meal provision</span>
+<div role="radiogroup" aria-labelledby="meal-l" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px">
+<button type="button" role="radio" aria-checked="true" class="opt on"><span class="rad"></span><span><span style="display: block; font-weight: 600">Halal-Certified Packed Lunch</span><span style="font-size: 12px; color: #475569">Provided on site · JAKIM-certified caterer</span></span></button>
+<button type="button" role="radio" aria-checked="false" class="opt"><span class="rad"></span><span><span style="display: block; font-weight: 600">Meal Allowance</span><span style="font-size: 12px; color: #475569">Added to payout · [RM AMOUNT]</span></span></button>
+<button type="button" role="radio" aria-checked="false" class="opt"><span class="rad"></span><span><span style="display: block; font-weight: 600">Not Provided</span><span style="font-size: 12px; color: #475569">Disclosed on job post</span></span></button>
+</div></div>
+<div class="fld"><label class="lbl" for="ward">Wardrobe preset</label>
+<div class="inp" style="padding-right: 6px"><span style="width: 14px; height: 14px; border-radius: 3px; background: #0F172A; flex: none"></span>
+<select id="ward" style="border: 0; outline: none; flex: 1; min-width: 0; font: inherit; font-weight: 500; background: transparent; color: #0F172A; height: 34px"><option>Preset A: Formal All-Black (Black collared shirt, black slacks, dark shoes)</option><option>Preset B: Smart Casual (Client polo, dark jeans)</option><option>Preset C: Batik Friday</option></select></div></div>
+</div>
+</section>
+
+<section class="card" aria-labelledby="b-h">
+<div class="ch"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><h2 id="b-h">Anti-Ghosting Standby Bench</h2><span class="badge t-a">Up next · Step 4</span></div>
+<div style="padding: 16px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; align-items: center">
+<div class="fld"><label class="lbl" for="buf">Reserve buffer</label>
+<input id="buf" type="range" min="0" max="25" step="5" value="10" aria-valuetext="10 percent">
+<div style="display: flex; justify-content: space-between; font-size: 11px; color: #64748B" class="mono"><span>0%</span><span>5%</span><span style="color: #4338CA; font-weight: 600">+10%</span><span>15%</span><span>20%</span><span>25%</span></div></div>
+<div style="display: flex; gap: 14px; align-items: center">
+<div style="padding: 10px 14px; border-radius: 8px; background: #FFFBEB; border: 1px solid #FDE68A; text-align: center"><div class="mono" style="font-size: 24px; font-weight: 600; color: #B45309">4</div><div style="font-size: 11px; color: #92400E; font-weight: 600">STANDBY CREW</div></div>
+<div style="font-size: 12px; color: #334155; line-height: 1.55">Guaranteed <span class="mono" style="font-weight: 600">RM30.00</span> retainer if unactivated; full wages + <span class="mono" style="font-weight: 600">RM15</span> surge bonus if dispatched.</div>
+</div>
+</div>
+</section>
+</div>
+
+<aside aria-label="Escrow calculator" class="card" style="flex: 1 1 320px; max-width: 380px; position: sticky; top: 16px; overflow: hidden">
+<div class="ch" style="background: #0F172A; border-bottom: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A5B4FC" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><h2 style="color: #fff">Live Escrow Calculator</h2><span class="badge" style="background: #1E293B; border-color: #334155; color: #CBD5E1">LIVE</span></div>
+<div style="padding: 14px 16px 6px">
+<div class="row" style="border-bottom: 1px solid #F1F5F9"><span>Worker wages <span style="color: #64748B; font-size: 12px">· 45 crew</span></span><span class="mono">RM 14,200.00</span></div>
+<div class="row" style="border-bottom: 1px solid #F1F5F9"><span>Standby retainers <span style="color: #64748B; font-size: 12px">· 4 × RM30</span></span><span class="mono">RM 120.00</span></div>
+<div class="row" style="border-bottom: 1px solid #F1F5F9"><span>PERKESO SKSPS <span class="mono" style="color: #64748B; font-size: 11px">1.25%</span></span><span class="mono">RM 177.50</span></div>
+<div class="row" style="border-bottom: 1px solid #F1F5F9"><span>Platform fee <span class="mono" style="color: #64748B; font-size: 11px">15%</span></span><span class="mono">RM 2,130.00</span></div>
+<div class="row"><span>SST on fee <span class="mono" style="color: #64748B; font-size: 11px">8%</span></span><span class="mono">RM 170.40</span></div>
+</div>
+<div style="margin: 6px 16px 0; padding: 14px; border-radius: 8px; background: #F5F7FF; border: 1px solid #C7D2FE">
+<div class="lbl" style="color: #4338CA">Total escrow</div>
+<div class="mono" style="font-size: 26px; font-weight: 600; letter-spacing: -0.02em; margin-top: 2px">RM 16,797.90</div>
+<div style="font-size: 12px; color: #475569; margin-top: 4px">Unused standby retainers refunded to wallet after sign-off.</div>
+</div>
+<div style="padding: 14px 16px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 4px"><span class="badge t-g">Gig Workers Act 2025</span><span class="badge t-n">LHDN MyInvois</span><span class="badge t-n">FPX · DuitNow</span></div>
+<button type="button" class="btn" style="width: 100%">Save as Draft</button>
+<button type="button" class="btn btn-p" style="width: 100%; height: 38px">Proceed to Quiz &amp; Fund Escrow<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+</div>
+</aside>
+</div>
+</main>
+</div>
+</section>
+<section id="p-applicants" class="page" hidden>
+<div class="k" style="display: flex; flex-wrap: wrap; min-height: 100vh; background: #F8FAFC">
+
+<aside style="flex: 0 0 240px; box-sizing: border-box; background: #FFFFFF; border-right: 1px solid #E2E8F0; display: flex; flex-direction: column; gap: 14px; padding: 10px 8px">
+<button type="button" class="btn" aria-label="Switch workspace" style="height: 44px; justify-content: flex-start; border-color: transparent; padding: 0 8px; gap: 10px; text-align: left">
+<span style="width: 26px; height: 26px; border-radius: 6px; background: #0F172A; color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex: none">SA</span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">SoundStage Asia</span><span style="font-size: 11px; color: #64748B; font-weight: 400">KrewMY · Agency</span></span>
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 15 5 5 5-5M7 9l5-5 5 5"/></svg>
+</button>
+<button type="button" class="btn" style="justify-content: flex-start; color: #64748B; background: #F8FAFC; gap: 8px; font-weight: 400">
+<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+<span style="flex: 1; text-align: left">Search</span><span class="kbd">⌘K</span>
+</button>
+<nav aria-label="Primary" style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 1px">
+<div class="lbl" style="padding: 0 10px 6px">Operations</div>
+<a class="ni" href="#events"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Events</a>
+<a class="ni" href="#new"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg>Event Builder</a>
+<a class="ni on" href="#applicants" aria-current="page"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Applicants</a>
+<a class="ni" href="#live-ops"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19 5a10 10 0 0 1 0 14M5 19A10 10 0 0 1 5 5"/></svg><span style="flex: 1">Live Ops</span><span class="badge t-g" style="height: 18px">3 LIVE</span></a>
+<a class="ni" href="#payouts"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7H5a2 2 0 0 1 0-4h13v4"/><path d="M3 5v14a2 2 0 0 0 2 2h15V7"/><path d="M16 14h.01"/></svg><span style="flex: 1">Timesheets &amp; Payouts</span><span class="cnt">2</span></a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 1px">
+<div class="lbl" style="padding: 0 10px 6px">Workforce</div>
+<a class="ni" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="12" r="2.5"/><path d="M14 10h4M14 14h4"/></svg>Crew Directory</a>
+<a class="ni" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Standby Benches</a>
+<a class="ni" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg>Compliance</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 1px">
+<div class="lbl" style="padding: 0 10px 6px">Favorites</div>
+<a class="ni" href="#applicants" style="font-weight: 600"><span style="width: 16px; height: 16px; border-radius: 4px; background: #EEF2FF; color: #4338CA; font-size: 9px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">K</span>K-Pop World Tour KL</a>
+<a class="ni" href="#payouts"><span style="width: 16px; height: 16px; border-radius: 4px; background: #ECFDF5; color: #047857; font-size: 9px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">A</span>Anime Fest 2026</a>
+<a class="ni" href="#"><span style="width: 16px; height: 16px; border-radius: 4px; background: #F0F9FF; color: #0369A1; font-size: 9px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">P</span>Petronas Annual AGM</a>
+</div>
+</nav>
+<div style="margin-top: auto; border-top: 1px solid #F1F5F9; padding: 10px 4px 2px; display: flex; align-items: center; gap: 10px">
+<span style="width: 28px; height: 28px; border-radius: 50%; background: #334155; color: #fff; font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center">NA</span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column"><span style="font-weight: 600">Nurul Aina</span><span style="font-size: 11px; color: #64748B">Ops Lead · Admin</span></span>
+<button type="button" class="btn ib" aria-label="Collapse sidebar" style="border-color: transparent"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/></svg></button>
+</div>
+</aside>
+
+<main style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; position: relative; overflow: hidden">
+<header style="min-height: 52px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 8px 24px; background: #FFFFFF; border-bottom: 1px solid #E2E8F0; box-sizing: border-box">
+<nav aria-label="Breadcrumb" style="display: flex; align-items: center; gap: 8px; color: #64748B; flex: 1; min-width: 240px; flex-wrap: wrap">
+<a href="#" style="color: #64748B; text-decoration: none">SoundStage Asia Productions</a><span aria-hidden="true">/</span><a href="#events" style="color: #64748B; text-decoration: none">Events</a><span aria-hidden="true">/</span><span>K-Pop World Tour KL</span><span aria-hidden="true">/</span><span style="color: #0F172A; font-weight: 600">Applicants</span>
+</nav>
+<label style="display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 10px; border: 1px solid #E2E8F0; border-radius: 6px; background: #F8FAFC; width: 340px; max-width: 100%; box-sizing: border-box; color: #64748B">
+<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+<span class="sr">Search</span><input type="search" placeholder="Search crew, events, venues..." style="border: 0; background: transparent; outline: none; flex: 1; min-width: 0; font: inherit; color: #0F172A"><span class="kbd">⌘K</span>
+</label>
+</header>
+
+<div style="background: #FFFFFF; border-bottom: 1px solid #E2E8F0; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px">
+<div style="flex: 1; min-width: 280px">
+<h1 style="margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -0.015em">K-Pop World Tour KL 2026 — Axiata Arena</h1>
+<div style="display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 6px; font-size: 12px; color: #475569">
+<span><span class="mono" style="color: #0F172A; font-weight: 600">180</span> applicants for <span class="mono" style="color: #0F172A; font-weight: 600">120</span> slots</span>
+<span><span class="mono" style="color: #0F172A; font-weight: 600">12</span> standby reserves</span>
+<span style="color: #047857; font-weight: 500"><span class="mono">100%</span> uniform size covered</span>
+</div>
+</div>
+<div class="seg" role="group" aria-label="View">
+<button type="button" class="on"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="5" height="18" rx="1"/><rect x="10" y="3" width="5" height="12" rx="1"/><rect x="17" y="3" width="4" height="8" rx="1"/></svg>Kanban</button>
+<button type="button"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>Table</button>
+</div>
+<button type="button" class="btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M7 12h10M10 18h4"/></svg>Filter</button>
+<div style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px">
+<button type="button" class="btn btn-p"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg>Auto-Fill Qualified</button>
+<span style="font-size: 11px; color: #64748B">Reliability ≥ <span class="mono">92%</span> + Typhoid + size match</span>
+</div>
+</div>
+
+<div style="display: flex; gap: 12px; padding: 16px 24px 24px; overflow-x: auto; align-items: flex-start">
+
+<section class="col" aria-label="Applied">
+<div class="colh"><span style="width: 8px; height: 8px; border-radius: 2px; background: #94A3B8"></span>Applied<span class="cnt">26</span></div>
+<button type="button" class="kc"><div style="display: flex; gap: 8px; align-items: center"><span class="av" style="background: #0E7490">NI</span><div style="flex: 1; min-width: 0"><div style="font-weight: 600">Nur Izzati Hassan</div><div class="meta"><span style="color: #B45309" aria-hidden="true">★</span> <span class="mono">94%</span> · 11 shifts</div></div></div><div style="display: flex; flex-wrap: wrap; gap: 4px"><span class="badge t-g">Typhoid 2026</span><span class="badge t-s">KJ Line · 31m</span></div><div class="meta">Size <span class="mono" style="font-weight: 600; color: #0F172A">S</span> · EN, BM</div></button>
+<button type="button" class="kc"><div style="display: flex; gap: 8px; align-items: center"><span class="av" style="background: #7C3AED">LW</span><div style="flex: 1; min-width: 0"><div style="font-weight: 600">Lim Wei Jie</div><div class="meta"><span style="color: #B45309" aria-hidden="true">★</span> <span class="mono">89%</span> · 6 shifts</div></div></div><div style="display: flex; flex-wrap: wrap; gap: 4px"><span class="badge t-a">Typhoid pending</span><span class="badge t-s">MRT · 44m</span></div><div class="meta">Size <span class="mono" style="font-weight: 600; color: #0F172A">L</span> · EN, Mandarin</div></button>
+<button type="button" class="kc"><div style="display: flex; gap: 8px; align-items: center"><span class="av" style="background: #BE185D">KS</span><div style="flex: 1; min-width: 0"><div style="font-weight: 600">Kavitha Subramaniam</div><div class="meta">New crew · 0 shifts</div></div></div><div style="display: flex; flex-wrap: wrap; gap: 4px"><span class="badge t-g">MyKad Verified</span><span class="badge t-s">SP Line · 22m</span></div><div class="meta">Size <span class="mono" style="font-weight: 600; color: #0F172A">M</span> · EN, BM, Tamil</div></button>
+</section>
+
+<section class="col" aria-label="Shortlisted">
+<div class="colh"><span style="width: 8px; height: 8px; border-radius: 2px; background: #4F46E5"></span>Shortlisted<span class="cnt">20</span></div>
+<button type="button" class="kc sel" data-act="openDrawer" aria-label="Open Ahmad Farhan bin Razak">
+<div style="display: flex; gap: 8px; align-items: center"><span class="av" style="background: #1E40AF">AF</span><div style="flex: 1; min-width: 0"><div style="font-weight: 600">Ahmad Farhan bin Razak</div><div class="meta"><span class="badge t-g" style="height: 18px">MyKad Verified</span></div></div></div>
+<div class="meta"><span style="color: #B45309" aria-hidden="true">★</span> <span class="mono" style="font-weight: 600; color: #0F172A">98%</span> · <span class="mono">28</span> shifts · <span class="mono">0</span> no-shows</div>
+<div class="meta" style="color: #B45309; font-weight: 500"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 2c1 4 6 6 6 12a6 6 0 0 1-12 0c0-3 2-5 3-7 1 2 2 3 3 3 0-3-1-5 0-8z"/></svg><span class="mono">5x</span> punctuality streak</div>
+<div style="display: flex; flex-wrap: wrap; gap: 4px"><span class="badge t-g">Typhoid Valid 2027</span><span class="badge t-i">MACEOS Certified</span><span class="badge t-s">SP Line · 38m commute</span></div>
+<div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #F1F5F9; padding-top: 8px"><span class="meta">Size <span class="mono" style="font-weight: 600; color: #0F172A">M</span></span><span class="badge t-g">Matches open slot</span></div>
+</button>
+<button type="button" class="kc"><div style="display: flex; gap: 8px; align-items: center"><span class="av" style="background: #0F766E">CM</span><div style="flex: 1; min-width: 0"><div style="font-weight: 600">Chong Mei Ling</div><div class="meta"><span style="color: #B45309" aria-hidden="true">★</span> <span class="mono">96%</span> · 19 shifts</div></div></div><div style="display: flex; flex-wrap: wrap; gap: 4px"><span class="badge t-g">Typhoid 2027</span><span class="badge t-s">SP Line · 18m</span></div><div class="meta">Size <span class="mono" style="font-weight: 600; color: #0F172A">S</span> · EN, Mandarin, Cantonese</div></button>
+<button type="button" class="kc"><div style="display: flex; gap: 8px; align-items: center"><span class="av" style="background: #9A3412">MH</span><div style="flex: 1; min-width: 0"><div style="font-weight: 600">Muhammad Hafiz Rahim</div><div class="meta"><span style="color: #B45309" aria-hidden="true">★</span> <span class="mono">93%</span> · 15 shifts</div></div></div><div style="display: flex; flex-wrap: wrap; gap: 4px"><span class="badge t-g">Typhoid 2026</span><span class="badge t-n">Own transport</span></div><div class="meta">Size <span class="mono" style="font-weight: 600; color: #0F172A">XL</span> · BM, EN</div></button>
+</section>
+
+<section class="col" aria-label="Confirmed Locked">
+<div class="colh"><span style="width: 8px; height: 8px; border-radius: 2px; background: #047857"></span>Confirmed Locked<span class="cnt">119/120</span></div>
+<button type="button" class="kc"><div style="display: flex; gap: 8px; align-items: center"><span class="av" style="background: #BE123C">SN</span><div style="flex: 1; min-width: 0"><div style="font-weight: 600">Siti Nurhaliza M.</div><div class="meta">VIP Usher · <span style="color: #B45309" aria-hidden="true">★</span> <span class="mono">99%</span></div></div></div><div style="display: flex; flex-wrap: wrap; gap: 4px"><span class="badge t-g">Quiz 3/3</span><span class="badge t-g">T-24h Ack</span></div></button>
+<button type="button" class="kc"><div style="display: flex; gap: 8px; align-items: center"><span class="av" style="background: #334155">DT</span><div style="flex: 1; min-width: 0"><div style="font-weight: 600">Daniel Tan</div><div class="meta">Hall Marshal · <span style="color: #B45309" aria-hidden="true">★</span> <span class="mono">95%</span></div></div></div><div style="display: flex; flex-wrap: wrap; gap: 4px"><span class="badge t-g">Quiz 3/3</span><span class="badge t-g">T-24h Ack</span></div></button>
+<button type="button" class="kc"><div style="display: flex; gap: 8px; align-items: center"><span class="av" style="background: #A16207">PR</span><div style="flex: 1; min-width: 0"><div style="font-weight: 600">Priya Ramanathan</div><div class="meta">Registration Usher · <span style="color: #B45309" aria-hidden="true">★</span> <span class="mono">97%</span></div></div></div><div style="display: flex; flex-wrap: wrap; gap: 4px"><span class="badge t-g">Quiz 3/3</span><span class="badge t-a">Ack pending</span></div></button>
+<div style="font-size: 12px; color: #64748B; padding: 2px 4px">+ 116 more</div>
+</section>
+
+<section class="col" aria-label="Standby Bench">
+<div class="colh"><span style="width: 8px; height: 8px; border-radius: 2px; background: #B45309"></span>Standby Bench<span class="cnt">12/12</span></div>
+<button type="button" class="kc"><div style="display: flex; gap: 8px; align-items: center"><span class="av" style="background: #065F46">FK</span><div style="flex: 1; min-width: 0"><div style="font-weight: 600">Farid Kamil</div><div class="meta">Standby #1 · <span style="color: #B45309" aria-hidden="true">★</span> <span class="mono">97%</span></div></div></div><div style="display: flex; flex-wrap: wrap; gap: 4px"><span class="badge t-a">RM30 retainer</span><span class="badge t-s">1.2 km away</span></div></button>
+<button type="button" class="kc"><div style="display: flex; gap: 8px; align-items: center"><span class="av" style="background: #6D28D9">AR</span><div style="flex: 1; min-width: 0"><div style="font-weight: 600">Aisyah Rahman</div><div class="meta">Standby #2 · <span style="color: #B45309" aria-hidden="true">★</span> <span class="mono">95%</span></div></div></div><div style="display: flex; flex-wrap: wrap; gap: 4px"><span class="badge t-a">RM30 retainer</span><span class="badge t-s">SP Line · 15m</span></div></button>
+</section>
+
+<section class="col" aria-label="Declined">
+<div class="colh"><span style="width: 8px; height: 8px; border-radius: 2px; background: #BE123C"></span>Declined<span class="cnt">3</span></div>
+<button type="button" class="kc" style="opacity: .85"><div style="display: flex; gap: 8px; align-items: center"><span class="av" style="background: #64748B">JO</span><div style="flex: 1; min-width: 0"><div style="font-weight: 600">Jason Ooi</div><div class="meta"><span style="color: #B45309" aria-hidden="true">★</span> <span class="mono">71%</span> · 3 no-shows</div></div></div><span class="badge t-r" style="align-self: flex-start">Below reliability threshold</span></button>
+</section>
+</div>
+
+<div class="dc-if" data-if="drawer">
+<div aria-hidden="true" style="position: absolute; top: 52px; left: 0; right: 0; bottom: 0; background: rgba(15,23,42,.10)"></div>
+<aside role="dialog" aria-label="Ahmad Farhan bin Razak" style="position: absolute; top: 52px; right: 0; bottom: 0; width: 520px; max-width: 100%; background: #FFFFFF; border-left: 1px solid #E2E8F0; box-shadow: -8px 0 24px -12px rgba(15,23,42,.18); display: flex; flex-direction: column">
+<div style="padding: 16px 20px; border-bottom: 1px solid #F1F5F9; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #64748B"><span class="badge t-i">Shortlisted</span><span>Applied <span class="mono">09 Oct, 21:14</span></span><span style="flex: 1"></span><button type="button" class="btn ib" aria-label="Close drawer" data-act="closeDrawer" style="height: 28px; width: 28px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+<div style="display: flex; gap: 14px; align-items: center">
+<span style="width: 56px; height: 56px; border-radius: 12px; background: #1E40AF; color: #fff; font-size: 18px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; flex: none">AF</span>
+<div style="flex: 1; min-width: 0">
+<h2 style="margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -0.015em">Ahmad Farhan bin Razak</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; align-items: center"><span class="badge t-g"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>MyKad Verified</span><span class="mono" style="font-size: 12px; color: #475569">+60 1X-XXX 7730</span></div>
+</div>
+<div role="img" aria-label="Reliability 98 percent" style="position: relative; width: 64px; height: 64px; flex: none">
+<svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="26" fill="none" stroke="#ECFDF5" stroke-width="6"/><circle cx="32" cy="32" r="26" fill="none" stroke="#047857" stroke-width="6" stroke-linecap="round" stroke-dasharray="160.1 163.4" transform="rotate(-90 32 32)"/></svg>
+<span style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center"><span class="mono" style="font-size: 14px; font-weight: 600">98%</span><span style="font-size: 9px; color: #64748B; font-weight: 600; letter-spacing: .05em">RELIABLE</span></span>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<div style="padding: 8px 10px; border: 1px solid #E2E8F0; border-radius: 6px"><div class="lbl">Shifts</div><div class="mono" style="font-weight: 600; font-size: 15px">28</div></div>
+<div style="padding: 8px 10px; border: 1px solid #E2E8F0; border-radius: 6px"><div class="lbl">No-shows</div><div class="mono" style="font-weight: 600; font-size: 15px; color: #047857">0</div></div>
+<div style="padding: 8px 10px; border: 1px solid #E2E8F0; border-radius: 6px"><div class="lbl">Streak</div><div class="mono" style="font-weight: 600; font-size: 15px">5x</div></div>
+</div>
+</div>
+<div role="tablist" aria-label="Record sections" style="display: flex; gap: 18px; padding: 0 20px; border-bottom: 1px solid #E2E8F0">
+<button type="button" role="tab" aria-selected="true" class="dtab on">Overview</button>
+<button type="button" role="tab" aria-selected="false" class="dtab">Shift History</button>
+<button type="button" role="tab" aria-selected="false" class="dtab">Quiz Results</button>
+<button type="button" role="tab" aria-selected="false" class="dtab">Ratings &amp; Notes</button>
+</div>
+<div style="flex: 1; overflow-y: auto; padding: 16px 20px; display: flex; flex-direction: column; gap: 12px">
+<div class="dsec">
+<div style="display: flex; align-items: center; justify-content: space-between"><span class="lbl">Comprehension quiz</span><span class="badge t-g">Passed</span></div>
+<div style="display: flex; align-items: baseline; gap: 8px"><span class="mono" style="font-size: 20px; font-weight: 600">3/3</span><span style="color: #475569">100% correct</span></div>
+<div style="font-size: 12px; color: #334155; display: flex; align-items: center; gap: 6px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#047857" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Call time confirmed <span class="mono" style="font-weight: 600">06:30 AM</span> at Gate 2</div>
+</div>
+<div class="dsec">
+<span class="lbl">Commute route</span>
+<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap">
+<span class="badge t-n">LRT Kelana Jaya</span>
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+<span class="badge t-n">Masjid Jamek</span>
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+<span class="badge t-s">LRT Bukit Jalil · Sri Petaling Line</span>
+</div>
+<div style="font-size: 12px; color: #475569">Est. <span class="mono" style="font-weight: 600; color: #0F172A">38 mins</span> door-to-gate · arrives before first train surge</div>
+</div>
+<div class="dsec">
+<div style="display: flex; align-items: center; justify-content: space-between"><span class="lbl">Past organizer feedback</span><span style="color: #B45309; font-size: 13px" aria-label="5 out of 5 stars">★★★★★ <span class="mono" style="color: #0F172A; font-size: 12px">5.0</span></span></div>
+<p style="margin: 0; color: #1E293B; line-height: 1.55">“Excellent crowd usher, fluent in English and Mandarin, arrived 20 mins early at KLCC.”</p>
+<div style="font-size: 12px; color: #64748B">Halcyon Bank Investor Day · KLCC Hall 3</div>
+</div>
+<div class="dsec">
+<span class="lbl">Credentials</span>
+<div style="display: flex; flex-wrap: wrap; gap: 6px"><span class="badge t-g">Typhoid Valid 2027</span><span class="badge t-i">MACEOS Certified</span><span class="badge t-n">Uniform M</span><span class="badge t-n">EN · BM · Mandarin</span></div>
+</div>
+</div>
+<div style="padding: 12px 20px; border-top: 1px solid #E2E8F0; display: flex; gap: 8px; flex-wrap: wrap; background: #F8FAFC">
+<button type="button" class="btn" style="color: #BE123C; border-color: #FECDD3">Reject</button>
+<button type="button" class="btn">Move to Standby</button>
+<span style="flex: 1"></span>
+<button type="button" class="btn btn-p"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Confirm Slot (Registration Usher)</button>
+</div>
+</aside>
+</div>
+</main>
+</div>
+</section>
+<section id="p-live-ops" class="page" hidden>
+<div class="k" style="display: flex; flex-wrap: wrap; min-height: 100vh; background: #F8FAFC">
+
+<aside style="flex: 0 0 240px; box-sizing: border-box; background: #FFFFFF; border-right: 1px solid #E2E8F0; display: flex; flex-direction: column; gap: 14px; padding: 10px 8px">
+<button type="button" class="btn" aria-label="Switch workspace" style="height: 44px; justify-content: flex-start; border-color: transparent; padding: 0 8px; gap: 10px; text-align: left">
+<span style="width: 26px; height: 26px; border-radius: 6px; background: #0F172A; color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex: none">SA</span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">SoundStage Asia</span><span style="font-size: 11px; color: #64748B; font-weight: 400">KrewMY · Agency</span></span>
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 15 5 5 5-5M7 9l5-5 5 5"/></svg>
+</button>
+<button type="button" class="btn" style="justify-content: flex-start; color: #64748B; background: #F8FAFC; gap: 8px; font-weight: 400">
+<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+<span style="flex: 1; text-align: left">Search</span><span class="kbd">⌘K</span>
+</button>
+<nav aria-label="Primary" style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 1px">
+<div class="lbl" style="padding: 0 10px 6px">Operations</div>
+<a class="ni" href="#events"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Events</a>
+<a class="ni" href="#new"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg>Event Builder</a>
+<a class="ni" href="#applicants"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Applicants</a>
+<a class="ni on" href="#live-ops" aria-current="page"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19 5a10 10 0 0 1 0 14M5 19A10 10 0 0 1 5 5"/></svg><span style="flex: 1">Live Ops</span><span class="badge t-g" style="height: 18px">3 LIVE</span></a>
+<a class="ni" href="#payouts"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7H5a2 2 0 0 1 0-4h13v4"/><path d="M3 5v14a2 2 0 0 0 2 2h15V7"/><path d="M16 14h.01"/></svg><span style="flex: 1">Timesheets &amp; Payouts</span><span class="cnt">2</span></a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 1px">
+<div class="lbl" style="padding: 0 10px 6px">Workforce</div>
+<a class="ni" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="12" r="2.5"/><path d="M14 10h4M14 14h4"/></svg>Crew Directory</a>
+<a class="ni" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Standby Benches</a>
+<a class="ni" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg>Compliance</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 1px">
+<div class="lbl" style="padding: 0 10px 6px">Favorites</div>
+<a class="ni" href="#applicants" style="font-weight: 600"><span style="width: 16px; height: 16px; border-radius: 4px; background: #EEF2FF; color: #4338CA; font-size: 9px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">K</span>K-Pop World Tour KL</a>
+<a class="ni" href="#payouts"><span style="width: 16px; height: 16px; border-radius: 4px; background: #ECFDF5; color: #047857; font-size: 9px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">A</span>Anime Fest 2026</a>
+<a class="ni" href="#"><span style="width: 16px; height: 16px; border-radius: 4px; background: #F0F9FF; color: #0369A1; font-size: 9px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">P</span>Petronas Annual AGM</a>
+</div>
+</nav>
+<div style="margin-top: auto; border-top: 1px solid #F1F5F9; padding: 10px 4px 2px; display: flex; align-items: center; gap: 10px">
+<span style="width: 28px; height: 28px; border-radius: 50%; background: #334155; color: #fff; font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center">NA</span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column"><span style="font-weight: 600">Nurul Aina</span><span style="font-size: 11px; color: #64748B">Ops Lead · Admin</span></span>
+<button type="button" class="btn ib" aria-label="Collapse sidebar" style="border-color: transparent"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/></svg></button>
+</div>
+</aside>
+
+<main style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
+<header style="min-height: 52px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 8px 24px; background: #FFFFFF; border-bottom: 1px solid #E2E8F0; box-sizing: border-box">
+<nav aria-label="Breadcrumb" style="display: flex; align-items: center; gap: 8px; color: #64748B; flex: 1; min-width: 240px; flex-wrap: wrap">
+<a href="#" style="color: #64748B; text-decoration: none">SoundStage Asia Productions</a><span aria-hidden="true">/</span><a href="#events" style="color: #64748B; text-decoration: none">Events</a><span aria-hidden="true">/</span><a href="#applicants" style="color: #64748B; text-decoration: none">K-Pop World Tour KL</a><span aria-hidden="true">/</span><span style="color: #0F172A; font-weight: 600">Live Ops</span>
+</nav>
+<label style="display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 10px; border: 1px solid #E2E8F0; border-radius: 6px; background: #F8FAFC; width: 340px; max-width: 100%; box-sizing: border-box; color: #64748B">
+<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+<span class="sr">Search</span><input type="search" placeholder="Search crew, events, venues..." style="border: 0; background: transparent; outline: none; flex: 1; min-width: 0; font: inherit; color: #0F172A"><span class="kbd">⌘K</span>
+</label>
+<button type="button" class="btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>Broadcast WhatsApp</button>
+</header>
+
+<section aria-label="Live status" style="background: #0F172A; color: #fff; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 0">
+<div style="display: flex; flex-direction: column; gap: 2px; padding-right: 18px">
+<div style="display: flex; align-items: center; gap: 8px"><span class="dot live" style="color: #34D399; width: 8px; height: 8px"></span><span class="mono" style="font-size: 26px; font-weight: 600; letter-spacing: -0.02em">06:45 AM</span></div>
+<span style="font-size: 12px; color: #CBD5E1">Call time <span class="mono" style="color: #fff">07:00 AM</span> · <span class="mono" style="color: #FCD34D; font-weight: 600">T-15 mins</span></span>
+</div>
+<div class="tk"><span class="n" style="color: #6EE7B7">104</span><span class="l">Checked in</span></div>
+<div class="tk"><span class="n" style="color: #7DD3FC">12</span><span class="l">En route</span></div>
+<div class="tk"><span class="n" style="color: #FDA4AF">4</span><span class="l">At-risk &gt;15m</span></div>
+<div class="tk"><span class="n" style="color: #FCD34D">12</span><span class="l">Standby hot-alert</span></div>
+<div style="flex: 1 1 200px; padding: 0 18px; border-left: 1px solid #1E293B; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; height: 8px; border-radius: 4px; overflow: hidden; background: #1E293B" role="img" aria-label="104 of 120 checked in"><span style="width: 86.7%; background: #34D399"></span><span style="width: 10%; background: #38BDF8"></span><span style="width: 3.3%; background: #FB7185"></span></div>
+<span style="font-size: 12px; color: #CBD5E1">Geofence <span style="color: #6EE7B7; font-weight: 600">Active</span> · 200m radius around Axiata Arena Gate 2</span>
+</div>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px; padding: 20px 24px; align-items: flex-start">
+
+<section class="card" aria-label="Live attendance" style="flex: 999 1 560px; min-width: 0; overflow: hidden">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 12px 14px; border-bottom: 1px solid #E2E8F0">
+<h2 style="margin: 0 8px 0 0; font-size: 14px; font-weight: 600; letter-spacing: -0.015em">Live Attendance</h2>
+<button type="button" class="chip on">All <span class="cnt">120</span></button>
+<button type="button" class="chip">At-risk <span class="cnt" style="background: #FFF1F2; color: #BE123C">4</span></button>
+<button type="button" class="chip">En route <span class="cnt">12</span></button>
+<button type="button" class="chip">Gate 2</button>
+<button type="button" class="chip">Gate 3</button>
+<span style="flex: 1"></span>
+<span style="font-size: 12px; color: #64748B">Auto-refresh <span class="mono">5s</span></span>
+</div>
+<div style="overflow-x: auto">
+<table class="tbl" style="min-width: 900px">
+<thead><tr><th scope="col">Crew member</th><th scope="col">Role</th><th scope="col">Gate</th><th scope="col">T-24h Ack</th><th scope="col">T-2h Transit</th><th scope="col">Clock-in</th><th scope="col">Uniform</th><th scope="col">Status / Action</th></tr></thead>
+<tbody>
+<tr class="risk">
+<td><div style="display: flex; align-items: center; gap: 8px"><span class="av" style="background: #475569">MF</span><span style="font-weight: 600">Mohd Faiz</span></div></td>
+<td>Stage Hand</td><td class="mono" style="font-size: 12px">Gate 3</td>
+<td><span class="badge t-g">Acknowledged</span></td>
+<td><span style="display: inline-flex; align-items: center; gap: 6px; color: #BE123C; font-weight: 500"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>No GPS update (stalled <span class="mono">22m</span>)</span></td>
+<td class="mono" style="color: #94A3B8">—</td><td style="color: #94A3B8">—</td>
+<td><div style="display: flex; align-items: center; gap: 8px"><span class="badge t-r">High Risk (Late)</span><a class="btn btn-r" href="#mobilize" style="height: 28px; font-size: 12px; padding: 0 10px">Activate Standby</a></div></td>
+</tr>
+<tr class="risk">
+<td><div style="display: flex; align-items: center; gap: 8px"><span class="av" style="background: #9A3412">AP</span><span style="font-weight: 600">Arjun Pillai</span></div></td>
+<td>Hall Marshal</td><td class="mono" style="font-size: 12px">Gate 2</td>
+<td><span class="badge t-g">Acknowledged</span></td>
+<td><span style="color: #B45309; font-weight: 500">Stuck · Jalan Puchong <span class="mono">(ETA 07:18)</span></span></td>
+<td class="mono" style="color: #94A3B8">—</td><td style="color: #94A3B8">—</td>
+<td><div style="display: flex; align-items: center; gap: 8px"><span class="badge t-r">At-Risk +18m</span><button type="button" class="btn" style="height: 28px; font-size: 12px; padding: 0 10px">Call crew</button></div></td>
+</tr>
+<tr>
+<td><div style="display: flex; align-items: center; gap: 8px"><span class="av" style="background: #334155">DT</span><span style="font-weight: 600">Daniel Tan</span></div></td>
+<td>Hall Marshal</td><td class="mono" style="font-size: 12px">Gate 2</td>
+<td><span class="badge t-g">Acknowledged</span></td>
+<td><span style="color: #0369A1; font-weight: 500">Departing LRT <span class="mono">(ETA 06:55 AM)</span></span></td>
+<td class="mono" style="color: #94A3B8">—</td><td><span class="badge t-n">Pending</span></td>
+<td><span class="badge t-s"><span class="dot"></span>En Route</span></td>
+</tr>
+<tr>
+<td><div style="display: flex; align-items: center; gap: 8px"><span class="av" style="background: #0E7490">TM</span><span style="font-weight: 600">Tan Mei Xin</span></div></td>
+<td>Registration Usher</td><td class="mono" style="font-size: 12px">Gate 2</td>
+<td><span class="badge t-g">Acknowledged</span></td>
+<td><span style="color: #0369A1; font-weight: 500">Grab drop-off <span class="mono">(ETA 06:51 AM)</span></span></td>
+<td class="mono" style="color: #94A3B8">—</td><td><span class="badge t-n">Pending</span></td>
+<td><span class="badge t-s"><span class="dot"></span>En Route</span></td>
+</tr>
+<tr>
+<td><div style="display: flex; align-items: center; gap: 8px"><span class="av" style="background: #A16207">PR</span><span style="font-weight: 600">Priya Ramanathan</span></div></td>
+<td>Registration Usher</td><td class="mono" style="font-size: 12px">Gate 2</td>
+<td><span class="badge t-g">Acknowledged</span></td>
+<td><span style="color: #047857; font-weight: 500">Arrived <span class="mono">(06:43 AM)</span></span></td>
+<td class="mono" style="font-size: 12px">06:44:12</td><td><span class="badge t-g">Size S issued</span></td>
+<td><span class="badge t-g">Checked In</span></td>
+</tr>
+<tr>
+<td><div style="display: flex; align-items: center; gap: 8px"><span class="av" style="background: #BE123C">SN</span><span style="font-weight: 600">Siti Nurhaliza M.</span></div></td>
+<td>VIP Usher</td><td class="mono" style="font-size: 12px">Gate 2</td>
+<td><span class="badge t-g">Acknowledged</span></td>
+<td><span style="color: #047857; font-weight: 500">Arrived <span class="mono">(06:38 AM)</span></span></td>
+<td class="mono" style="font-size: 12px">06:39:47</td><td><span class="badge t-g">Passed</span></td>
+<td><span class="badge t-g">Checked In</span></td>
+</tr>
+<tr>
+<td><div style="display: flex; align-items: center; gap: 8px"><span class="av" style="background: #6D28D9">NZ</span><span style="font-weight: 600">Nadia Zulkifli</span></div></td>
+<td>Stage Hand</td><td class="mono" style="font-size: 12px">Gate 3</td>
+<td><span class="badge t-g">Acknowledged</span></td>
+<td><span style="color: #047857; font-weight: 500">Arrived <span class="mono">(06:31 AM)</span></span></td>
+<td class="mono" style="font-size: 12px">06:32:05</td><td><span class="badge t-g">All-black OK</span></td>
+<td><span class="badge t-g">Checked In</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="padding: 10px 14px; font-size: 12px; color: #64748B; background: #F8FAFC">Showing <span class="mono">7</span> of <span class="mono">120</span> · sorted by risk</div>
+</section>
+
+<aside class="card" aria-label="QR check-in terminal" style="flex: 1 1 320px; max-width: 380px; overflow: hidden">
+<div style="display: flex; align-items: center; gap: 8px; padding: 12px 14px; border-bottom: 1px solid #E2E8F0">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3M21 14v7h-4M14 21h.01"/></svg>
+<h2 style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: -0.015em; flex: 1">Dynamic QR Terminal</h2>
+<span class="badge t-g">Gate 2 · Lane A</span>
+</div>
+<div style="padding: 14px; display: flex; flex-direction: column; gap: 12px">
+<div class="dc-if" data-if="online">
+<div role="img" aria-label="Camera scanner preview" style="position: relative; aspect-ratio: 4 / 3; border-radius: 8px; background: #0B1220; overflow: hidden">
+<div style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 45%, #1E293B 0%, #0B1220 70%)"></div>
+<div style="position: absolute; left: 22%; right: 22%; top: 14%; bottom: 14%">
+<span style="position: absolute; left: 0; top: 0; width: 26px; height: 26px; border-left: 3px solid #34D399; border-top: 3px solid #34D399; border-radius: 4px 0 0 0"></span>
+<span style="position: absolute; right: 0; top: 0; width: 26px; height: 26px; border-right: 3px solid #34D399; border-top: 3px solid #34D399; border-radius: 0 4px 0 0"></span>
+<span style="position: absolute; left: 0; bottom: 0; width: 26px; height: 26px; border-left: 3px solid #34D399; border-bottom: 3px solid #34D399; border-radius: 0 0 0 4px"></span>
+<span style="position: absolute; right: 0; bottom: 0; width: 26px; height: 26px; border-right: 3px solid #34D399; border-bottom: 3px solid #34D399; border-radius: 0 0 4px 0"></span>
+</div>
+<span class="scan" style="position: absolute; left: 24%; right: 24%; height: 2px; background: #34D399; box-shadow: 0 0 12px #34D399"></span>
+<span style="position: absolute; left: 10px; top: 10px; display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: #E2E8F0; font-weight: 600"><span class="dot live" style="color: #34D399"></span>CAM 01 · LIVE</span>
+<span class="mono" style="position: absolute; right: 10px; bottom: 10px; font-size: 10px; color: #94A3B8">token rotates 30s</span>
+</div>
+</div>
+<div class="dc-if" data-if="offline" hidden>
+<div style="border-radius: 8px; border: 1px solid #FDE68A; background: #FFFBEB; padding: 16px; display: flex; flex-direction: column; align-items: center; gap: 10px">
+<svg width="160" height="160" viewBox="0 0 21 21" role="img" aria-label="Venue master QR code" shape-rendering="crispEdges"><rect width="21" height="21" fill="#fff"/><path fill="#0F172A" d="M0 0h7v7H0zM14 0h7v7h-7zM0 14h7v7H0z"/><path fill="#fff" d="M1 1h5v5H1zM15 1h5v5h-5zM1 15h5v5H1z"/><path fill="#0F172A" d="M2 2h3v3H2zM16 2h3v3h-3zM2 16h3v3H2zM8 1h1v2H8zM10 0h2v1h-2zM9 4h2v2H9zM12 3h1v3h-1zM8 8h3v1H8zM13 8h2v2h-2zM16 8h4v1h-4zM0 9h2v1H0zM3 9h3v1H3zM9 10h2v3H9zM12 11h3v1h-3zM17 10h1v3h-1zM19 11h2v1h-2zM8 14h2v2H8zM11 14h1v4h-1zM13 13h3v1h-3zM14 15h2v2h-2zM17 14h3v1h-3zM19 16h2v3h-2zM8 18h2v3H8zM13 18h3v1h-3zM15 20h3v1h-3z"/></svg>
+<div style="font-weight: 600; color: #92400E">Venue Master QR · Offline mode</div>
+<div style="font-size: 12px; color: #78350F; text-align: center">Crew scan this in the basement; check-ins sync when signal returns.</div>
+</div>
+</div>
+<div style="border: 1px solid #A7F3D0; background: #ECFDF5; border-radius: 8px; padding: 12px; display: flex; gap: 10px; align-items: flex-start">
+<span style="width: 28px; height: 28px; border-radius: 50%; background: #047857; color: #fff; display: inline-flex; align-items: center; justify-content: center; flex: none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+<div style="flex: 1"><div style="font-weight: 600; color: #065F46">Checked In: Priya Ramanathan</div><div style="font-size: 12px; color: #065F46">Registration Usher · Uniform Size S Issued</div><div class="mono" style="font-size: 11px; color: #047857; margin-top: 4px">06:44:12 · token KMY-7F3A-91C2</div></div>
+</div>
+<div style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid #E2E8F0; border-radius: 8px">
+<div style="flex: 1"><div style="font-weight: 600">Display Venue Master QR</div><div style="font-size: 12px; color: #64748B">Offline fallback for basement halls</div></div>
+<button type="button" class="sw" role="switch" aria-checked="false" aria-label="Display Venue Master QR" data-act="toggle" style="background: #CBD5E1; justify-content: flex-start"><span style="width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.2)"></span></button>
+</div>
+<div>
+<div class="lbl" style="margin-bottom: 6px">Recent scans</div>
+<div style="display: flex; flex-direction: column; font-size: 12px">
+<div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #F1F5F9"><span>Hafiz Rahim · Marshal</span><span class="mono" style="color: #64748B">06:43:58</span></div>
+<div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #F1F5F9"><span>Chong Mei Ling · Usher</span><span class="mono" style="color: #64748B">06:43:31</span></div>
+<div style="display: flex; justify-content: space-between; padding: 6px 0"><span>Siti Nurhaliza M. · VIP Usher</span><span class="mono" style="color: #64748B">06:39:47</span></div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+</div>
+</section>
+<section id="p-payouts" class="page" hidden>
+<div class="k" style="display: flex; flex-wrap: wrap; min-height: 100vh; background: #F8FAFC">
+
+<aside style="flex: 0 0 240px; box-sizing: border-box; background: #FFFFFF; border-right: 1px solid #E2E8F0; display: flex; flex-direction: column; gap: 14px; padding: 10px 8px">
+<button type="button" class="btn" aria-label="Switch workspace" style="height: 44px; justify-content: flex-start; border-color: transparent; padding: 0 8px; gap: 10px; text-align: left">
+<span style="width: 26px; height: 26px; border-radius: 6px; background: #0F172A; color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex: none">SA</span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">SoundStage Asia</span><span style="font-size: 11px; color: #64748B; font-weight: 400">KrewMY · Agency</span></span>
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 15 5 5 5-5M7 9l5-5 5 5"/></svg>
+</button>
+<button type="button" class="btn" style="justify-content: flex-start; color: #64748B; background: #F8FAFC; gap: 8px; font-weight: 400">
+<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+<span style="flex: 1; text-align: left">Search</span><span class="kbd">⌘K</span>
+</button>
+<nav aria-label="Primary" style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 1px">
+<div class="lbl" style="padding: 0 10px 6px">Operations</div>
+<a class="ni" href="#events"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Events</a>
+<a class="ni" href="#new"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg>Event Builder</a>
+<a class="ni" href="#applicants"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Applicants</a>
+<a class="ni" href="#live-ops"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19 5a10 10 0 0 1 0 14M5 19A10 10 0 0 1 5 5"/></svg><span style="flex: 1">Live Ops</span><span class="badge t-g" style="height: 18px">3 LIVE</span></a>
+<a class="ni on" href="#payouts" aria-current="page"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7H5a2 2 0 0 1 0-4h13v4"/><path d="M3 5v14a2 2 0 0 0 2 2h15V7"/><path d="M16 14h.01"/></svg><span style="flex: 1">Timesheets &amp; Payouts</span><span class="cnt">2</span></a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 1px">
+<div class="lbl" style="padding: 0 10px 6px">Workforce</div>
+<a class="ni" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="12" r="2.5"/><path d="M14 10h4M14 14h4"/></svg>Crew Directory</a>
+<a class="ni" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Standby Benches</a>
+<a class="ni" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg>Compliance</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 1px">
+<div class="lbl" style="padding: 0 10px 6px">Favorites</div>
+<a class="ni" href="#applicants"><span style="width: 16px; height: 16px; border-radius: 4px; background: #EEF2FF; color: #4338CA; font-size: 9px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">K</span>K-Pop World Tour KL</a>
+<a class="ni" href="#payouts" style="font-weight: 600"><span style="width: 16px; height: 16px; border-radius: 4px; background: #ECFDF5; color: #047857; font-size: 9px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">A</span>Anime Fest 2026</a>
+<a class="ni" href="#"><span style="width: 16px; height: 16px; border-radius: 4px; background: #F0F9FF; color: #0369A1; font-size: 9px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">P</span>Petronas Annual AGM</a>
+</div>
+</nav>
+<div style="margin-top: auto; border-top: 1px solid #F1F5F9; padding: 10px 4px 2px; display: flex; align-items: center; gap: 10px">
+<span style="width: 28px; height: 28px; border-radius: 50%; background: #334155; color: #fff; font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center">NA</span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column"><span style="font-weight: 600">Nurul Aina</span><span style="font-size: 11px; color: #64748B">Ops Lead · Admin</span></span>
+<button type="button" class="btn ib" aria-label="Collapse sidebar" style="border-color: transparent"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/></svg></button>
+</div>
+</aside>
+
+<main style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
+<header style="min-height: 52px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 8px 24px; background: #FFFFFF; border-bottom: 1px solid #E2E8F0; box-sizing: border-box">
+<nav aria-label="Breadcrumb" style="display: flex; align-items: center; gap: 8px; color: #64748B; flex: 1; min-width: 240px; flex-wrap: wrap">
+<a href="#" style="color: #64748B; text-decoration: none">SoundStage Asia Productions</a><span aria-hidden="true">/</span><a href="#events" style="color: #64748B; text-decoration: none">Events</a><span aria-hidden="true">/</span><span>Anime Fest 2026</span><span aria-hidden="true">/</span><span style="color: #0F172A; font-weight: 600">Payouts</span>
+</nav>
+<label style="display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 10px; border: 1px solid #E2E8F0; border-radius: 6px; background: #F8FAFC; width: 340px; max-width: 100%; box-sizing: border-box; color: #64748B">
+<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+<span class="sr">Search</span><input type="search" placeholder="Search crew, events, venues..." style="border: 0; background: transparent; outline: none; flex: 1; min-width: 0; font: inherit; color: #0F172A"><span class="kbd">⌘K</span>
+</label>
+<a class="btn" href="#invoice"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>LHDN e-Invoice</a>
+</header>
+
+<div style="padding: 20px 24px 0; display: flex; flex-direction: column; gap: 16px">
+<section class="card" aria-label="Payout summary" style="padding: 16px 0; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 0">
+<div style="padding: 0 20px; flex: 1 1 260px">
+<span class="badge t-g"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Event Completed</span>
+<h1 style="margin: 8px 0 2px; font-size: 20px; font-weight: 600; letter-spacing: -0.015em">Anime Fest 2026 — Day 1</h1>
+<div style="color: #475569; font-size: 12px">MITEC Hall 1–3 · <span class="mono">Wed 14 Oct · 07:00–22:00</span> · 85 crew</div>
+</div>
+<div class="sum"><span class="lbl">Total hours</span><span class="n">852.5 <span style="font-size: 12px; color: #64748B">hrs</span></span></div>
+<div class="sum"><span class="lbl">Approved OT</span><span class="n">14.5 <span style="font-size: 12px; color: #64748B">hrs</span></span><span style="font-size: 11px; color: #475569">at 1.5x · <span class="mono">RM22.50/hr</span></span></div>
+<div class="sum"><span class="lbl">Total payout</span><span class="n" style="color: #047857">RM 13,850.00</span></div>
+<div class="sum"><span class="lbl">Escrow balance</span><span class="n">RM 15,200.00</span><span style="font-size: 11px; color: #475569">Standby refund <span class="mono" style="color: #0F172A">RM 1,350.00</span></span></div>
+</section>
+
+<section class="card" aria-label="Timesheet reconciliation" style="overflow: hidden">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 12px 14px; border-bottom: 1px solid #E2E8F0">
+<h2 style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: -0.015em">Timesheet Reconciliation</h2>
+<span class="cnt">85</span>
+<span style="flex: 1"></span>
+<span style="font-size: 12px; color: #64748B">Supervisor: Nurul Aina · clock data from QR + geofence</span>
+<button type="button" class="btn" style="height: 28px; font-size: 12px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M7 12h10M10 18h4"/></svg>Role</button>
+<button type="button" class="btn" style="height: 28px; font-size: 12px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>CSV</button>
+</div>
+<div style="overflow-x: auto">
+<table class="tbl" style="min-width: 1120px">
+<thead><tr><th scope="col">Worker</th><th scope="col">Role</th><th scope="col">Sched.</th><th scope="col">Actual in / out</th><th scope="col">Overtime</th><th scope="col">Deductions</th><th scope="col" style="text-align: right">Net (RM)</th><th scope="col">Performance</th><th scope="col">Sign-off</th></tr></thead>
+<tbody id="ts-body"></tbody>
+</table>
+</div>
+<div style="padding: 10px 14px; font-size: 12px; color: #64748B; background: #F8FAFC">Showing <span class="mono">7</span> of <span class="mono">85</span> · <span class="mono">78</span> others reconciled automatically (no variance)</div>
+</section>
+</div>
+
+<div style="position: sticky; bottom: 0; margin-top: 16px; background: #FFFFFF; border-top: 1px solid #E2E8F0; box-shadow: 0 -4px 12px -8px rgba(15,23,42,.15); padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px">
+<div style="flex: 1 1 360px; display: flex; flex-direction: column; gap: 3px">
+<div style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #047857" id="ts-status-wrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span id="ts-status">All 85 timesheets reconciled and verified.</span></div>
+<div style="font-size: 12px; color: #475569"><span class="mono" style="color: #0F172A; font-weight: 600">RM 1,350.00</span> unused standby balance will be returned to your agency wallet immediately.</div>
+</div>
+<a class="btn" href="#invoice">Preview e-Invoice</a>
+<button type="button" class="btn btn-e" style="height: 40px; padding: 0 16px; font-weight: 600" id="ts-release"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Approve All &amp; Release Instant DuitNow Payouts (<span id="ts-count">85</span> Workers)</button>
+</div>
+</main>
+</div>
+</section>
+<section id="p-mobilize" class="page" hidden>
+<div style="position: fixed; inset: 0; z-index: 60; overflow-y: auto; box-sizing: border-box; background: rgba(15,23,42,.55); display: flex; align-items: center; justify-content: center; padding: 24px; font-family: 'Geist', ui-sans-serif, system-ui, sans-serif; font-size: 13px; line-height: 1.45; color: #0F172A">
+<div role="dialog" aria-modal="true" aria-labelledby="mtitle" style="width: 100%; max-width: 560px; background: #FFFFFF; border-radius: 12px; border: 1px solid #E2E8F0; box-shadow: 0 20px 40px -12px rgba(15,23,42,.35); overflow: hidden">
+<div class="dc-if" data-if="pending">
+<div style="padding: 20px 20px 0; display: flex; gap: 12px; align-items: flex-start">
+<span style="width: 36px; height: 36px; border-radius: 8px; background: #FFF1F2; border: 1px solid #FECDD3; display: inline-flex; align-items: center; justify-content: center; flex: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#BE123C" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span>
+<div style="flex: 1"><h2 id="mtitle" style="margin: 0; font-size: 16px; font-weight: 600; letter-spacing: -0.015em">Mobilize Standby Worker for Mohd Faiz?</h2>
+<p style="margin: 4px 0 0; color: #475569">No-show at Gate 3 · Stage Hand · GPS stalled <span class="mono">22m</span> · call time <span class="mono">07:00</span></p></div>
+</div>
+<div style="padding: 16px 20px; display: flex; flex-direction: column; gap: 12px">
+<div class="lbl">System match · nearest standby</div>
+<div style="border: 1px solid #4F46E5; box-shadow: 0 0 0 1px #4F46E5; border-radius: 8px; padding: 12px; display: flex; gap: 12px; align-items: center">
+<span style="width: 40px; height: 40px; border-radius: 50%; background: #065F46; color: #fff; display: inline-flex; align-items: center; justify-content: center; font-weight: 600; flex: none">FK</span>
+<div style="flex: 1; min-width: 0"><div style="font-weight: 600">Farid Kamil <span class="badge t-a" style="margin-left: 4px">Standby #1</span></div>
+<div style="font-size: 12px; color: #475569; margin-top: 2px"><span style="color: #B45309">★</span> <span class="mono">97%</span> · Stage-rated · Hot-alert acknowledged <span class="mono">06:30</span></div></div>
+<div style="text-align: right"><div class="mono" style="font-size: 18px; font-weight: 600">8 min</div><div style="font-size: 12px; color: #475569"><span class="mono">1.2 km</span> away</div></div>
+</div>
+<div style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; border: 1px solid #E2E8F0; border-radius: 8px; color: #475569; font-size: 12px">
+<span style="width: 24px; height: 24px; border-radius: 50%; background: #6D28D9; color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 600">AR</span>
+<span style="flex: 1">Next: Aisyah Rahman · Standby #2</span><span class="mono">ETA 15m</span>
+</div>
+<div style="border-radius: 8px; background: #F8FAFC; border: 1px solid #E2E8F0; padding: 12px; display: flex; flex-direction: column; gap: 8px">
+<div class="lbl">Pay terms on dispatch</div>
+<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap">
+<span class="mono" style="text-decoration: line-through; color: #64748B">RM30 retainer</span>
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+<span class="mono" style="font-weight: 600">RM150 full wage</span><span style="color: #64748B">+</span><span class="badge t-g mono">RM15 surge bonus</span>
+</div>
+<div style="font-size: 12px; color: #475569; display: flex; align-items: center; gap: 6px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#047857" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>WhatsApp dispatch trigger ready · Gate 3 pin + QR token attached</div>
+</div>
+</div>
+<div style="padding: 12px 20px; border-top: 1px solid #E2E8F0; background: #F8FAFC; display: flex; justify-content: flex-end; gap: 8px">
+<a class="btn" href="#live-ops">Cancel</a>
+<button type="button" class="btn btn-p" data-act="confirm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>Confirm &amp; Dispatch Standby</button>
+</div>
+</div>
+<div class="dc-if" data-if="done" hidden>
+<div style="padding: 32px 24px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center">
+<span style="width: 44px; height: 44px; border-radius: 50%; background: #ECFDF5; border: 1px solid #A7F3D0; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#047857" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+<h2 style="margin: 0; font-size: 16px; font-weight: 600">Farid Kamil dispatched to Gate 3</h2>
+<p style="margin: 0; color: #475569">WhatsApp sent <span class="mono">06:46:02</span> · live ETA tracking on · Mohd Faiz marked No-Show</p>
+<div style="display: flex; gap: 8px; margin-top: 8px"><button type="button" class="btn" data-act="undo">Undo (30s)</button><a class="btn btn-p" href="#live-ops">Back to Live Ops</a></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="p-invoice" class="page" hidden>
+<div style="position: fixed; inset: 0; z-index: 60; overflow-y: auto; box-sizing: border-box; background: rgba(15,23,42,.55); padding: 28px; display: flex; align-items: flex-start; justify-content: center; font-family: 'Geist', ui-sans-serif, system-ui, sans-serif; font-size: 13px; line-height: 1.45; color: #0F172A">
+<div role="dialog" aria-modal="true" aria-labelledby="ititle" style="width: 100%; max-width: 780px; background: #FFFFFF; border-radius: 12px; border: 1px solid #E2E8F0; box-shadow: 0 20px 40px -12px rgba(15,23,42,.35); overflow: hidden; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 10px; padding: 14px 18px; border-bottom: 1px solid #E2E8F0">
+<h2 id="ititle" style="margin: 0; font-size: 15px; font-weight: 600; letter-spacing: -0.015em; flex: 1">e-Invoice Preview</h2>
+<span class="badge t-g"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Validated · LHDN MyInvois</span>
+<a class="btn" href="#payouts" aria-label="Close" style="width: 32px; height: 32px; padding: 0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></a>
+</div>
+
+<div style="padding: 20px; background: #F1F5F9">
+<article aria-label="Invoice document" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px; padding: 28px; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; justify-content: space-between; gap: 20px; align-items: flex-start">
+<div>
+<div style="display: flex; align-items: center; gap: 8px"><span style="width: 26px; height: 26px; border-radius: 6px; background: #4F46E5; color: #fff; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 11px">K</span><span style="font-weight: 700; font-size: 16px; letter-spacing: -0.02em">KrewMY</span></div>
+<h3 style="margin: 14px 0 2px; font-size: 22px; font-weight: 600; letter-spacing: -0.015em">Tax Invoice</h3>
+<div class="mono" style="font-size: 12px; color: #475569">KMY-INV-2026-001842</div>
+</div>
+<div style="display: flex; gap: 14px; align-items: flex-start">
+<dl class="kv" style="margin: 0">
+<dt>Issued</dt><dd class="mono">14 Oct 2026 22:41</dd>
+<dt>Validated</dt><dd class="mono">14 Oct 2026 22:43</dd>
+<dt>Type</dt><dd>01 · Invoice</dd>
+<dt>Currency</dt><dd class="mono">MYR</dd>
+</dl>
+<svg width="96" height="96" viewBox="0 0 21 21" role="img" aria-label="MyInvois validation QR code" shape-rendering="crispEdges" style="border: 1px solid #E2E8F0; padding: 4px; border-radius: 4px"><rect width="21" height="21" fill="#fff"/><path fill="#0F172A" d="M0 0h7v7H0zM14 0h7v7h-7zM0 14h7v7H0z"/><path fill="#fff" d="M1 1h5v5H1zM15 1h5v5h-5zM1 15h5v5H1z"/><path fill="#0F172A" d="M2 2h3v3H2zM16 2h3v3h-3zM2 16h3v3H2zM9 0h1v3H9zM11 1h2v1h-2zM8 4h3v1H8zM10 6h2v2h-2zM8 9h2v1H8zM12 8h1v4h-1zM14 9h3v1h-3zM18 8h3v2h-3zM0 8h3v1H0zM4 10h3v1H4zM9 11h2v2H9zM15 11h1v3h-1zM17 12h4v1h-4zM8 15h3v1H8zM9 17h1v4H9zM12 14h2v3h-2zM15 16h2v1h-2zM18 15h1v4h-1zM11 19h3v1h-3zM15 18h2v3h-2zM20 19h1v2h-1z"/></svg>
+</div>
+</div>
+
+<div style="padding: 10px 12px; border-radius: 6px; background: #F8FAFC; border: 1px solid #E2E8F0; display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 12px">
+<span class="lbl" style="align-self: center">LHDN Unique Identifier</span><span class="mono" style="font-weight: 600; letter-spacing: .02em">7XKQ2M4R9WJ3B8TZ5HNC1YV6DA</span>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+<div style="border: 1px solid #E2E8F0; border-radius: 6px; padding: 12px">
+<div class="lbl" style="margin-bottom: 6px">Supplier</div>
+<div style="font-weight: 600; margin-bottom: 6px">KrewMY Platform Sdn Bhd</div>
+<dl class="kv" style="margin: 0"><dt>SSM</dt><dd class="mono">[SSM NO.]</dd><dt>TIN</dt><dd class="mono">[SUPPLIER TIN]</dd><dt>SST reg.</dt><dd class="mono">[SST NO.]</dd><dt>MSIC</dt><dd class="mono">[MSIC CODE]</dd></dl>
+</div>
+<div style="border: 1px solid #E2E8F0; border-radius: 6px; padding: 12px">
+<div class="lbl" style="margin-bottom: 6px">Buyer</div>
+<div style="font-weight: 600; margin-bottom: 6px">Live Nation Malaysia Sdn Bhd</div>
+<dl class="kv" style="margin: 0"><dt>SSM</dt><dd class="mono">202101009988</dd><dt>TIN</dt><dd class="mono">C25890123010</dd><dt>Ref.</dt><dd>Anime Fest 2026 · Day 1</dd><dt>Agency</dt><dd>SoundStage Asia Productions</dd></dl>
+</div>
+</div>
+
+<table class="it">
+<thead><tr><th scope="col" style="width: 28px">#</th><th scope="col">Description</th><th scope="col" class="r">Rate</th><th scope="col" class="r">Amount (RM)</th><th scope="col" class="r">SST (RM)</th></tr></thead>
+<tbody>
+<tr><td class="mono">1</td><td><div style="font-weight: 600">Labor Management Fees</div><div style="font-size: 11.5px; color: #64748B">Crew orchestration · 85 workers · base <span class="mono">RM 13,850.00</span></div></td><td class="r mono">15%</td><td class="r mono">2,077.50</td><td class="r mono">166.20</td></tr>
+<tr><td class="mono">2</td><td><div style="font-weight: 600">Statutory PERKESO SKSPS Contribution</div><div style="font-size: 11.5px; color: #64748B">Self-Employment Social Security · remitted on behalf of crew</div></td><td class="r mono">1.25%</td><td class="r mono">173.13</td><td class="r mono">0.00</td></tr>
+<tr><td class="mono">3</td><td><div style="font-weight: 600">Crew Wages Disbursed (pass-through)</div><div style="font-size: 11.5px; color: #64748B">DuitNow instant payout · out of SST scope · info only</div></td><td class="r mono">—</td><td class="r mono" style="color: #64748B">(13,850.00)</td><td class="r mono">—</td></tr>
+</tbody>
+</table>
+
+<div style="display: flex; justify-content: flex-end">
+<dl style="margin: 0; width: 300px; display: grid; grid-template-columns: 1fr auto; gap: 6px 16px; font-size: 13px">
+<dt style="color: #475569">Subtotal (excl. SST)</dt><dd class="mono" style="margin: 0; text-align: right">RM 2,250.63</dd>
+<dt style="color: #475569">SST 8% on service fee</dt><dd class="mono" style="margin: 0; text-align: right">RM 166.20</dd>
+<dt style="font-weight: 600; border-top: 1px solid #CBD5E1; padding-top: 8px">Total payable</dt><dd class="mono" style="margin: 0; text-align: right; font-weight: 600; font-size: 16px; border-top: 1px solid #CBD5E1; padding-top: 6px">RM 2,416.83</dd>
+<dt style="color: #047857; font-size: 12px">Settled from escrow</dt><dd class="mono" style="margin: 0; text-align: right; color: #047857; font-size: 12px">14 Oct 2026</dd>
+</dl>
+</div>
+
+<div style="border-top: 1px dashed #CBD5E1; padding-top: 12px; font-size: 11.5px; color: #64748B; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<span>This document is a visual representation of an e-Invoice validated by LHDNM MyInvois.</span>
+<span class="mono">Gig Workers Act 2025 · ref KMY-GWA</span>
+</div>
+</article>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 8px; padding: 14px 18px; border-top: 1px solid #E2E8F0; background: #F8FAFC; align-items: center">
+<span style="font-size: 12px; color: #64748B; flex: 1">Also emailed to [BUYER FINANCE EMAIL] on validation</span>
+<button type="button" class="btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 3h18v18H3zM3 9h18M9 3v18"/></svg>Export CSV for Xero / SQL Accounting</button>
+<button type="button" class="btn btn-p"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Download PDF</button>
+</div>
+</div>
+</div>
+</section>
+<script>
+(function () {
+  var routes = { events: ['p-events'], 'new': ['p-new'], applicants: ['p-applicants'], 'live-ops': ['p-live-ops'],
+    mobilize: ['p-live-ops', 'p-mobilize'], payouts: ['p-payouts'], invoice: ['p-payouts', 'p-invoice'] };
+  var modals = { mobilize: 'live-ops', invoice: 'payouts' };
+  var last = null;
+  function $(id) { return document.getElementById(id); }
+  function setIf(scope, name, val) {
+    $(scope).querySelectorAll('[data-if="' + name + '"]').forEach(function (n) { n.hidden = !val; });
+  }
+  function route() {
+    var r = location.hash.slice(1) || 'events';
+    if (!routes[r]) r = 'events';
+    var show = routes[r];
+    document.querySelectorAll('.page').forEach(function (p) { p.hidden = show.indexOf(p.id) < 0; });
+    document.body.style.overflow = modals[r] ? 'hidden' : '';
+    if (r === 'mobilize') { setIf('p-mobilize', 'pending', true); setIf('p-mobilize', 'done', false); }
+    var base = modals[r] || r;
+    if (base !== last) window.scrollTo(0, 0);
+    last = base;
+  }
+  window.addEventListener('hashchange', route);
+  document.addEventListener('keydown', function (e) {
+    var r = location.hash.slice(1);
+    if (e.key === 'Escape' && modals[r]) location.hash = modals[r];
+  });
+
+  function setSwitch(btn, on, color) {
+    btn.setAttribute('aria-checked', on ? 'true' : 'false');
+    btn.style.background = on ? color : '#CBD5E1';
+    btn.style.justifyContent = on ? 'flex-end' : 'flex-start';
+  }
+  var solat = true, offline = false;
+  var acts = {
+    toggleSolat: function (el) { solat = !solat; setSwitch(el, solat, '#4F46E5'); setIf('p-new', 'solat', solat); setIf('p-new', 'solatOff', !solat); },
+    openDrawer: function () { setIf('p-applicants', 'drawer', true); },
+    closeDrawer: function () { setIf('p-applicants', 'drawer', false); },
+    toggle: function (el) { offline = !offline; setSwitch(el, offline, '#B45309'); setIf('p-live-ops', 'online', !offline); setIf('p-live-ops', 'offline', offline); },
+    confirm: function () { setIf('p-mobilize', 'pending', false); setIf('p-mobilize', 'done', true); },
+    undo: function () { setIf('p-mobilize', 'pending', true); setIf('p-mobilize', 'done', false); }
+  };
+
+  /* Timesheet reconciliation */
+  var rows = [
+    { id: 'a', init: 'AH', color: '#1E40AF', name: 'Aiman Hakimi', role: 'Registration Usher', rate: 15, hrs: 10, sched: '10.0h', inout: '06:58 – 17:59', ded: 0, dedLabel: '', bonus: 0, ot: 60, rating: 5, tags: ['Punctual', 'Great Attitude'] },
+    { id: 'b', init: 'SA', color: '#BE123C', name: 'Siti Aminah Yusof', role: 'Registration Usher', rate: 15, hrs: 10, sched: '10.0h', inout: '06:52 – 17:31', ded: 0, dedLabel: '', bonus: 0, ot: 30, rating: 5, tags: ['Punctual'] },
+    { id: 'c', init: 'KL', color: '#0F766E', name: 'Kenneth Lau', role: 'Hall Marshal', rate: 12.5, hrs: 10, sched: '10.0h', inout: '06:55 – 17:02', ded: 0, dedLabel: '', bonus: 0, ot: 0, rating: 4, tags: [] },
+    { id: 'd', init: 'NF', color: '#6D28D9', name: 'Nur Fatihah Aziz', role: 'Hall Marshal', rate: 12.5, hrs: 10, sched: '10.0h', inout: '07:31 – 17:00', ded: 6.25, dedLabel: 'Late 30m −6.25', bonus: 0, ot: 0, rating: 3, tags: [] },
+    { id: 'e', init: 'RK', color: '#9A3412', name: 'Raj Kumar', role: 'Stage &amp; AV Hand', rate: 18, hrs: 10, sched: '10.0h', inout: '05:54 – 16:03', ded: 0, dedLabel: '', bonus: 0, ot: 0, rating: 5, tags: ['Great Attitude', 'Favorites'] },
+    { id: 'f', init: 'WJ', color: '#0E7490', name: 'Wong Jia Hui', role: 'Registration Usher', rate: 15, hrs: 10, sched: '10.0h', inout: '06:57 – 17:00', ded: 0, dedLabel: '', bonus: 0, ot: 0, rating: 4, tags: ['Punctual'] },
+    { id: 'g', init: 'HI', color: '#065F46', name: 'Hazwan Idris', role: 'Standby → Marshal', rate: 12.5, hrs: 8.5, sched: '8.5h', inout: '08:30 – 17:00', ded: 0, dedLabel: '', bonus: 15, ot: 0, rating: 5, tags: ['Favorites'] }
+  ];
+  rows.forEach(function (r) { r.signed = true; });
+  var tagNames = ['Punctual', 'Great Attitude', 'Favorites'];
+  function fmt(n) { return 'RM ' + n.toLocaleString('en-MY', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function renderTs() {
+    var html = rows.map(function (r) {
+      var net = r.rate * r.hrs + (r.ot / 60) * r.rate * 1.5 - r.ded + r.bonus;
+      var ots = [0, 30, 60].map(function (m) {
+        var on = r.ot === m;
+        return '<button type="button" data-row="' + r.id + '" data-ot="' + m + '" aria-pressed="' + on + '" style="background:' + (on ? '#EEF2FF' : '#FFFFFF') + ';color:' + (on ? '#3730A3' : '#475569') + '">' + (m ? '+' + m + 'm' : '0') + '</button>';
+      }).join('');
+      var stars = [1, 2, 3, 4, 5].map(function (n) {
+        return '<button type="button" class="star" data-row="' + r.id + '" data-star="' + n + '" aria-label="' + n + ' star' + (n > 1 ? 's' : '') + '" style="color:' + (n <= r.rating ? '#B45309' : '#CBD5E1') + '">★</button>';
+      }).join('');
+      var tags = tagNames.map(function (t) {
+        var on = r.tags.indexOf(t) > -1;
+        return '<button type="button" class="tag" data-row="' + r.id + '" data-tag="' + t + '" aria-pressed="' + on + '" style="background:' + (on ? '#ECFDF5' : '#FFFFFF') + ';color:' + (on ? '#047857' : '#64748B') + ';border-color:' + (on ? '#A7F3D0' : '#E2E8F0') + '">' + (t === 'Favorites' ? '+ Favorites Crew' : t) + '</button>';
+      }).join('');
+      var ded = r.ded > 0 ? '<span class="badge t-r mono">' + r.dedLabel + '</span>' : '<span style="color:#94A3B8">—</span>';
+      var tick = r.signed ? '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>' : '';
+      return '<tr>' +
+        '<td><div style="display:flex;align-items:center;gap:8px"><span class="av" style="background:' + r.color + '">' + r.init + '</span><span style="font-weight:600">' + r.name + '</span></div></td>' +
+        '<td style="color:#334155">' + r.role + '</td>' +
+        '<td class="mono" style="font-size:12px">' + r.sched + '</td>' +
+        '<td class="mono" style="font-size:12px">' + r.inout + '</td>' +
+        '<td><div class="ot" role="group" aria-label="Overtime">' + ots + '</div></td>' +
+        '<td>' + ded + '</td>' +
+        '<td class="mono" style="text-align:right;font-weight:600">' + fmt(net) + '</td>' +
+        '<td><div style="display:flex;align-items:center;gap:8px"><div role="group" aria-label="Rating">' + stars + '</div><div style="display:flex;gap:4px">' + tags + '</div></div></td>' +
+        '<td><button type="button" class="cb" role="checkbox" data-row="' + r.id + '" data-sign="1" aria-checked="' + r.signed + '" aria-label="Sign off timesheet for ' + r.name + '" style="background:' + (r.signed ? '#047857' : '#FFFFFF') + ';border-color:' + (r.signed ? '#047857' : '#94A3B8') + '">' + tick + '</button></td>' +
+        '</tr>';
+    }).join('');
+    $('ts-body').innerHTML = html;
+    var total = 78 + rows.filter(function (r) { return r.signed; }).length;
+    var all = total === 85;
+    $('ts-count').textContent = total;
+    $('ts-status').textContent = all ? 'All 85 timesheets reconciled and verified.' : total + ' of 85 timesheets signed off — sign off the rest to release payouts.';
+    $('ts-status-wrap').style.color = all ? '#047857' : '#B45309';
+    $('ts-release').disabled = !all;
+  }
+  function byId(id) { return rows.filter(function (r) { return r.id === id; })[0]; }
+
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-act]');
+    if (a && acts[a.dataset.act]) { acts[a.dataset.act](a); return; }
+    var b = e.target.closest('#ts-body [data-row]');
+    if (!b) return;
+    var r = byId(b.dataset.row);
+    if (b.dataset.ot !== undefined) r.ot = +b.dataset.ot;
+    else if (b.dataset.star) r.rating = +b.dataset.star;
+    else if (b.dataset.tag) { var t = b.dataset.tag, i = r.tags.indexOf(t); if (i > -1) r.tags.splice(i, 1); else r.tags.push(t); }
+    else if (b.dataset.sign) r.signed = !r.signed;
+    renderTs();
+  });
+
+  renderTs();
+  route();
+})();
+
+</script>
+
+<!-- KrewMY Universal Navigation Widget -->
+<style>
+  #krewmy-role-nav a:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #FFFFFF !important;
+  }
+  #krewmy-nav-toggle:hover {
+    background: rgba(30, 41, 59, 0.96) !important;
+    border-color: rgba(255, 255, 255, 0.28) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.45) !important;
+  }
+</style>
+<div id="krewmy-role-nav" style="position: fixed; bottom: 20px; right: 20px; z-index: 999999; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.4;">
+  <div id="krewmy-nav-menu" style="display: none; position: absolute; bottom: calc(100% + 10px); right: 0; min-width: 250px; background: rgba(15, 23, 42, 0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 14px; box-shadow: 0 20px 40px -4px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05); padding: 8px; color: #F8FAFC;">
+    <div style="padding: 6px 10px 8px; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #94A3B8; display: flex; justify-content: space-between; align-items: center;">
+      <span>KrewMY Prototypes</span>
+      <a href="index.html" style="color: #818CF8; text-decoration: none; font-size: 11px; font-weight: 600;">Hub ↗</a>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 3px; margin-top: 6px;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #CBD5E1; font-size: 13px; font-weight: 500; transition: all 0.15s ease;">
+        <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: rgba(255,255,255,0.08); font-size: 12px;">🏠</span>
+        <span>Role Selection Hub</span>
+      </a>
+      <a href="krewmy-admin-web.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #CBD5E1; font-size: 13px; font-weight: 500; transition: all 0.15s ease; ">
+        <span style="display: flex; align-items: center; gap: 10px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: rgba(129, 140, 248, 0.2); color: #818CF8; font-size: 11px; font-weight: 700;">A</span>
+          <span>Admin Console</span>
+        </span>
+        <span style="font-size: 11px; color: #64748B;">Web</span>
+      </a>
+      <a href="krewmy-organiser-web.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #CBD5E1; font-size: 13px; font-weight: 500; transition: all 0.15s ease; background: rgba(56, 189, 248, 0.15); color: #BAE6FD; font-weight: 600;">
+        <span style="display: flex; align-items: center; gap: 10px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: rgba(56, 189, 248, 0.2); color: #38BDF8; font-size: 11px; font-weight: 700;">O</span>
+          <span>Organiser Web</span>
+        </span>
+        <span style="font-size: 10px; padding: 2px 7px; border-radius: 999px; background: rgba(56, 189, 248, 0.25); color: #BAE6FD; font-weight: 600;">Current</span>
+      </a>
+      <a href="krewmy-ops-mobile.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #CBD5E1; font-size: 13px; font-weight: 500; transition: all 0.15s ease; ">
+        <span style="display: flex; align-items: center; gap: 10px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: rgba(45, 212, 191, 0.2); color: #2DD4BF; font-size: 11px; font-weight: 700;">P</span>
+          <span>Ops Companion</span>
+        </span>
+        <span style="font-size: 11px; color: #64748B;">8 Screens</span>
+      </a>
+      <a href="krewmy-gigworker-mobile.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #CBD5E1; font-size: 13px; font-weight: 500; transition: all 0.15s ease; ">
+        <span style="display: flex; align-items: center; gap: 10px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: rgba(52, 211, 153, 0.2); color: #34D399; font-size: 11px; font-weight: 700;">W</span>
+          <span>Gig Worker App</span>
+        </span>
+        <span style="font-size: 11px; color: #64748B;">7 Screens</span>
+      </a>
+    </div>
+  </div>
+  <button id="krewmy-nav-toggle" aria-expanded="false" aria-label="Toggle KrewMY role navigation" style="display: flex; align-items: center; gap: 8px; height: 42px; padding: 0 16px; border-radius: 999px; background: rgba(15, 23, 42, 0.92); border: 1px solid rgba(255, 255, 255, 0.16); box-shadow: 0 8px 24px rgba(0,0,0,0.35); color: #F8FAFC; font-size: 13px; font-weight: 600; cursor: pointer; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: all 0.2s ease;">
+    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #6366F1; box-shadow: 0 0 8px #6366F1;"></span>
+    <span>Switch Role</span>
+    <svg id="krewmy-nav-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.2s ease;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+  </button>
+</div>
+<script id="krewmy-nav-script">
+(function() {
+  const toggle = document.getElementById('krewmy-nav-toggle');
+  const menu = document.getElementById('krewmy-nav-menu');
+  const chevron = document.getElementById('krewmy-nav-chevron');
+  if (!toggle || !menu) return;
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = menu.style.display === 'block';
+    menu.style.display = open ? 'none' : 'block';
+    toggle.setAttribute('aria-expanded', !open);
+    if (chevron) chevron.style.transform = open ? 'none' : 'rotate(180deg)';
+  });
+  document.addEventListener('click', (e) => {
+    const nav = document.getElementById('krewmy-role-nav');
+    if (nav && !nav.contains(e.target)) {
+      menu.style.display = 'none';
+      toggle.setAttribute('aria-expanded', 'false');
+      if (chevron) chevron.style.transform = 'none';
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.style.display === 'block') {
+      menu.style.display = 'none';
+      toggle.setAttribute('aria-expanded', 'false');
+      if (chevron) chevron.style.transform = 'none';
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

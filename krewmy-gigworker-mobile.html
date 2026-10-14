@@ -1,0 +1,1407 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KrewMY — Mobile app screens</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap">
+<style>
+:root {
+  color-scheme: light;
+  --page: #E8EAF2;
+  --ink: #0F172A;
+  --muted: #5B6478;
+  --num-bg: #4F46E5;
+  --num-ink: #FFFFFF;
+  --device-shadow: 0 30px 60px rgba(15,23,42,0.16), 0 4px 12px rgba(15,23,42,0.08);
+  --flash: #6366F1;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --page: #0B1020;
+    --ink: #E8EAF2;
+    --muted: #9AA3B8;
+    --num-bg: #6366F1;
+    --device-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--page); color: var(--ink); }
+body { font-family: 'Nunito', ui-rounded, system-ui, sans-serif; }
+header.top { max-width: 1200px; margin: 0 auto; padding: 56px 24px 8px; }
+header.top h1 { margin: 0; font-size: clamp(28px, 4vw, 44px); font-weight: 900; letter-spacing: -0.02em; }
+header.top p { margin: 8px 0 0; color: var(--muted); font-size: 16px; max-width: 60ch; line-height: 1.5; }
+main.gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 56px 48px; padding: 40px 24px 96px; max-width: 2000px; margin: 0 auto; }
+.shot { margin: 0; display: flex; flex-direction: column; gap: 14px; scroll-margin-top: 24px; }
+.shot figcaption { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 16px; }
+.shot .num { width: 28px; height: 28px; border-radius: 999px; background: var(--num-bg); color: var(--num-ink); display: inline-flex; align-items: center; justify-content: center; font-size: 13px; }
+.device { width: 393px; max-width: 100%; border-radius: 44px; overflow: hidden; box-shadow: var(--device-shadow); transition: box-shadow 0.3s; }
+.device.flash { box-shadow: 0 0 0 4px var(--flash), var(--device-shadow); }
+.mount { width: 393px; }
+.mount button, .mount a { font-family: inherit; }
+.mount a { color: #4F46E5; }
+.mount :focus-visible { outline: 3px solid #6366F1; outline-offset: 2px; }
+@media (max-width: 420px) {
+  main.gallery { padding: 24px 0 64px; }
+  .shot figcaption { padding: 0 16px; }
+  .device { border-radius: 0; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>KrewMY</h1>
+  <p>Event crew app for Malaysian students, from finding a gig on your train line to cashing out by DuitNow. Every screen is live: tap the nav, cards and buttons to move through the flow.</p>
+</header>
+<main class="gallery">
+  <figure class="shot" id="screen-Main">
+    <figcaption><span class="num">1</span>Gigs feed</figcaption>
+    <div class="device"><div class="mount" data-screen="Main"></div></div>
+  </figure>
+  <figure class="shot" id="screen-JobDetail">
+    <figcaption><span class="num">2</span>Job briefing</figcaption>
+    <div class="device"><div class="mount" data-screen="JobDetail"></div></div>
+  </figure>
+  <figure class="shot" id="screen-ShiftPrep">
+    <figcaption><span class="num">3</span>Pre-shift hub</figcaption>
+    <div class="device"><div class="mount" data-screen="ShiftPrep"></div></div>
+  </figure>
+  <figure class="shot" id="screen-ActiveShift">
+    <figcaption><span class="num">4</span>Clock-in & active shift</figcaption>
+    <div class="device"><div class="mount" data-screen="ActiveShift"></div></div>
+  </figure>
+  <figure class="shot" id="screen-ClockOut">
+    <figcaption><span class="num">5</span>Clock-out & earnings</figcaption>
+    <div class="device"><div class="mount" data-screen="ClockOut"></div></div>
+  </figure>
+  <figure class="shot" id="screen-Wallet">
+    <figcaption><span class="num">6</span>Wallet & cashout</figcaption>
+    <div class="device"><div class="mount" data-screen="Wallet"></div></div>
+  </figure>
+  <figure class="shot" id="screen-Profile">
+    <figcaption><span class="num">7</span>Profile & reliability</figcaption>
+    <div class="device"><div class="mount" data-screen="Profile"></div></div>
+  </figure>
+</main>
+<script type="text/x-template" id="tpl-Main">
+<div style="width: 393px; height: 1040px; box-sizing: border-box; background: #F3F4F8; color: #0F172A; font-family: 'Nunito', ui-rounded, system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+  <div style="padding: 56px 20px 0; display: flex; flex-direction: column; gap: 18px">
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+      <button style="display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px 0 12px; border-radius: 999px; border: 1px solid #E2E8F0; background: #FFFFFF; color: #334155; font-size: 13px; font-weight: 600; cursor: pointer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>
+        Klang Valley Transit Corridors
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+      </button>
+      <a href="Profile.dc.html" aria-label="Open profile" style="width: 44px; height: 44px; border-radius: 999px; background: #E0E7FF; color: #3730A3; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; text-decoration: none; border: 2px solid #6366F1; box-sizing: border-box">AZ</a>
+    </div>
+
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 12px">
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <h1 style="margin: 0; font-size: 30px; line-height: 1.1; font-weight: 800; letter-spacing: -0.02em">Hi Amir!</h1>
+        <p style="margin: 0; font-size: 14px; color: #64748B">Gigs on your train lines, sorted by walk time.</p>
+      </div>
+      <div style="display: flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: 999px; background: rgba(16,185,129,0.14); border: 1px solid rgba(16,185,129,0.35); color: #047857; font-size: 12px; font-weight: 700; white-space: nowrap">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#D97706" stroke="#D97706" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><polygon points="12 3 14.8 8.8 21 9.6 16.5 14 17.6 20.2 12 17.3 6.4 20.2 7.5 14 3 9.6 9.2 8.8"></polygon></svg>
+        98% VIP Crew
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 8px; overflow-x: auto; padding: 20px 20px 4px; scrollbar-width: none">
+    <sc-for list="{{lines}}" as="l" hint-placeholder-count="4">
+      <button onClick="{{l.pick}}" aria-pressed="{{l.pressed}}" style="flex: none; display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 16px; border-radius: 999px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; background: {{l.bg}}; color: {{l.fg}}; border: 1px solid {{l.bd}}">
+        <sc-if value="{{l.hasDot}}" hint-placeholder-val="{{ true }}">
+          <span style="width: 12px; height: 12px; border-radius: 999px; box-shadow: 0 0 0 2px rgba(255,255,255,0.85); background: {{l.dot}}"></span>
+        </sc-if>
+        {{l.label}}
+      </button>
+    </sc-for>
+    <button onClick="{{toggleWalk}}" aria-pressed="{{walkOnly}}" style="flex: none; display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 16px; border-radius: 999px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; background: {{walkBg}}; color: {{walkFg}}; border: 1px solid {{walkBd}}">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13" cy="4" r="1.6"></circle><path d="M9 21l3-7 3 3v5M7 12l3-4 4 1 2 4"></path></svg>
+      Walking ≤ 500m
+    </button>
+  </div>
+
+  <div style="padding: 20px 20px 0; display: flex; align-items: baseline; justify-content: space-between">
+    <h2 style="margin: 0; font-size: 17px; font-weight: 700">Near your lines</h2>
+    <span style="font-size: 12px; color: #64748B">Sorted by walk time</span>
+  </div>
+
+  <div style="padding: 12px 20px 0; display: flex; flex-direction: column; gap: 14px">
+
+    <a href="JobDetail.dc.html" style="display: flex; flex-direction: column; gap: 14px; padding: 18px; border-radius: 22px; background: #FFFFFF; border: 1px solid #E2E8F0; text-decoration: none; color: #0F172A">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+        <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4F46E5">Concert · Fri 16 Oct</span>
+        <span style="display: flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 999px; background: rgba(245,158,11,0.16); color: #B45309; font-size: 11px; font-weight: 700">
+          <span style="width: 6px; height: 6px; border-radius: 999px; background: #F59E0B"></span>
+          Filling fast · 4 slots left
+        </span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <div style="font-size: 19px; font-weight: 800; line-height: 1.25; letter-spacing: -0.01em">VIP Concert Usher – Axiata Arena (Bukit Jalil)</div>
+        <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: #475569">
+          LiveNation MY
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#6366F1" stroke="#6366F1" stroke-width="1" aria-label="Verified organizer" role="img"><path d="M12 2l2.4 1.8 3 .1.9 2.9 2.4 1.8-.9 2.9.9 2.9-2.4 1.8-.9 2.9-3 .1L12 22l-2.4-1.8-3-.1-.9-2.9-2.4-1.8.9-2.9-.9-2.9 2.4-1.8.9-2.9 3-.1z"></path><path d="M8.5 12l2.5 2.5 4.5-5" stroke="#FFFFFF" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <span style="color: #CBD5E1">•</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#D97706" aria-hidden="true"><polygon points="12 3 14.8 8.8 21 9.6 16.5 14 17.6 20.2 12 17.3 6.4 20.2 7.5 14 3 9.6 9.2 8.8"></polygon></svg>
+          4.9
+        </div>
+      </div>
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; padding: 14px; border-radius: 16px; background: #F3F4F8">
+        <div style="display: flex; flex-direction: column; gap: 2px">
+          <span style="font-size: 11px; color: #64748B; font-weight: 600">Base rate</span>
+          <span style="font-size: 30px; font-weight: 700; color: #059669; letter-spacing: -0.02em; line-height: 1">RM15.00<span style="font-size: 15px; color: #047857">/hr</span></span>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px; font-size: 12px">
+          <span style="font-weight: 700; color: #0F172A; font-variant-numeric: tabular-nums">RM150.00 total (10h)</span>
+          <span style="color: #64748B; font-variant-numeric: tabular-nums">OT RM22.50/hr (1.5×)</span>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 14px; background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3); color: #B45309; font-size: 13px; font-weight: 600">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="13" rx="3"></rect><path d="M5 10h14M9 20l-2 2M15 20l2 2M8.5 13.2h.01M15.5 13.2h.01M8 16l-1 4h10l-1-4"></path></svg>
+        350m walk from LRT Bukit Jalil
+        <span style="margin-left: auto; padding: 2px 8px; border-radius: 6px; background: #8A1C2B; color: #FFFFFF; font-size: 10px; font-weight: 700">SP</span>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px">
+        <span style="display: flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; background: #EEF0F6; color: #334155; font-size: 12px; font-weight: 600">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#047857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 3c-2 0-3 2-3 6s1 4 3 4v8"></path></svg>
+          Halal meals provided
+        </span>
+        <span style="display: flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; background: #EEF0F6; color: #334155; font-size: 12px; font-weight: 600">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path></svg>
+          Solat Jumaat rotation
+        </span>
+        <span style="display: flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; background: #EEF0F6; color: #334155; font-size: 12px; font-weight: 600">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"></path></svg>
+          Instant DuitNow
+        </span>
+      </div>
+    </a>
+
+    <a href="JobDetail.dc.html" style="display: flex; flex-direction: column; gap: 14px; padding: 18px; border-radius: 22px; background: #FFFFFF; border: 1px solid #E2E8F0; text-decoration: none; color: #0F172A">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+        <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4F46E5">Exhibition · F&amp;B</span>
+        <span style="font-size: 11px; font-weight: 600; color: #64748B">[Date]</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <div style="font-size: 19px; font-weight: 800; line-height: 1.25; letter-spacing: -0.01em">Food &amp; Beverage Ambassador – MITEC Hall 3</div>
+        <div style="font-size: 13px; color: #64748B">[Organizer] · <span style="font-weight: 700; color: #059669">RM[rate]/hr</span></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 14px; background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.35); color: #4338CA; font-size: 13px; font-weight: 600">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2l4 4M17 7l-9 9-3 1 1-3 9-9M14 4l6 6M9 13l2 2"></path></svg>
+          Typhoid badge required
+          <span style="margin-left: auto; display: flex; align-items: center; gap: 4px; color: #047857; font-size: 12px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+            You have it
+          </span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 14px; background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3); color: #B45309; font-size: 13px; font-weight: 600">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="13" rx="3"></rect><path d="M5 10h14M8.5 13.2h.01M15.5 13.2h.01M8 16l-1 4h10l-1-4"></path></svg>
+          MRT Kentonmen link (shuttle)
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <nav aria-label="Primary" style="margin: auto 16px 28px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; padding: 8px; border-radius: 28px; background: #FFFFFF; border: 1px solid #E6E8F0; box-shadow: 0 14px 34px rgba(15,23,42,0.12), 0 2px 6px rgba(15,23,42,0.06)">
+    <a href="Main.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 56px; border-radius: 20px; color: #4F46E5; text-decoration: none; font-size: 12px; font-weight: 800">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"></path></svg>
+      Gigs
+    </a>
+    <a href="ShiftPrep.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 56px; border-radius: 20px; color: #64748B; text-decoration: none; font-size: 12px; font-weight: 700">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M8 3v4M16 3v4M3 10h18"></path></svg>
+      My Shifts
+    </a>
+    <a href="Wallet.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 56px; border-radius: 20px; color: #64748B; text-decoration: none; font-size: 12px; font-weight: 700">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h13v2"></path><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M16 13.5h2"></path></svg>
+      Wallet
+    </a>
+    <a href="Profile.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 56px; border-radius: 20px; color: #64748B; text-decoration: none; font-size: 12px; font-weight: 700">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path></svg>
+      Profile
+    </a>
+  </nav>
+</div>
+</script>
+<script type="text/x-template" id="tpl-JobDetail">
+<div style="width: 393px; height: 1380px; box-sizing: border-box; background: #F3F4F8; color: #0F172A; font-family: 'Nunito', ui-rounded, system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+  <div style="padding: 56px 16px 0; display: flex; align-items: center; gap: 8px">
+    <a href="Main.dc.html" aria-label="Back to gigs" style="width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E2E8F0; color: #0F172A; display: flex; align-items: center; justify-content: center; box-sizing: border-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>
+    </a>
+    <span style="padding: 7px 12px; border-radius: 999px; background: rgba(99,102,241,0.16); color: #4338CA; font-size: 12px; font-weight: 700">Concert &amp; Live Entertainment</span>
+    <div style="margin-left: auto; display: flex; gap: 8px">
+      <button aria-label="Share gig" style="width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E2E8F0; color: #0F172A; display: flex; align-items: center; justify-content: center; cursor: pointer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"></path></svg>
+      </button>
+      <button onClick="{{toggleSave}}" aria-label="Bookmark gig" aria-pressed="{{savedAttr}}" style="width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E2E8F0; color: {{saveColor}}; display: flex; align-items: center; justify-content: center; cursor: pointer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="{{saveFill}}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <div style="padding: 22px 20px 0; display: flex; flex-direction: column; gap: 12px">
+    <h1 style="margin: 0; font-size: 26px; line-height: 1.2; font-weight: 800; letter-spacing: -0.02em">VIP Concert Usher – Axiata Arena</h1>
+    <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #475569">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#6366F1" stroke="#6366F1" stroke-width="1" role="img" aria-label="Verified organizer"><path d="M12 2l2.4 1.8 3 .1.9 2.9 2.4 1.8-.9 2.9.9 2.9-2.4 1.8-.9 2.9-3 .1L12 22l-2.4-1.8-3-.1-.9-2.9-2.4-1.8.9-2.9-.9-2.9 2.4-1.8.9-2.9 3-.1z"></path><path d="M8.5 12l2.5 2.5 4.5-5" stroke="#FFFFFF" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      LiveNation MY · Verified organizer
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E2E8F0; font-size: 14px; font-weight: 600">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M8 3v4M16 3v4M3 10h18"></path></svg>
+      Fri, 16 Oct · 10:00 AM – 8:00 PM
+      <span style="margin-left: auto; font-size: 12px; color: #64748B; font-weight: 500">10h</span>
+    </div>
+  </div>
+
+  <section aria-labelledby="pay-h" style="margin: 20px 20px 0; padding: 18px; border-radius: 22px; background: #FFFFFF; border: 1px solid #E2E8F0; display: flex; flex-direction: column; gap: 12px">
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <h2 id="pay-h" style="margin: 0; font-size: 15px; font-weight: 700">Pay breakdown</h2>
+      <span style="font-size: 11px; font-weight: 700; color: #047857; padding: 4px 8px; border-radius: 999px; background: rgba(16,185,129,0.14)">Transparent</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; gap: 12px; font-size: 14px">
+      <span style="color: #475569">Base rate (10h @ RM15/h)</span>
+      <span style="font-weight: 600; font-variant-numeric: tabular-nums">RM150.00</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; gap: 12px; font-size: 14px">
+      <span style="color: #475569">Meal allowance</span>
+      <span style="font-weight: 600; color: #047857">Covered · Halal buffet</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; gap: 12px; font-size: 14px">
+      <span style="color: #475569">Est. PERKESO SKSPS (1.25%)</span>
+      <span style="font-weight: 600; color: #DC2626; font-variant-numeric: tabular-nums">−RM1.88</span>
+    </div>
+    <div style="height: 1px; background: #E2E8F0"></div>
+    <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
+      <span style="font-size: 14px; font-weight: 700">Estimated net payout</span>
+      <span style="font-size: 28px; font-weight: 700; color: #059669; letter-spacing: -0.02em; font-variant-numeric: tabular-nums">RM148.12</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 12px; background: #F3F4F8; font-size: 12px; color: #475569">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"></path></svg>
+      Direct to DuitNow within 2 hours of clock-out
+    </div>
+  </section>
+
+  <section aria-labelledby="dress-h" style="padding: 24px 20px 0; display: flex; flex-direction: column; gap: 12px">
+    <h2 id="dress-h" style="margin: 0; font-size: 15px; font-weight: 700">Dress code</h2>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      <div style="border-radius: 20px; background: #ECFDF5; border: 1px solid rgba(16,185,129,0.45); overflow: hidden; display: flex; flex-direction: column">
+        <div style="height: 120px; background: #D1FAE5; display: flex; align-items: center; justify-content: center; gap: 4px; position: relative">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="#0B0F19" stroke="#CBD5E1" stroke-width="1.2" stroke-linejoin="round" aria-hidden="true"><path d="M8 3l-5 3 2 4 3-1v12h8V9l3 1 2-4-5-3a4 4 0 0 1-8 0z"></path></svg>
+          <svg width="34" height="52" viewBox="0 0 16 34" fill="#0B0F19" stroke="#CBD5E1" stroke-width="1" aria-hidden="true"><path d="M2 1h12l1 32H9.5L8 12l-1.5 21H1z"></path></svg>
+          <span style="position: absolute; top: 10px; left: 10px; width: 28px; height: 28px; border-radius: 999px; background: #10B981; color: #052E1E; display: flex; align-items: center; justify-content: center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+          </span>
+        </div>
+        <div style="padding: 12px; display: flex; flex-direction: column; gap: 6px">
+          <span style="font-size: 12px; font-weight: 800; color: #047857; letter-spacing: 0.06em; text-transform: uppercase">Wear</span>
+          <span style="font-size: 13px; line-height: 1.4; color: #334155">Plain black round-neck tee (no logos) + black formal slacks + black covered shoes</span>
+        </div>
+      </div>
+      <div style="border-radius: 20px; background: #FEF2F2; border: 1px solid rgba(248,113,113,0.45); overflow: hidden; display: flex; flex-direction: column">
+        <div style="height: 120px; background: #FEE2E2; display: flex; align-items: center; justify-content: center; gap: 6px; position: relative">
+          <svg width="46" height="46" viewBox="0 0 24 24" fill="#FECACA" stroke="#9F5A63" stroke-width="1.2" stroke-linejoin="round" aria-hidden="true"><path d="M8 3l-5 3 2 4 3-1v12h8V9l3 1 2-4-5-3a4 4 0 0 1-8 0z"></path><path d="M9.5 12l2.5 3 2.5-3" stroke="#F87171" stroke-width="1.4" fill="none"></path></svg>
+          <svg width="40" height="30" viewBox="0 0 30 22" fill="#FECACA" stroke="#9F5A63" stroke-width="1.2" stroke-linejoin="round" aria-hidden="true"><path d="M3 14c0-5 4-9 10-9h6c5 0 8 4 8 9v3H3z"></path><circle cx="12" cy="11" r="1"></circle><circle cx="17" cy="10" r="1"></circle><circle cx="21" cy="12" r="1"></circle></svg>
+          <span style="position: absolute; top: 10px; left: 10px; width: 28px; height: 28px; border-radius: 999px; background: #EF4444; color: #FFFFFF; display: flex; align-items: center; justify-content: center">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+          </span>
+        </div>
+        <div style="padding: 12px; display: flex; flex-direction: column; gap: 6px">
+          <span style="font-size: 12px; font-weight: 800; color: #DC2626; letter-spacing: 0.06em; text-transform: uppercase">Avoid</span>
+          <span style="font-size: 13px; line-height: 1.4; color: #334155">Graphic printed tees, ripped jeans, slippers or Crocs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="call-h" style="padding: 24px 20px 0; display: flex; flex-direction: column; gap: 12px">
+    <h2 id="call-h" style="margin: 0; font-size: 15px; font-weight: 700">Shift call sheet</h2>
+    <div style="border-radius: 22px; background: #FFFFFF; border: 1px solid #E2E8F0; display: flex; flex-direction: column">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-bottom: 1px solid #E2E8F0">
+        <span style="width: 40px; height: 40px; border-radius: 12px; background: rgba(245,158,11,0.14); color: #D97706; display: flex; align-items: center; justify-content: center; flex: none">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4h11v17M3 21h18M13 12v.5"></path></svg>
+        </span>
+        <div style="display: flex; flex-direction: column; gap: 2px">
+          <span style="font-size: 12px; color: #64748B">Assigned gate</span>
+          <span style="font-size: 15px; font-weight: 700">Gate C – Staff Entrance</span>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-bottom: 1px solid #E2E8F0">
+        <span style="width: 40px; height: 40px; border-radius: 999px; background: #EDE9FE; color: #5B21B6; display: flex; align-items: center; justify-content: center; flex: none; font-weight: 700; font-size: 14px">KS</span>
+        <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
+          <span style="font-size: 12px; color: #64748B">On-site supervisor</span>
+          <span style="font-size: 15px; font-weight: 700">Kak Sarah (Head of Ushers)</span>
+        </div>
+        <button aria-label="Call Kak Sarah" style="margin-left: auto; width: 44px; height: 44px; border-radius: 999px; background: #EEF0F6; border: none; color: #4F46E5; display: flex; align-items: center; justify-content: center; cursor: pointer; flex: none">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg>
+        </button>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px">
+        <span style="width: 40px; height: 40px; border-radius: 12px; background: rgba(99,102,241,0.16); color: #4F46E5; display: flex; align-items: center; justify-content: center; flex: none">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+        </span>
+        <div style="display: flex; flex-direction: column; gap: 2px">
+          <span style="font-size: 12px; color: #64748B">Call time</span>
+          <span style="font-size: 15px; font-weight: 700">9:30 AM · 30 min before doors</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="margin-top: auto; padding: 16px 20px 34px; background: #FFFFFF; border-top: 1px solid #E2E8F0">
+    <a href="ShiftPrep.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 60px; border-radius: 18px; background: #4F46E5; color: #FFFFFF; text-decoration: none; box-shadow: 0 10px 30px rgba(79,70,229,0.35)">
+      <span style="font-size: 16px; font-weight: 800">Take 3-Question Pre-Shift Quiz to Book</span>
+      <span style="font-size: 12px; font-weight: 600; color: #E0E7FF">Unlocks instant confirmation</span>
+    </a>
+  </div>
+</div>
+</script>
+<script type="text/x-template" id="tpl-ShiftPrep">
+<div style="width: 393px; height: 1040px; box-sizing: border-box; background: #F3F4F8; color: #0F172A; font-family: 'Nunito', ui-rounded, system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+  <div style="padding: 56px 20px 0; display: flex; align-items: center; justify-content: space-between; gap: 12px">
+    <div style="display: flex; flex-direction: column; gap: 4px">
+      <span style="font-size: 12px; font-weight: 700; color: #64748B; letter-spacing: 0.08em; text-transform: uppercase">My Shifts</span>
+      <h1 style="margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.02em">Shift Preparation Hub</h1>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: flex-end; padding: 8px 12px; border-radius: 14px; background: #FFFFFF; border: 1px solid #E2E8F0">
+      <span style="font-size: 11px; color: #64748B; font-weight: 600">Shift starts in</span>
+      <span style="font-size: 22px; font-weight: 700; color: #4F46E5; font-variant-numeric: tabular-nums; line-height: 1.1">1h 42m</span>
+    </div>
+  </div>
+
+  <div style="margin: 16px 20px 0; padding: 12px 14px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E2E8F0; display: flex; align-items: center; gap: 12px">
+    <span style="width: 40px; height: 40px; border-radius: 12px; background: rgba(99,102,241,0.18); color: #4F46E5; display: flex; align-items: center; justify-content: center; flex: none">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"></path></svg>
+    </span>
+    <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
+      <span style="font-size: 14px; font-weight: 700">VIP Concert Usher · Axiata Arena</span>
+      <span style="font-size: 12px; color: #64748B">Fri 16 Oct · 10:00 AM · Gate C</span>
+    </div>
+  </div>
+
+  <ol style="list-style: none; margin: 20px 20px 0; padding: 0; display: flex; flex-direction: column; gap: 0">
+    <li style="display: flex; gap: 14px">
+      <div style="display: flex; flex-direction: column; align-items: center; flex: none">
+        <span style="width: 28px; height: 28px; border-radius: 999px; background: #10B981; color: #052E1E; display: flex; align-items: center; justify-content: center">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+        </span>
+        <span style="width: 2px; flex: 1; min-height: 22px; background: #10B981; opacity: 0.6"></span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 2px; padding-bottom: 18px">
+        <span style="font-size: 11px; font-weight: 800; color: #047857; letter-spacing: 0.08em">T−24H · SHIFT CONFIRMED</span>
+        <span style="font-size: 14px; color: #475569">Confirmed yesterday at 7:00 AM</span>
+      </div>
+    </li>
+    <li style="display: flex; gap: 14px">
+      <div style="display: flex; flex-direction: column; align-items: center; flex: none">
+        <span style="width: 28px; height: 28px; border-radius: 999px; background: #F3F4F8; border: 3px solid #6366F1; box-sizing: border-box; display: flex; align-items: center; justify-content: center">
+          <span style="width: 10px; height: 10px; border-radius: 999px; background: #818CF8"></span>
+        </span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: 11px; font-weight: 800; color: #4F46E5; letter-spacing: 0.08em">T−2H · DEPARTURE TRACKING</span>
+        <span style="font-size: 14px; color: #475569">Now — let your supervisor know you're moving</span>
+      </div>
+    </li>
+  </ol>
+
+  <section style="margin: 14px 20px 0; padding: 18px; border-radius: 24px; background: #EEF0FF; border: 1px solid #4F46E5; display: flex; flex-direction: column; gap: 14px">
+    <div style="display: flex; align-items: center; gap: 12px">
+      <span style="width: 48px; height: 48px; border-radius: 16px; background: #4F46E5; color: #FFFFFF; display: flex; align-items: center; justify-content: center; flex: none">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="13" rx="3"></rect><path d="M5 10h14M8.5 13.2h.01M15.5 13.2h.01M8 16l-1 4h10l-1-4"></path></svg>
+      </span>
+      <h2 style="margin: 0; font-size: 20px; line-height: 1.25; font-weight: 800">Time to head out to Axiata Arena!</h2>
+    </div>
+
+    <sc-if value="{{notOnWay}}" hint-placeholder-val="{{ true }}">
+      <button onClick="{{markOnWay}}" aria-label="Slide to mark On My Way (On LRT)" style="position: relative; display: flex; align-items: center; height: 60px; padding: 6px; border-radius: 999px; background: #F3F4F8; border: 1px solid #C7D2FE; cursor: pointer; width: 100%; box-sizing: border-box">
+        <span style="width: 48px; height: 48px; border-radius: 999px; background: #6366F1; color: #FFFFFF; display: flex; align-items: center; justify-content: center; flex: none">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </span>
+        <span style="flex: 1; text-align: center; font-size: 14px; font-weight: 700; color: #4338CA; padding-right: 48px">Slide to mark "On My Way (On LRT)"</span>
+      </button>
+    </sc-if>
+    <sc-if value="{{onWay}}" hint-placeholder-val="{{ false }}">
+      <a href="ActiveShift.dc.html" style="display: flex; align-items: center; gap: 10px; height: 60px; padding: 0 18px; border-radius: 999px; background: #10B981; color: #052E1E; text-decoration: none; font-size: 14px; font-weight: 800; box-sizing: border-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+        On my way · Kak Sarah notified
+        <span style="margin-left: auto; font-size: 12px; font-weight: 700">Arrived?</span>
+      </a>
+    </sc-if>
+
+    <button style="display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 16px; border-radius: 16px; background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.45); color: #B45309; font-size: 14px; font-weight: 700; cursor: pointer; text-align: left">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"></path><path d="M12 8v4M12 15.5v.5"></path></svg>
+      <span style="display: flex; flex-direction: column; gap: 1px">
+        Tap if LRT/MRT delayed
+        <span style="font-size: 12px; font-weight: 600; color: #92400E">Auto-waives lateness penalty</span>
+      </span>
+    </button>
+  </section>
+
+  <section aria-labelledby="route-h" style="margin: 14px 20px 0; padding: 16px; border-radius: 22px; background: #FFFFFF; border: 1px solid #E2E8F0; display: flex; flex-direction: column; gap: 14px">
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <h2 id="route-h" style="margin: 0; font-size: 15px; font-weight: 700">Suggested route</h2>
+      <span style="font-size: 15px; font-weight: 700; color: #B45309">Est. 38 mins</span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 0">
+      <div style="display: flex; align-items: center; gap: 12px">
+        <span style="width: 12px; height: 12px; border-radius: 999px; border: 3px solid #D50032; background: #F3F4F8; flex: none; margin-left: 4px"></span>
+        <span style="font-size: 13px; color: #475569">Board <strong style="color: #0F172A">LRT Kelana Jaya Line</strong></span>
+      </div>
+      <span style="width: 4px; height: 22px; background: #D50032; margin-left: 10px"></span>
+      <div style="display: flex; align-items: center; gap: 12px">
+        <span style="width: 20px; height: 20px; border-radius: 6px; background: #0F172A; color: #F3F4F8; display: flex; align-items: center; justify-content: center; flex: none">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4l-4 4 4 4M3 8h14M17 12l4 4-4 4M21 16H7"></path></svg>
+        </span>
+        <span style="font-size: 13px; color: #475569">Switch at <strong style="color: #0F172A">Masjid Jamek</strong></span>
+      </div>
+      <span style="width: 4px; height: 22px; background: #8A1C2B; margin-left: 10px; box-shadow: 0 0 0 1px #B4475A"></span>
+      <div style="display: flex; align-items: center; gap: 12px">
+        <span style="width: 12px; height: 12px; border-radius: 999px; border: 3px solid #B4475A; background: #F3F4F8; flex: none; margin-left: 4px"></span>
+        <span style="font-size: 13px; color: #475569"><strong style="color: #0F172A">Sri Petaling Line</strong> to Bukit Jalil · 350m walk</span>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="late-h" style="padding: 18px 20px 0; display: flex; flex-direction: column; gap: 10px">
+    <h2 id="late-h" style="margin: 0; font-size: 13px; font-weight: 700; color: #64748B">Running late? Tell them early</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px">
+      <sc-for list="{{lateOptions}}" as="o" hint-placeholder-count="3">
+        <button onClick="{{o.pick}}" aria-pressed="{{o.pressed}}" style="min-height: 44px; padding: 0 16px; border-radius: 999px; font-size: 13px; font-weight: 700; cursor: pointer; background: {{o.bg}}; color: {{o.fg}}; border: 1px solid {{o.bd}}">{{o.label}}</button>
+      </sc-for>
+    </div>
+  </section>
+
+  <nav aria-label="Primary" style="margin: auto 16px 28px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; padding: 8px; border-radius: 28px; background: #FFFFFF; border: 1px solid #E6E8F0; box-shadow: 0 14px 34px rgba(15,23,42,0.12), 0 2px 6px rgba(15,23,42,0.06)">
+    <a href="Main.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 56px; border-radius: 20px; color: #64748B; text-decoration: none; font-size: 12px; font-weight: 700">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"></path></svg>
+      Gigs
+    </a>
+    <a href="ShiftPrep.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 56px; border-radius: 20px; color: #4F46E5; text-decoration: none; font-size: 12px; font-weight: 800">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M8 3v4M16 3v4M3 10h18"></path></svg>
+      My Shifts
+    </a>
+    <a href="Wallet.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 56px; border-radius: 20px; color: #64748B; text-decoration: none; font-size: 12px; font-weight: 700">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h13v2"></path><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M16 13.5h2"></path></svg>
+      Wallet
+    </a>
+    <a href="Profile.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 56px; border-radius: 20px; color: #64748B; text-decoration: none; font-size: 12px; font-weight: 700">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path></svg>
+      Profile
+    </a>
+  </nav>
+</div>
+</script>
+<script type="text/x-template" id="tpl-ActiveShift">
+<div style="width: 393px; height: 1120px; box-sizing: border-box; background: #F3F4F8; color: #0F172A; font-family: 'Nunito', ui-rounded, system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+  <div style="padding: 52px 16px 0">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 44px; border-radius: 14px; background: #10B981; color: #04241A; font-size: 13px; font-weight: 800; letter-spacing: 0.14em; box-shadow: 0 0 0 4px rgba(16,185,129,0.18), 0 8px 28px rgba(16,185,129,0.35)">
+      <span style="width: 9px; height: 9px; border-radius: 999px; background: #04241A; box-shadow: 0 0 0 4px rgba(4,36,26,0.2)"></span>
+      ACTIVE SHIFT MODE
+    </div>
+  </div>
+
+  <div style="padding: 16px 20px 0; display: flex; align-items: center; justify-content: space-between; gap: 12px">
+    <div style="display: flex; flex-direction: column; gap: 2px">
+      <h1 style="margin: 0; font-size: 20px; font-weight: 800; letter-spacing: -0.01em">VIP Concert Usher</h1>
+      <span style="font-size: 13px; color: #64748B">Axiata Arena · Gate C · Kak Sarah</span>
+    </div>
+    <a href="ShiftPrep.dc.html" style="min-height: 44px; display: flex; align-items: center; padding: 0 14px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E2E8F0; color: #475569; text-decoration: none; font-size: 12px; font-weight: 700; box-sizing: border-box">Shift info</a>
+  </div>
+
+  <section aria-labelledby="checkin-h" style="margin: 16px 20px 0; padding: 18px; border-radius: 24px; background: #FFFFFF; border: 1px solid #E2E8F0; display: flex; flex-direction: column; align-items: center; gap: 16px">
+    <h2 id="checkin-h" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); margin: 0">Check-in</h2>
+    <div style="align-self: stretch; display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 14px; background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.4); color: #047857; font-size: 13px; font-weight: 700">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>
+      <span style="display: flex; flex-direction: column; gap: 1px">
+        GPS verified
+        <span style="font-size: 12px; font-weight: 600; color: #065F46">Inside 200m venue radius · Gate C</span>
+      </span>
+    </div>
+
+    <div style="position: relative; width: 252px; height: 252px; display: flex; align-items: center; justify-content: center">
+      <svg width="252" height="252" viewBox="0 0 252 252" style="position: absolute; inset: 0; transform: rotate(-90deg)" aria-hidden="true">
+        <circle cx="126" cy="126" r="120" fill="none" stroke="#EEF0F6" stroke-width="8"></circle>
+        <circle cx="126" cy="126" r="120" fill="none" stroke="#10B981" stroke-width="8" stroke-linecap="round" stroke-dasharray="753.98" stroke-dashoffset="{{ringOffset}}" style="transition: stroke-dashoffset 0.9s linear"></circle>
+      </svg>
+      <div role="img" aria-label="Rotating check-in QR code" style="width: 196px; height: 196px; box-sizing: border-box; padding: 14px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E2E8F0; display: grid; grid-template-columns: repeat(21, minmax(0, 1fr)); grid-auto-rows: 8px">
+        <sc-for list="{{cells}}" as="c" hint-placeholder-count="441">
+          <span style="display: block; background: {{c.bg}}"></span>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 4px">
+      <span style="font-size: 15px; font-weight: 700; color: #047857; font-variant-numeric: tabular-nums">Refreshes in 00:{{secs}}s</span>
+      <span style="font-size: 13px; color: #64748B">Supervisor will scan</span>
+    </div>
+
+    <button style="display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border-radius: 999px; background: transparent; border: 1px dashed #CBD5E1; color: #4338CA; font-size: 13px; font-weight: 600; cursor: pointer">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M4 12h16"></path></svg>
+      Offline basement mode? Scan Venue Master QR
+    </button>
+  </section>
+
+  <div style="margin: 14px 20px 0; padding: 16px; border-radius: 22px; background: #FFFFFF; border: 1px solid #E2E8F0; display: flex; flex-direction: column; gap: 10px">
+    <div style="display: flex; align-items: baseline; justify-content: space-between">
+      <span style="font-size: 13px; color: #64748B; font-weight: 600">Shift countdown</span>
+      <span style="font-size: 12px; color: #64748B">ends 8:00 PM</span>
+    </div>
+    <span style="font-size: 32px; font-weight: 700; letter-spacing: -0.02em; line-height: 1; font-variant-numeric: tabular-nums">07h 24m <span style="font-size: 15px; color: #64748B; font-weight: 600">remaining</span></span>
+    <div style="height: 8px; border-radius: 999px; background: #EEF0F6; overflow: hidden">
+      <div style="width: 26%; height: 100%; border-radius: 999px; background: #10B981"></div>
+    </div>
+  </div>
+
+  <div style="margin: 10px 20px 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+    <div style="padding: 14px; border-radius: 20px; background: #FFFFFF; border: 1px solid #E2E8F0; display: flex; flex-direction: column; gap: 8px">
+      <span style="width: 36px; height: 36px; border-radius: 12px; background: rgba(99,102,241,0.18); color: #4F46E5; display: flex; align-items: center; justify-content: center">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path></svg>
+      </span>
+      <span style="font-size: 12px; color: #64748B; font-weight: 600">Solat Jumaat rotation</span>
+      <span style="font-size: 15px; font-weight: 800">Slot B</span>
+      <span style="font-size: 13px; font-weight: 600; color: #4338CA">1:15 – 2:00 PM</span>
+    </div>
+    <div style="padding: 14px; border-radius: 20px; background: #FFFFFF; border: 1px solid #E2E8F0; display: flex; flex-direction: column; gap: 8px">
+      <span style="width: 36px; height: 36px; border-radius: 12px; background: rgba(16,185,129,0.16); color: #047857; display: flex; align-items: center; justify-content: center">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 3c-2 0-3 2-3 6s1 4 3 4v8"></path></svg>
+      </span>
+      <span style="font-size: 12px; color: #64748B; font-weight: 600">Next break</span>
+      <span style="font-size: 15px; font-weight: 800">Halal meal</span>
+      <span style="font-size: 13px; font-weight: 600; color: #065F46">2:15 PM · after Slot B</span>
+    </div>
+  </div>
+
+  <div style="margin-top: auto; padding: 16px 20px 34px; display: flex; flex-direction: column; gap: 10px">
+    <button style="display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 64px; border-radius: 20px; background: #DC2626; border: none; color: #FFFFFF; cursor: pointer; box-shadow: 0 10px 28px rgba(220,38,38,0.35)">
+      <span style="font-size: 13px; font-weight: 900; letter-spacing: 0.12em; padding: 6px 10px; border-radius: 10px; background: #FFFFFF; color: #B91C1C">SOS</span>
+      <span style="display: flex; flex-direction: column; align-items: flex-start; gap: 1px">
+        <span style="font-size: 15px; font-weight: 800">Safety hazard / Emergency</span>
+        <span style="font-size: 12px; font-weight: 600; color: #FEE2E2">Hotline + live location to supervisor</span>
+      </span>
+    </button>
+    <a href="ClockOut.dc.html" style="display: flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 16px; border: 1px solid #E2E8F0; color: #475569; text-decoration: none; font-size: 14px; font-weight: 700">End shift &amp; clock out</a>
+  </div>
+</div>
+</script>
+<script type="text/x-template" id="tpl-ClockOut">
+<div style="width: 393px; height: 1120px; box-sizing: border-box; background: #F3F4F8; color: #0F172A; font-family: 'Nunito', ui-rounded, system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+  <div style="padding: 56px 16px 0; display: flex; justify-content: flex-end">
+    <a href="Main.dc.html" aria-label="Close" style="width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E2E8F0; color: #0F172A; display: flex; align-items: center; justify-content: center; box-sizing: border-box">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    </a>
+  </div>
+
+  <div style="padding: 0 20px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center">
+    <div style="width: 84px; height: 84px; border-radius: 999px; background: rgba(16,185,129,0.16); display: flex; align-items: center; justify-content: center">
+      <span style="width: 60px; height: 60px; border-radius: 999px; background: #10B981; color: #04241A; display: flex; align-items: center; justify-content: center">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+      </span>
+    </div>
+    <h1 style="margin: 0; font-size: 26px; line-height: 1.2; font-weight: 800; letter-spacing: -0.02em">Shift completed!<br>Great job, Amir</h1>
+    <div style="display: flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; border-radius: 999px; border: 2px solid #6366F1; color: #4338CA">
+      <span style="width: 30px; height: 30px; border-radius: 999px; background: #EDE9FE; color: #5B21B6; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px">KS</span>
+      <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase">Approved by Kak Sarah · 08:35 PM</span>
+    </div>
+  </div>
+
+  <section aria-labelledby="ot-h" style="margin: 22px 20px 0; padding: 18px; border-radius: 22px; background: #FFFFFF; border: 1px solid #E2E8F0; display: flex; flex-direction: column; gap: 14px">
+    <h2 id="ot-h" style="margin: 0; font-size: 15px; font-weight: 700">Overtime review</h2>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      <div style="padding: 12px; border-radius: 14px; background: #F3F4F8; display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: 11px; color: #64748B; font-weight: 600">Scheduled end</span>
+        <span style="font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums">08:00 PM</span>
+      </div>
+      <div style="padding: 12px; border-radius: 14px; background: #F3F4F8; display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: 11px; color: #64748B; font-weight: 600">Actual clock-out</span>
+        <span style="font-size: 20px; font-weight: 700; color: #B45309; font-variant-numeric: tabular-nums">08:35 PM</span>
+      </div>
+    </div>
+    <div style="display: flex; height: 10px; border-radius: 999px; overflow: hidden; background: #EEF0F6">
+      <div style="width: 85%; background: #CBD5E1"></div>
+      <div style="width: 15%; background: #F59E0B"></div>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+      <span style="font-size: 13px; color: #475569; line-height: 1.4">35 mins approved @ 1.5×<br><span style="color: #64748B">RM22.50/hr</span></span>
+      <span style="padding: 8px 12px; border-radius: 12px; background: rgba(16,185,129,0.14); font-size: 16px; font-weight: 700; color: #059669; white-space: nowrap">+RM13.12 OT</span>
+    </div>
+  </section>
+
+  <section aria-labelledby="ledger-h" style="margin: 12px 20px 0; padding: 18px; border-radius: 22px; background: #FFFFFF; border: 1px solid #E2E8F0; display: flex; flex-direction: column; gap: 12px">
+    <h2 id="ledger-h" style="margin: 0; font-size: 15px; font-weight: 700">Earnings ledger</h2>
+    <div style="display: flex; justify-content: space-between; gap: 12px; font-size: 14px">
+      <span style="color: #475569">Gross (base RM150.00 + OT RM13.12)</span>
+      <span style="font-weight: 600; font-variant-numeric: tabular-nums">RM163.12</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; gap: 12px; font-size: 14px">
+      <span style="color: #475569">PERKESO SKSPS 1.25% (Act 872)</span>
+      <span style="font-weight: 600; color: #DC2626; font-variant-numeric: tabular-nums">−RM2.04</span>
+    </div>
+    <div style="height: 1px; background: #E2E8F0"></div>
+    <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
+      <span style="font-size: 14px; font-weight: 700">Net pay ready</span>
+      <span style="font-size: 34px; font-weight: 700; color: #059669; letter-spacing: -0.02em; font-variant-numeric: tabular-nums">RM161.08</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 14px; background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.35); color: #4338CA; font-size: 12px; font-weight: 600">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"></path><path d="M8.5 12l2.5 2.5 4.5-5"></path></svg>
+      <span style="display: flex; flex-direction: column; gap: 1px">
+        Act 872 protected
+        <span style="font-weight: 500; color: #4F46E5">SOCSO voucher #SKSPS-2026-8891 ready</span>
+      </span>
+    </div>
+  </section>
+
+  <div style="margin-top: auto; padding: 16px 20px 34px">
+    <a href="Wallet.dc.html" style="display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 60px; border-radius: 18px; background: #10B981; color: #04241A; text-decoration: none; box-shadow: 0 10px 30px rgba(16,185,129,0.3)">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"></path></svg>
+      <span style="display: flex; flex-direction: column; align-items: flex-start">
+        <span style="font-size: 16px; font-weight: 800">Deposit now via DuitNow</span>
+        <span style="font-size: 12px; font-weight: 700; color: #064E3B">Instant · RM0 fee</span>
+      </span>
+    </a>
+  </div>
+</div>
+</script>
+<script type="text/x-template" id="tpl-Wallet">
+<div style="width: 393px; height: 1080px; box-sizing: border-box; background: #F3F4F8; color: #0F172A; font-family: 'Nunito', ui-rounded, system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+  <div style="padding: 56px 20px 0; display: flex; align-items: center; justify-content: space-between">
+    <h1 style="margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.02em">Wallet</h1>
+    <span style="display: flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E2E8F0; font-size: 12px; font-weight: 700; color: #475569">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"></path></svg>
+      DuitNow
+    </span>
+  </div>
+
+  <section aria-label="Balance" style="margin: 18px 20px 0; padding: 20px; border-radius: 26px; background: #4F46E5; color: #FFFFFF; box-shadow: 0 14px 34px rgba(79,70,229,0.3); display: flex; flex-direction: column; gap: 16px; position: relative; overflow: hidden">
+    <span aria-hidden="true" style="position: absolute; right: -40px; top: -40px; width: 160px; height: 160px; border-radius: 999px; border: 24px solid rgba(255,255,255,0.14)"></span>
+    <div style="display: flex; flex-direction: column; gap: 4px">
+      <span style="font-size: 13px; color: #E0E7FF; font-weight: 600">Available balance</span>
+      <span style="font-size: 44px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums">RM342.50</span>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; border-radius: 14px; background: rgba(15,23,42,0.55)">
+      <span style="font-size: 12px; color: #E0E7FF">Pending escrow</span>
+      <span style="font-size: 12px; font-weight: 700; color: #A7F3D0">RM0.00 · All shifts cleared</span>
+    </div>
+  </section>
+
+  <section aria-labelledby="dest-h" style="padding: 20px 20px 0; display: flex; flex-direction: column; gap: 10px">
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <h2 id="dest-h" style="margin: 0; font-size: 15px; font-weight: 700">Send to</h2>
+      <a href="#" style="font-size: 13px; font-weight: 700; text-decoration: none; min-height: 44px; display: flex; align-items: center">Change</a>
+    </div>
+    <div style="display: flex; align-items: center; gap: 12px; padding: 14px; border-radius: 20px; background: #FFFFFF; border: 1px solid #E2E8F0">
+      <span style="width: 44px; height: 44px; border-radius: 14px; background: #FFC72C; color: #1F1A0A; display: flex; align-items: center; justify-content: center; flex: none">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-6 9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 21h18"></path></svg>
+      </span>
+      <div style="display: flex; flex-direction: column; gap: 3px; min-width: 0">
+        <span style="font-size: 14px; font-weight: 700">Maybank •••• 4012</span>
+        <span style="font-size: 12px; color: #64748B">via DuitNow Instant</span>
+        <span style="display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; color: #475569; letter-spacing: 0.03em">
+          AMIR BIN ZULKIFLI
+          <span style="display: flex; align-items: center; gap: 3px; color: #047857">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+            e-KYC verified
+          </span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <div style="padding: 14px 20px 0">
+    <sc-if value="{{notSent}}" hint-placeholder-val="{{ true }}">
+      <button onClick="{{withdraw}}" style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 62px; border-radius: 18px; background: #4F46E5; border: none; color: #FFFFFF; cursor: pointer; box-shadow: 0 10px 30px rgba(79,70,229,0.35)">
+        <span style="font-size: 16px; font-weight: 800">Withdraw RM342.50 to Maybank</span>
+        <span style="font-size: 12px; font-weight: 600; color: #E0E7FF">Estimated arrival &lt; 15 mins</span>
+      </button>
+    </sc-if>
+    <sc-if value="{{sent}}" hint-placeholder-val="{{ false }}">
+      <div role="status" style="display: flex; align-items: center; gap: 12px; min-height: 62px; padding: 0 16px; border-radius: 18px; background: rgba(16,185,129,0.14); border: 1px solid rgba(16,185,129,0.45); color: #047857; box-sizing: border-box">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+        <span style="display: flex; flex-direction: column; gap: 1px">
+          <span style="font-size: 15px; font-weight: 800">RM342.50 on its way</span>
+          <span style="font-size: 12px; font-weight: 600; color: #065F46">Maybank •••• 4012 · arriving in under 15 mins</span>
+        </span>
+      </div>
+    </sc-if>
+  </div>
+
+  <div style="margin: 14px 20px 0; padding: 14px 16px; border-radius: 20px; background: #FFFFFF; border: 1px solid #E2E8F0; display: flex; align-items: center; gap: 12px">
+    <span style="width: 40px; height: 40px; border-radius: 12px; background: rgba(16,185,129,0.16); color: #047857; display: flex; align-items: center; justify-content: center; flex: none">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"></path></svg>
+    </span>
+    <div style="display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0">
+      <label id="isaraan-l" style="font-size: 14px; font-weight: 700">Voluntary EPF i-Saraan</label>
+      <span style="font-size: 12px; color: #64748B">Auto-save 5% of each payout to retirement</span>
+    </div>
+    <button role="switch" aria-labelledby="isaraan-l" aria-checked="{{saveAttr}}" onClick="{{toggleSave}}" style="flex: none; width: 52px; height: 32px; border-radius: 999px; border: none; padding: 3px; cursor: pointer; display: flex; justify-content: {{knobJustify}}; background: {{trackBg}}">
+      <span style="width: 26px; height: 26px; border-radius: 999px; background: #FFFFFF; box-shadow: 0 1px 3px rgba(0,0,0,0.3)"></span>
+    </button>
+  </div>
+
+  <section aria-labelledby="hist-h" style="padding: 22px 20px 0; display: flex; flex-direction: column; gap: 10px">
+    <h2 id="hist-h" style="margin: 0; font-size: 15px; font-weight: 700">Recent payouts</h2>
+    <ul style="list-style: none; margin: 0; padding: 0; border-radius: 20px; background: #FFFFFF; border: 1px solid #E2E8F0; overflow: hidden">
+      <li style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-bottom: 1px solid #E2E8F0">
+        <span style="width: 40px; height: 40px; border-radius: 12px; background: rgba(99,102,241,0.18); color: #4F46E5; display: flex; align-items: center; justify-content: center; flex: none">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"></path></svg>
+        </span>
+        <div style="display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0">
+          <span style="font-size: 14px; font-weight: 700">Axiata Arena Usher</span>
+          <span style="font-size: 11px; color: #64748B">LiveNation · Ref DN-99382103</span>
+        </div>
+        <span style="font-size: 15px; font-weight: 700; color: #059669; font-variant-numeric: tabular-nums">+RM161.08</span>
+      </li>
+      <li style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-bottom: 1px solid #E2E8F0">
+        <span style="width: 40px; height: 40px; border-radius: 12px; background: rgba(245,158,11,0.16); color: #D97706; display: flex; align-items: center; justify-content: center; flex: none">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c-4 0-7-2.7-7-6.5 0-3 2-5 3.5-6.5.5 2 1.5 3 2.5 3 0-3 1-6 4-8 0 3 2 4.5 3 6.5s1 3 1 5c0 3.8-3 6.5-7 6.5z"></path></svg>
+        </span>
+        <div style="display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0">
+          <span style="font-size: 14px; font-weight: 700">5-shift punctuality streak</span>
+          <span style="font-size: 11px; color: #64748B">Cash bonus</span>
+        </div>
+        <span style="font-size: 15px; font-weight: 700; color: #059669; font-variant-numeric: tabular-nums">+RM20.00</span>
+      </li>
+      <li style="display: flex; align-items: center; gap: 12px; padding: 14px 16px">
+        <span style="width: 40px; height: 40px; border-radius: 12px; background: rgba(16,185,129,0.16); color: #047857; display: flex; align-items: center; justify-content: center; flex: none">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+        </span>
+        <div style="display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0">
+          <span style="font-size: 14px; font-weight: 700">Standby retainer</span>
+          <span style="font-size: 11px; color: #64748B">Sunway Pyramid activation</span>
+        </div>
+        <span style="font-size: 15px; font-weight: 700; color: #059669; font-variant-numeric: tabular-nums">+RM30.00</span>
+      </li>
+    </ul>
+  </section>
+
+  <nav aria-label="Primary" style="margin: auto 16px 28px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; padding: 8px; border-radius: 28px; background: #FFFFFF; border: 1px solid #E6E8F0; box-shadow: 0 14px 34px rgba(15,23,42,0.12), 0 2px 6px rgba(15,23,42,0.06)">
+    <a href="Main.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 56px; border-radius: 20px; color: #64748B; text-decoration: none; font-size: 12px; font-weight: 700">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"></path></svg>
+      Gigs
+    </a>
+    <a href="ShiftPrep.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 56px; border-radius: 20px; color: #64748B; text-decoration: none; font-size: 12px; font-weight: 700">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M8 3v4M16 3v4M3 10h18"></path></svg>
+      My Shifts
+    </a>
+    <a href="Wallet.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 56px; border-radius: 20px; color: #4F46E5; text-decoration: none; font-size: 12px; font-weight: 800">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h13v2"></path><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M16 13.5h2"></path></svg>
+      Wallet
+    </a>
+    <a href="Profile.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 56px; border-radius: 20px; color: #64748B; text-decoration: none; font-size: 12px; font-weight: 700">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path></svg>
+      Profile
+    </a>
+  </nav>
+</div>
+</script>
+<script type="text/x-template" id="tpl-Profile">
+<div style="width: 393px; height: 1100px; box-sizing: border-box; background: #F3F4F8; color: #0F172A; font-family: 'Nunito', ui-rounded, system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+  <div style="padding: 56px 20px 0; display: flex; align-items: center; gap: 14px">
+    <span style="width: 64px; height: 64px; border-radius: 999px; background: #E0E7FF; border: 3px solid #6366F1; box-sizing: border-box; color: #3730A3; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; flex: none">AZ</span>
+    <div style="display: flex; flex-direction: column; gap: 3px; min-width: 0">
+      <h1 style="margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.01em">Amir Zulkifli</h1>
+      <span style="font-size: 13px; color: #64748B">Sunway University · Student</span>
+    </div>
+    <button aria-label="Edit profile" style="margin-left: auto; width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E2E8F0; color: #475569; display: flex; align-items: center; justify-content: center; cursor: pointer; flex: none">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"></path><path d="M14 6l4 4"></path></svg>
+    </button>
+  </div>
+
+  <section aria-labelledby="rel-h" style="margin: 20px 20px 0; padding: 18px; border-radius: 24px; background: #FFFFFF; border: 1px solid #E2E8F0; display: flex; flex-direction: column; gap: 16px">
+    <h2 id="rel-h" style="margin: 0; font-size: 15px; font-weight: 700">Reliability</h2>
+    <div style="display: flex; align-items: center; gap: 18px">
+      <div style="position: relative; width: 156px; height: 156px; flex: none">
+        <svg width="156" height="156" viewBox="0 0 156 156" style="transform: rotate(-90deg)" role="img" aria-label="Reliability score 98 percent">
+          <circle cx="78" cy="78" r="70" fill="none" stroke="#EEF0F6" stroke-width="12"></circle>
+          <circle cx="78" cy="78" r="70" fill="none" stroke="#10B981" stroke-width="12" stroke-linecap="round" stroke-dasharray="439.82" stroke-dashoffset="8.80"></circle>
+        </svg>
+        <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center">
+          <span style="font-size: 40px; font-weight: 700; letter-spacing: -0.03em; line-height: 1">98%</span>
+          <span style="font-size: 11px; color: #64748B; font-weight: 600; margin-top: 4px">Reliability score</span>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0">
+        <span style="width: 40px; height: 40px; border-radius: 12px; background: rgba(245,158,11,0.16); color: #D97706; display: flex; align-items: center; justify-content: center">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4"></path></svg>
+        </span>
+        <span style="font-size: 16px; font-weight: 800; line-height: 1.25">Tier 1 VIP Crew</span>
+        <span style="font-size: 12px; color: #475569; line-height: 1.45">Unlocks VIP concert gigs 2h early</span>
+      </div>
+    </div>
+    <div style="padding: 14px; border-radius: 16px; background: #F3F4F8; display: flex; flex-direction: column; gap: 10px">
+      <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EA580C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c-4 0-7-2.7-7-6.5 0-3 2-5 3.5-6.5.5 2 1.5 3 2.5 3 0-3 1-6 4-8 0 3 2 4.5 3 6.5s1 3 1 5c0 3.8-3 6.5-7 6.5z"></path></svg>
+        4 shifts on time
+      </div>
+      <div role="img" aria-label="4 of 5 streak shifts done" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px">
+        <span style="height: 8px; border-radius: 999px; background: #EA580C"></span>
+        <span style="height: 8px; border-radius: 999px; background: #EA580C"></span>
+        <span style="height: 8px; border-radius: 999px; background: #EA580C"></span>
+        <span style="height: 8px; border-radius: 999px; background: #EA580C"></span>
+        <span style="height: 8px; border-radius: 999px; background: #E2E8F0"></span>
+      </div>
+      <span style="font-size: 12px; color: #475569">1 more shift to unlock a <strong style="color: #059669">+RM20</strong> cash bonus</span>
+    </div>
+  </section>
+
+  <section aria-labelledby="cred-h" style="padding: 22px 20px 0; display: flex; flex-direction: column; gap: 10px">
+    <h2 id="cred-h" style="margin: 0; font-size: 15px; font-weight: 700">Verified credentials</h2>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      <div style="padding: 14px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E2E8F0; display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; justify-content: space-between">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="9" cy="11" r="2"></circle><path d="M6 16c.6-1.5 1.7-2 3-2s2.4.5 3 2M14 10h4M14 13h3"></path></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#10B981" aria-label="Verified" role="img"><circle cx="12" cy="12" r="10"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="#04241A" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+        <span style="font-size: 13px; font-weight: 700; line-height: 1.3">MyKad e-KYC verified</span>
+      </div>
+      <div style="padding: 14px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E2E8F0; display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; justify-content: space-between">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2l4 4M17 7l-9 9-3 1 1-3 9-9M14 4l6 6M9 13l2 2"></path></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#10B981" aria-label="Verified" role="img"><circle cx="12" cy="12" r="10"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="#04241A" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+        <span style="font-size: 13px; font-weight: 700; line-height: 1.3">Typhoid injection certified</span>
+        <span style="font-size: 11px; color: #64748B">Exp. Nov 2027</span>
+      </div>
+      <div style="padding: 14px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E2E8F0; display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; justify-content: space-between">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="13" rx="3"></rect><path d="M5 10h14M8.5 13.2h.01M15.5 13.2h.01M8 16l-1 4h10l-1-4"></path></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#10B981" aria-label="Verified" role="img"><circle cx="12" cy="12" r="10"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="#04241A" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+        <span style="font-size: 13px; font-weight: 700; line-height: 1.3">RapidKL frequent rider</span>
+      </div>
+      <div style="padding: 14px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E2E8F0; display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; justify-content: space-between">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#047857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.4 1.8 3 .1.9 2.9 2.4 1.8-.9 2.9.9 2.9-2.4 1.8-.9 2.9-3 .1L12 22l-2.4-1.8-3-.1-.9-2.9-2.4-1.8.9-2.9-.9-2.9 2.4-1.8.9-2.9 3-.1z"></path></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#10B981" aria-label="Verified" role="img"><circle cx="12" cy="12" r="10"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="#04241A" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+        <span style="font-size: 13px; font-weight: 700; line-height: 1.3">MACEOS certified event crew</span>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="attr-h" style="padding: 22px 20px 0; display: flex; flex-direction: column; gap: 10px">
+    <h2 id="attr-h" style="margin: 0; font-size: 15px; font-weight: 700">Crew details</h2>
+    <dl style="margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      <div style="padding: 12px 14px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E2E8F0">
+        <dt style="font-size: 11px; color: #64748B; font-weight: 600">T-shirt size</dt>
+        <dd style="margin: 2px 0 0; font-size: 15px; font-weight: 700">M</dd>
+      </div>
+      <div style="padding: 12px 14px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E2E8F0">
+        <dt style="font-size: 11px; color: #64748B; font-weight: 600">Shoes</dt>
+        <dd style="margin: 2px 0 0; font-size: 15px; font-weight: 700">UK 8</dd>
+      </div>
+      <div style="padding: 12px 14px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E2E8F0">
+        <dt style="font-size: 11px; color: #64748B; font-weight: 600">Dietary</dt>
+        <dd style="margin: 2px 0 0; font-size: 15px; font-weight: 700">Halal</dd>
+      </div>
+      <div style="padding: 12px 14px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E2E8F0">
+        <dt style="font-size: 11px; color: #64748B; font-weight: 600">Languages</dt>
+        <dd style="margin: 2px 0 0; font-size: 15px; font-weight: 700">English, BM</dd>
+      </div>
+    </dl>
+  </section>
+
+  <nav aria-label="Primary" style="margin: auto 16px 28px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; padding: 8px; border-radius: 28px; background: #FFFFFF; border: 1px solid #E6E8F0; box-shadow: 0 14px 34px rgba(15,23,42,0.12), 0 2px 6px rgba(15,23,42,0.06)">
+    <a href="Main.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 56px; border-radius: 20px; color: #64748B; text-decoration: none; font-size: 12px; font-weight: 700">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"></path></svg>
+      Gigs
+    </a>
+    <a href="ShiftPrep.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 56px; border-radius: 20px; color: #64748B; text-decoration: none; font-size: 12px; font-weight: 700">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M8 3v4M16 3v4M3 10h18"></path></svg>
+      My Shifts
+    </a>
+    <a href="Wallet.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 56px; border-radius: 20px; color: #64748B; text-decoration: none; font-size: 12px; font-weight: 700">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h13v2"></path><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M16 13.5h2"></path></svg>
+      Wallet
+    </a>
+    <a href="Profile.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 56px; border-radius: 20px; color: #4F46E5; text-decoration: none; font-size: 12px; font-weight: 800">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path></svg>
+      Profile
+    </a>
+  </nav>
+</div>
+</script>
+<script>
+class DCLogic {
+  constructor(props) { this.props = props || {}; this.state = {}; }
+  setState(p) { Object.assign(this.state, typeof p === 'function' ? p(this.state) : p); this._render && this._render(); }
+  forceUpdate() { this._render && this._render(); }
+}
+const SCREENS = {};
+SCREENS["Main"] = (function(){
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { line: 'all', walkOnly: false };
+  }
+  renderVals() {
+    const defs = [
+      { id: 'all', label: 'All lines', dot: '' },
+      { id: 'kj', label: 'LRT Kelana Jaya', dot: '#D50032' },
+      { id: 'kg', label: 'MRT Kajang', dot: '#047940' },
+      { id: 'sp', label: 'LRT Sri Petaling', dot: '#8A1C2B' }
+    ];
+    const lines = defs.map((d) => {
+      const on = this.state.line === d.id;
+      return {
+        label: d.label,
+        dot: d.dot,
+        hasDot: !!d.dot,
+        pressed: on ? 'true' : 'false',
+        bg: on ? '#4F46E5' : '#FFFFFF',
+        fg: on ? '#FFFFFF' : '#475569',
+        bd: on ? '#6366F1' : '#E2E8F0',
+        pick: () => this.setState({ line: d.id })
+      };
+    });
+    const w = this.state.walkOnly;
+    return {
+      lines,
+      walkOnly: w ? 'true' : 'false',
+      walkBg: w ? '#4F46E5' : '#FFFFFF',
+      walkFg: w ? '#FFFFFF' : '#475569',
+      walkBd: w ? '#6366F1' : '#E2E8F0',
+      toggleWalk: () => this.setState({ walkOnly: !this.state.walkOnly })
+    };
+  }
+}
+
+return Component;
+})();
+SCREENS["JobDetail"] = (function(){
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { saved: false };
+  }
+  renderVals() {
+    const s = this.state.saved;
+    return {
+      savedAttr: s ? 'true' : 'false',
+      saveFill: s ? 'currentColor' : 'none',
+      saveColor: s ? '#4F46E5' : '#0F172A',
+      toggleSave: () => this.setState({ saved: !this.state.saved })
+    };
+  }
+}
+
+return Component;
+})();
+SCREENS["ShiftPrep"] = (function(){
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { onWay: false, late: '' };
+  }
+  renderVals() {
+    const opts = [
+      { id: '15', label: '+15m notice' },
+      { id: '30', label: '+30m notice' },
+      { id: 'sup', label: 'Contact supervisor' }
+    ];
+    const lateOptions = opts.map((o) => {
+      const on = this.state.late === o.id;
+      return {
+        label: o.label,
+        pressed: on ? 'true' : 'false',
+        bg: on ? '#4F46E5' : '#FFFFFF',
+        fg: on ? '#FFFFFF' : '#334155',
+        bd: on ? '#6366F1' : '#E2E8F0',
+        pick: () => this.setState({ late: on ? '' : o.id })
+      };
+    });
+    return {
+      onWay: this.state.onWay,
+      notOnWay: !this.state.onWay,
+      markOnWay: () => this.setState({ onWay: true }),
+      lateOptions
+    };
+  }
+}
+
+return Component;
+})();
+SCREENS["ActiveShift"] = (function(){
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { left: 9, seed: 3 };
+  }
+  componentDidMount() {
+    this.timer = setInterval(() => {
+      const next = this.state.left - 1;
+      if (next <= 0) {
+        this.setState({ left: 15, seed: this.state.seed + 1 });
+      } else {
+        this.setState({ left: next });
+      }
+    }, 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+  renderVals() {
+    const N = 21;
+    const seed = this.state.seed;
+    const finder = (r, c) => {
+      const zones = [[0, 0], [0, 14], [14, 0]];
+      for (let i = 0; i < zones.length; i++) {
+        const rr = r - zones[i][0];
+        const cc = c - zones[i][1];
+        if (rr >= -1 && rr <= 7 && cc >= -1 && cc <= 7) {
+          if (rr < 0 || rr > 6 || cc < 0 || cc > 6) return 0;
+          if (rr === 0 || rr === 6 || cc === 0 || cc === 6) return 1;
+          if (rr >= 2 && rr <= 4 && cc >= 2 && cc <= 4) return 1;
+          return 0;
+        }
+      }
+      return -1;
+    };
+    const cells = [];
+    for (let r = 0; r < N; r++) {
+      for (let c = 0; c < N; c++) {
+        let on = finder(r, c);
+        if (on === -1) {
+          if (r === 6) on = c % 2 === 0 ? 1 : 0;
+          else if (c === 6) on = r % 2 === 0 ? 1 : 0;
+          else {
+            const x = Math.sin((r * N + c) * 12.9898 + seed * 78.233) * 43758.5453;
+            on = x - Math.floor(x) > 0.52 ? 1 : 0;
+          }
+        }
+        cells.push({ bg: on ? '#0F172A' : '#FFFFFF' });
+      }
+    }
+    const left = this.state.left;
+    const C = 753.98;
+    return {
+      cells,
+      secs: left < 10 ? '0' + left : String(left),
+      ringOffset: (C * (1 - left / 15)).toFixed(2)
+    };
+  }
+}
+
+return Component;
+})();
+SCREENS["ClockOut"] = (function(){
+
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+
+return Component;
+})();
+SCREENS["Wallet"] = (function(){
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { sent: false, autoSave: true };
+  }
+  renderVals() {
+    const on = this.state.autoSave;
+    return {
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      withdraw: () => this.setState({ sent: true }),
+      saveAttr: on ? 'true' : 'false',
+      trackBg: on ? '#10B981' : '#CBD5E1',
+      knobJustify: on ? 'flex-end' : 'flex-start',
+      toggleSave: () => this.setState({ autoSave: !this.state.autoSave })
+    };
+  }
+}
+
+return Component;
+})();
+SCREENS["Profile"] = (function(){
+
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+
+return Component;
+})();
+
+(function () {
+  const HOLE = /\{\{\s*([^}]+?)\s*\}\}/g;
+  const WHOLE = /^\{\{\s*([^}]+?)\s*\}\}$/;
+  function lookup(path, scope) {
+    if (path === 'true') return true;
+    if (path === 'false') return false;
+    if (/^-?\d+(\.\d+)?$/.test(path)) return Number(path);
+    if (/^'.*'$/.test(path)) return path.slice(1, -1);
+    return path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), scope);
+  }
+  function interp(str, scope) {
+    return str.replace(HOLE, (_, p) => { const v = lookup(p, scope); return v == null ? '' : String(v); });
+  }
+  function renderChildren(src, dest, scope) {
+    src.childNodes.forEach((n) => renderNode(n, dest, scope));
+  }
+  function renderNode(n, dest, scope) {
+    if (n.nodeType === 3) { dest.appendChild(document.createTextNode(interp(n.nodeValue, scope))); return; }
+    if (n.nodeType !== 1) return;
+    const tag = n.localName;
+    if (tag === 'sc-for') {
+      const list = lookup(n.getAttribute('list').match(WHOLE)[1], scope) || [];
+      const as = n.getAttribute('as') || 'item';
+      list.forEach((item, i) => renderChildren(n, dest, Object.assign(Object.create(scope), { [as]: item, $index: i })));
+      return;
+    }
+    if (tag === 'sc-if') {
+      if (lookup(n.getAttribute('value').match(WHOLE)[1], scope)) renderChildren(n, dest, scope);
+      return;
+    }
+    const el = n.cloneNode(false);
+    for (const a of Array.from(el.attributes)) el.removeAttribute(a.name);
+    for (const a of Array.from(n.attributes)) {
+      const name = a.name, val = a.value;
+      if (name.startsWith('hint-')) continue;
+      const whole = val.match(WHOLE);
+      if (name.startsWith('on') && whole) {
+        const fn = lookup(whole[1], scope);
+        if (typeof fn === 'function') el.addEventListener(name.slice(2).toLowerCase(), fn);
+        continue;
+      }
+      el.setAttribute(name, whole ? String(lookup(whole[1], scope) ?? '') : interp(val, scope));
+    }
+    renderChildren(n, el, scope);
+    dest.appendChild(el);
+  }
+  function mount(host) {
+    const name = host.dataset.screen;
+    const tplText = document.getElementById('tpl-' + name).textContent;
+    const tpl = new DOMParser().parseFromString('<!doctype html><body>' + tplText + '</body>', 'text/html').body;
+    const comp = new SCREENS[name]({});
+    comp._render = () => {
+      const frag = document.createDocumentFragment();
+      renderChildren(tpl, frag, comp.renderVals() || {});
+      host.replaceChildren(frag);
+    };
+    comp._render();
+    if (comp.componentDidMount) comp.componentDidMount();
+  }
+  document.querySelectorAll('.mount').forEach(mount);
+
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('.mount a[href]');
+    if (!a) return;
+    const href = a.getAttribute('href');
+    const m = href.match(/^([A-Za-z]+)\.dc\.html$/);
+    if (href === '#') { e.preventDefault(); return; }
+    if (!m) return;
+    e.preventDefault();
+    const fig = document.getElementById('screen-' + m[1]);
+    if (!fig) return;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    fig.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start', inline: 'center' });
+    const dev = fig.querySelector('.device');
+    dev.classList.add('flash');
+    setTimeout(() => dev.classList.remove('flash'), 1200);
+  });
+})();
+</script>
+
+<!-- KrewMY Universal Navigation Widget -->
+<style>
+  #krewmy-role-nav a:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #FFFFFF !important;
+  }
+  #krewmy-nav-toggle:hover {
+    background: rgba(30, 41, 59, 0.96) !important;
+    border-color: rgba(255, 255, 255, 0.28) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.45) !important;
+  }
+</style>
+<div id="krewmy-role-nav" style="position: fixed; bottom: 20px; right: 20px; z-index: 999999; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.4;">
+  <div id="krewmy-nav-menu" style="display: none; position: absolute; bottom: calc(100% + 10px); right: 0; min-width: 250px; background: rgba(15, 23, 42, 0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 14px; box-shadow: 0 20px 40px -4px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05); padding: 8px; color: #F8FAFC;">
+    <div style="padding: 6px 10px 8px; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #94A3B8; display: flex; justify-content: space-between; align-items: center;">
+      <span>KrewMY Prototypes</span>
+      <a href="index.html" style="color: #818CF8; text-decoration: none; font-size: 11px; font-weight: 600;">Hub ↗</a>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 3px; margin-top: 6px;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #CBD5E1; font-size: 13px; font-weight: 500; transition: all 0.15s ease;">
+        <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: rgba(255,255,255,0.08); font-size: 12px;">🏠</span>
+        <span>Role Selection Hub</span>
+      </a>
+      <a href="krewmy-admin-web.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #CBD5E1; font-size: 13px; font-weight: 500; transition: all 0.15s ease; ">
+        <span style="display: flex; align-items: center; gap: 10px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: rgba(129, 140, 248, 0.2); color: #818CF8; font-size: 11px; font-weight: 700;">A</span>
+          <span>Admin Console</span>
+        </span>
+        <span style="font-size: 11px; color: #64748B;">Web</span>
+      </a>
+      <a href="krewmy-organiser-web.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #CBD5E1; font-size: 13px; font-weight: 500; transition: all 0.15s ease; ">
+        <span style="display: flex; align-items: center; gap: 10px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: rgba(56, 189, 248, 0.2); color: #38BDF8; font-size: 11px; font-weight: 700;">O</span>
+          <span>Organiser Web</span>
+        </span>
+        <span style="font-size: 11px; color: #64748B;">Web</span>
+      </a>
+      <a href="krewmy-ops-mobile.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #CBD5E1; font-size: 13px; font-weight: 500; transition: all 0.15s ease; ">
+        <span style="display: flex; align-items: center; gap: 10px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: rgba(45, 212, 191, 0.2); color: #2DD4BF; font-size: 11px; font-weight: 700;">P</span>
+          <span>Ops Companion</span>
+        </span>
+        <span style="font-size: 11px; color: #64748B;">8 Screens</span>
+      </a>
+      <a href="krewmy-gigworker-mobile.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #CBD5E1; font-size: 13px; font-weight: 500; transition: all 0.15s ease; background: rgba(52, 211, 153, 0.15); color: #A7F3D0; font-weight: 600;">
+        <span style="display: flex; align-items: center; gap: 10px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: rgba(52, 211, 153, 0.2); color: #34D399; font-size: 11px; font-weight: 700;">W</span>
+          <span>Gig Worker App</span>
+        </span>
+        <span style="font-size: 10px; padding: 2px 7px; border-radius: 999px; background: rgba(52, 211, 153, 0.25); color: #A7F3D0; font-weight: 600;">Current</span>
+      </a>
+    </div>
+  </div>
+  <button id="krewmy-nav-toggle" aria-expanded="false" aria-label="Toggle KrewMY role navigation" style="display: flex; align-items: center; gap: 8px; height: 42px; padding: 0 16px; border-radius: 999px; background: rgba(15, 23, 42, 0.92); border: 1px solid rgba(255, 255, 255, 0.16); box-shadow: 0 8px 24px rgba(0,0,0,0.35); color: #F8FAFC; font-size: 13px; font-weight: 600; cursor: pointer; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: all 0.2s ease;">
+    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #6366F1; box-shadow: 0 0 8px #6366F1;"></span>
+    <span>Switch Role</span>
+    <svg id="krewmy-nav-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.2s ease;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+  </button>
+</div>
+<script id="krewmy-nav-script">
+(function() {
+  const toggle = document.getElementById('krewmy-nav-toggle');
+  const menu = document.getElementById('krewmy-nav-menu');
+  const chevron = document.getElementById('krewmy-nav-chevron');
+  if (!toggle || !menu) return;
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = menu.style.display === 'block';
+    menu.style.display = open ? 'none' : 'block';
+    toggle.setAttribute('aria-expanded', !open);
+    if (chevron) chevron.style.transform = open ? 'none' : 'rotate(180deg)';
+  });
+  document.addEventListener('click', (e) => {
+    const nav = document.getElementById('krewmy-role-nav');
+    if (nav && !nav.contains(e.target)) {
+      menu.style.display = 'none';
+      toggle.setAttribute('aria-expanded', 'false');
+      if (chevron) chevron.style.transform = 'none';
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.style.display === 'block') {
+      menu.style.display = 'none';
+      toggle.setAttribute('aria-expanded', 'false');
+      if (chevron) chevron.style.transform = 'none';
+    }
+  });
+})();
+</script>
+
+<!-- KrewMY Universal Navigation Widget -->
+<style>
+  #krewmy-role-nav a:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #FFFFFF !important;
+  }
+  #krewmy-nav-toggle:hover {
+    background: rgba(30, 41, 59, 0.96) !important;
+    border-color: rgba(255, 255, 255, 0.28) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.45) !important;
+  }
+</style>
+<div id="krewmy-role-nav" style="position: fixed; bottom: 20px; right: 20px; z-index: 999999; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.4;">
+  <div id="krewmy-nav-menu" style="display: none; position: absolute; bottom: calc(100% + 10px); right: 0; min-width: 250px; background: rgba(15, 23, 42, 0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 14px; box-shadow: 0 20px 40px -4px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05); padding: 8px; color: #F8FAFC;">
+    <div style="padding: 6px 10px 8px; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #94A3B8; display: flex; justify-content: space-between; align-items: center;">
+      <span>KrewMY Prototypes</span>
+      <a href="index.html" style="color: #818CF8; text-decoration: none; font-size: 11px; font-weight: 600;">Hub ↗</a>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 3px; margin-top: 6px;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #CBD5E1; font-size: 13px; font-weight: 500; transition: all 0.15s ease;">
+        <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: rgba(255,255,255,0.08); font-size: 12px;">🏠</span>
+        <span>Role Selection Hub</span>
+      </a>
+      <a href="krewmy-admin-web.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #CBD5E1; font-size: 13px; font-weight: 500; transition: all 0.15s ease; ">
+        <span style="display: flex; align-items: center; gap: 10px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: rgba(129, 140, 248, 0.2); color: #818CF8; font-size: 11px; font-weight: 700;">A</span>
+          <span>Admin Console</span>
+        </span>
+        <span style="font-size: 11px; color: #64748B;">Web</span>
+      </a>
+      <a href="krewmy-organiser-web.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #CBD5E1; font-size: 13px; font-weight: 500; transition: all 0.15s ease; ">
+        <span style="display: flex; align-items: center; gap: 10px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: rgba(56, 189, 248, 0.2); color: #38BDF8; font-size: 11px; font-weight: 700;">O</span>
+          <span>Organiser Web</span>
+        </span>
+        <span style="font-size: 11px; color: #64748B;">Web</span>
+      </a>
+      <a href="krewmy-ops-mobile.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #CBD5E1; font-size: 13px; font-weight: 500; transition: all 0.15s ease; ">
+        <span style="display: flex; align-items: center; gap: 10px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: rgba(45, 212, 191, 0.2); color: #2DD4BF; font-size: 11px; font-weight: 700;">P</span>
+          <span>Ops Companion</span>
+        </span>
+        <span style="font-size: 11px; color: #64748B;">8 Screens</span>
+      </a>
+      <a href="krewmy-gigworker-mobile.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #CBD5E1; font-size: 13px; font-weight: 500; transition: all 0.15s ease; background: rgba(52, 211, 153, 0.15); color: #A7F3D0; font-weight: 600;">
+        <span style="display: flex; align-items: center; gap: 10px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: rgba(52, 211, 153, 0.2); color: #34D399; font-size: 11px; font-weight: 700;">W</span>
+          <span>Gig Worker App</span>
+        </span>
+        <span style="font-size: 10px; padding: 2px 7px; border-radius: 999px; background: rgba(52, 211, 153, 0.25); color: #A7F3D0; font-weight: 600;">Current</span>
+      </a>
+    </div>
+  </div>
+  <button id="krewmy-nav-toggle" aria-expanded="false" aria-label="Toggle KrewMY role navigation" style="display: flex; align-items: center; gap: 8px; height: 42px; padding: 0 16px; border-radius: 999px; background: rgba(15, 23, 42, 0.92); border: 1px solid rgba(255, 255, 255, 0.16); box-shadow: 0 8px 24px rgba(0,0,0,0.35); color: #F8FAFC; font-size: 13px; font-weight: 600; cursor: pointer; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: all 0.2s ease;">
+    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #6366F1; box-shadow: 0 0 8px #6366F1;"></span>
+    <span>Switch Role</span>
+    <svg id="krewmy-nav-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.2s ease;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+  </button>
+</div>
+<script id="krewmy-nav-script">
+(function() {
+  const toggle = document.getElementById('krewmy-nav-toggle');
+  const menu = document.getElementById('krewmy-nav-menu');
+  const chevron = document.getElementById('krewmy-nav-chevron');
+  if (!toggle || !menu) return;
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = menu.style.display === 'block';
+    menu.style.display = open ? 'none' : 'block';
+    toggle.setAttribute('aria-expanded', !open);
+    if (chevron) chevron.style.transform = open ? 'none' : 'rotate(180deg)';
+  });
+  document.addEventListener('click', (e) => {
+    const nav = document.getElementById('krewmy-role-nav');
+    if (nav && !nav.contains(e.target)) {
+      menu.style.display = 'none';
+      toggle.setAttribute('aria-expanded', 'false');
+      if (chevron) chevron.style.transform = 'none';
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.style.display === 'block') {
+      menu.style.display = 'none';
+      toggle.setAttribute('aria-expanded', 'false');
+      if (chevron) chevron.style.transform = 'none';
+    }
+  });
+})();
+</script>
+</body>
+</html>
