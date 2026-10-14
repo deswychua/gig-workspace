@@ -1,0 +1,7 @@
+# Documentation & internal PRDs
+docs/
+.obsidian/
+
+# OS metadata
+.DS_Store
+Thumbs.db
